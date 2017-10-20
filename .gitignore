@@ -22,7 +22,7 @@ alex/
 #vqmod/mods.cache
 google3dcb08a4f4bcb4dc.html
 dev.fruitsandroses.com.ua.iml
-.idea/
+.idea/*
 ISPNOTE.txt
 robots.txt
 sitemap.xml
