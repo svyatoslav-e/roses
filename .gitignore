@@ -32,3 +32,5 @@ vqmod/
 webstat/
 crossdomain.xml
 favicon.ico
+cgi-bin/
+node_modules/
