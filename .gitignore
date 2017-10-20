@@ -5,16 +5,30 @@ admin/config.php
 !index.html
 
 download/
-image/data/
-image/cache/
+image/
+#image/data/
+#image/cache/
 system/cache/
 system/logs/
+alex/
 
-system/storage/
+#system/storage/
 
 # vQmod log files
-vqmod/logs/*
+#vqmod/logs/*
 # vQmod cache files
-vqmod/vqcache/*
-vqmod/checked.cache
-vqmod/mods.cache
+#vqmod/vqcache/*
+#vqmod/checked.cache
+#vqmod/mods.cache
+google3dcb08a4f4bcb4dc.html
+dev.fruitsandroses.com.ua.iml
+.idea/
+ISPNOTE.txt
+robots.txt
+sitemap.xml
+php.ini
+system/
+vqmod/
+webstat/
+crossdomain.xml
+favicon.ico

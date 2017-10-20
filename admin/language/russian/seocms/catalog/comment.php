@@ -1,0 +1,63 @@
+<?php
+$_['heading_title']        = 'Комментарии';
+$_['text_success']         = 'Список комментариев обновлен!';
+$_['ok_create_tables']     = 'Таблицы успешно созданы';
+$_['column_comment_id']    = 'ID';
+$_['column_record_id']        = 'Записи / Комментарии';
+$_['column_product_id']        = 'Продукты / Отзывы';
+$_['column_author']        = 'Автор';
+$_['column_rating']        = 'Рейтинг';
+$_['column_status']        = 'Статус';
+$_['column_date_added']    = 'Добавлено';
+$_['column_action']        = 'Действие';
+$_['column_karma']        = 'Карма<br>(карма, всего, + , - )';
+$_['url_back_text']        = 'Назад в настройки модуля';
+$_['url_blog_text']        = 'Категории';
+$_['url_record_text']      = 'Записи';
+$_['url_comment_text']     = 'Комментарии';
+$_['url_review_text']     = 'Отзывы';
+$_['entry_notify']         = 'Уведомить подписчиков';
+$_['entry_record_id']         = 'Запись:';
+$_['entry_product_id']         = 'Товар:';
+$_['entry_author']         = 'Автор:';
+$_['entry_rating']         = 'Рейтинг:';
+$_['entry_status']         = 'Статус:';
+$_['entry_text']           = 'Текст:';
+$_['entry_good']           = 'Хорошо';
+$_['entry_bad']            = 'Плохо';
+$_['entry_date_available'] = 'Дата';
+$_['button_filter']        = 'Фильтр';
+$_['error_permission']     = 'У Вас нет прав для изменения комментариев!';
+$_['error_record']         = 'Требуется выбрать запись!';
+$_['error_author']         = 'Имя автора должно быть от 3 до 64 символов!';
+$_['error_text']           = 'Текст отзыва должен содержать хотя бы 1 символ!';
+$_['error_rating']         = 'Требуется установить рейтинг!';
+$_['entry_comment_text']   = 'Показать текст комментариев';
+$_['entry_karma']   = 'Карма';
+$_['entry_karma_rate_count']   = 'Всего';
+$_['entry_karma_rate_delta_blog_plus']   = '+';
+$_['entry_karma_rate_delta_blog_minus']   = '-';
+$_['text_ghost']			= 'Гость';
+$_['text_edit'] = 'Редактировать';
+$_['text_answer'] = 'Ответить';
+$_['button_insert'] = 'Добавить';
+
+$_['entry_answer_id'] = 'Ответ на отзыв (ID)';
+$_['entry_author_id'] = 'ID';
+$_['entry_answer_view'] = 'Показать родительский отзыв';
+
+$_['entry_karma_name'] = 'Покупатель';
+$_['entry_karma_name_id'] = 'ID';
+$_['entry_karma_value'] = 'Величина';
+$_['entry_karma_action'] = 'Действие';
+$_['entry_karma_detail'] = 'Карма детально';
+$_['text_loading_delete'] = 'Удаляем...';
+$_['button_delete'] = 'Удалить';
+$_['column_language'] = 'Язык';
+$_['entry_language'] = 'Язык';
+$_['column_comment_type'] = 'ID.Тип';
+$_['entry_type_id'] = 'ID.Тип';
+$_['entry_widget_id'] = 'ID.Виджет';
+$_['entry_rating_mark'] = 'Рейтинг';
+
+?>
