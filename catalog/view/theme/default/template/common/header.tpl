@@ -30,6 +30,7 @@
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
+<link href="catalog/view/theme/default/stylesheet/style.css" rel="stylesheet">
 <?php foreach ($styles as $style) { ?>
 <link href="<?php echo $style['href']; ?>" type="text/css" rel="<?php echo $style['rel']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -49,7 +50,7 @@
 <div class="conteiner-fluid top-linear"> </div>
 
   <div class="container">
-       <?php echo $language; ?>
+
     <div class="row">
 
     <div class="hidden-xs col-sm-5 col-lg-5 main_text"><span>Fruits</span></div>
@@ -73,7 +74,7 @@
       <i class="fa fa-bars"></i>
       </button>
     </div>
-      <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
+    <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
       <ul class="big-list main_menu" id="blog">
         <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?><span class="number"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></a></li>
         <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?><span class="number"><i class="fa fa-truck" aria-hidden="true"></i></span></a></li>
@@ -88,9 +89,9 @@
 <div class="div container">
  <div class="col-xs-12 contact_home_block">
   <div class="col-xs-12 col-md-6 text-left">
-       <p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p> 
+
   </div>  
-     <?php echo $cart; ?>
+
  </div>  
 </div>
 
@@ -100,12 +101,26 @@
             <div id="logo">
                 <?php if ($logo) { ?>
                 <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-                <?php } else { ?>
                 <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
                 <?php } ?>
             </div>
         </div>
     </div>
+
+    <div class="col-sm-8">
+        <ul>
+            <?php foreach ($categories as $category) { ?>
+            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+            <?php }?>
+        </ul>
+    </div>
+
+
+
+    <p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p>
+
+    <?php echo $cart; ?>
+    <?php echo $language; ?>
 </div>
 
 

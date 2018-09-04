@@ -2,16 +2,16 @@
 <div class="conteiner-fluid top-linear"></div>
   <div class="container">
     <div class="row">
-          <?if($categories) {?>
+     <?php if($categories) { ?>
       <div class="col-sm-3">
       <h5><i class="fa fa-tree" aria-hidden="true"></i>  <?php echo $text_category; ?></h5>
         <ul class="list-unstyled">
-        <? foreach ($categories as $category) {?>
+        <?php foreach ($categories as $category) { ?>
           <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-        <?}?>
+        <?php }?>
         </ul>
       </div>
-      <?}?>
+      <?php } ?>
 
 
       <?php if ($informations) { ?>
