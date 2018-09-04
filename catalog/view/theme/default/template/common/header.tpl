@@ -54,15 +54,7 @@
 
     <div class="hidden-xs col-sm-5 col-lg-5 main_text"><span>Fruits</span></div>
 
-      <div class="col-xs-2">
-        <div id="logo">
-          <?php if ($logo) { ?>
-          <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-          <?php } else { ?>
-          <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-          <?php } ?>
-        </div>
-      </div>
+
 
     <div class="hidden-xs col-sm-5 col-lg-5 main_text"><span>Roses</span>
     
@@ -100,6 +92,20 @@
   </div>  
      <?php echo $cart; ?>
  </div>  
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-2">
+            <div id="logo">
+                <?php if ($logo) { ?>
+                <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
+                <?php } else { ?>
+                <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
 </div>
 
 
