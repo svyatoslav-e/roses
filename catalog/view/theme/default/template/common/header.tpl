@@ -45,83 +45,51 @@
 <?php echo $google_analytics; ?>
 </head>
 <body class="<?php echo $class; ?>">
-<header>
-<h1><a href="/"><?php echo $name; ?></a></h1>
-<div class="conteiner-fluid top-linear"> </div>
+<header class="header-main">
+<!--<div class="conteiner-fluid top-linear"> </div>-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--LOGO-->
+            <div class="col-sm-3">
+                <div id="logo">
+                    <h1 class="header-main__logo">
+                        <a href="<?php echo $home; ?>" class="header-main__logo_link">
+                            <?php if ($logo) { ?>
+                            <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" />
+                            <?php } ?>
+                            <span class="header-main__logo_link-green">Fruits</span>
+                            &
+                            <span class="header-main__logo_link-rose">Roses</span>
+                        </a>
+                    </h1>
+                </div>
+            </div>
+            <!--Main menu-->
+            <div class="col-sm-5">
+                <nav id="menu" class="header-main__menu">
+                    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
+                        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
+                        <ul>
+                            <?php foreach ($categories as $category) { ?>
+                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                            <?php }?>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
 
-  <div class="container">
+       <!--<p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p>-->
 
-    <div class="row">
-
-    <div class="hidden-xs col-sm-5 col-lg-5 main_text"><span>Fruits</span></div>
-
-
-
-    <div class="hidden-xs col-sm-5 col-lg-5 main_text"><span>Roses</span>
-    
     </div>
-
-    </div>
-  </div>
 <div class="container-fluid top-linear"> </div>
 </header>
 
-<div class="container">
- <div class="col-xs-12">
-  <nav id="menu" class="navbar">
-      <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-      <i class="fa fa-bars"></i>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
-      <ul class="big-list main_menu" id="blog">
-        <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?><span class="number"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></a></li>
-        <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?><span class="number"><i class="fa fa-truck" aria-hidden="true"></i></span></a></li>
-        <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?><span class="number"><i class="fa fa-tags" aria-hidden="true"></i></span></a></li>
-        <li><a href="<?=$contact; ?>"><?=$text_contact; ?><span class="number"><i class="fa fa-life-ring" aria-hidden="true"></i></span></a></li>
-      </ul>
-    </div>
-  </nav>
- </div>
-</div>
-<div class="container-fluid top-linear"> </div>
-<div class="div container">
- <div class="col-xs-12 contact_home_block">
-  <div class="col-xs-12 col-md-6 text-left">
 
-  </div>  
-
- </div>  
-</div>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-xs-2">
-            <div id="logo">
-                <?php if ($logo) { ?>
-                <a href="<?php echo $home; ?>"><img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" /></a>
-                <h1><a href="<?php echo $home; ?>"><?php echo $name; ?></a></h1>
-                <?php } ?>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-sm-8">
-        <ul>
-            <?php foreach ($categories as $category) { ?>
-            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-            <?php }?>
-        </ul>
-    </div>
-
-
-
-    <p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p>
-
-    <?php echo $cart; ?>
-    <?php echo $language; ?>
-</div>
 
 
 

@@ -15,6 +15,4 @@ $_['text_checkout']      = 'Оформление заказа';
 $_['text_search']        = 'Поиск';
 $_['text_all']           = 'Смотреть Все';
 
-		$_['about_us_text'] = 'О нас';
-		$_['delivery_inf_text'] = 'Доставка';
-		$_['payment_inf_text'] = 'Акции';
+

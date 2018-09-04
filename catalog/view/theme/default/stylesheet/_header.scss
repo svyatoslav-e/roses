@@ -1,3 +1,52 @@
-#logo {
-  max-width: 71px;
+.header-main {
+  // LOGO
+  height: 90px;
+  &__logo {
+    margin: 0;
+    height: 90px;
+    &_link {
+      display: inline-block;
+      font-size: 35px;
+      height: 90px;
+      line-height: 84px;
+      font-weight: bold;
+      color: $blue;
+      &:hover, &:visited, &:active {color: $blue;}
+
+      &-green {color: $green;}
+      &-rose {color: $rose;}
+      img {
+        width: 70px;
+        height: 70px;
+        display: block;
+        float: left;
+        margin-right: 15px;
+        margin-top: 10px;
+      }
+    }
+  }
+//  MENU
+  &__menu {
+    height: 90px;
+    ul {
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+        li {
+          display: inline-block;
+
+          a {
+            display: block;
+            text-transform: uppercase;
+            font-weight: bold;
+            line-height: 90px;
+            font-size: 19px;
+            padding: 0 15px;
+            //text-shadow: 1px 1px #333;
+          }
+        }
+    }
+  }
 }

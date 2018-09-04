@@ -1,4 +1,44 @@
-#logo {
-  max-width: 71px; }
+.header-main {
+  height: 90px; }
+  .header-main__logo {
+    margin: 0;
+    height: 90px; }
+    .header-main__logo_link {
+      display: inline-block;
+      font-size: 35px;
+      height: 90px;
+      line-height: 84px;
+      font-weight: bold;
+      color: #29b8e5; }
+      .header-main__logo_link:hover, .header-main__logo_link:visited, .header-main__logo_link:active {
+        color: #29b8e5; }
+      .header-main__logo_link-green {
+        color: #82d965; }
+      .header-main__logo_link-rose {
+        color: #fd5c92; }
+      .header-main__logo_link img {
+        width: 70px;
+        height: 70px;
+        display: block;
+        float: left;
+        margin-right: 15px;
+        margin-top: 10px; }
+  .header-main__menu {
+    height: 90px; }
+    .header-main__menu ul {
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      width: 100%; }
+      .header-main__menu ul li {
+        display: inline-block; }
+        .header-main__menu ul li a {
+          display: block;
+          text-transform: uppercase;
+          font-weight: bold;
+          line-height: 90px;
+          font-size: 19px;
+          padding: 0 15px; }
 
 /*# sourceMappingURL=style.css.map */

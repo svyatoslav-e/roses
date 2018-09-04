@@ -18,13 +18,17 @@
       <div class="col-sm-3">
         <h5><i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $text_information; ?></h5>
         <ul class="list-unstyled">
-          <?php foreach ($informations as $information) { ?>
-          <li><a href="<?php echo $information['href']; ?>"><?php echo $information['title']; ?></a></li>
-          <?php } ?>
+            <ul class="big-list main_menu" id="blog">
+                <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?><span class="number"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></a></li>
+                <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?><span class="number"><i class="fa fa-truck" aria-hidden="true"></i></span></a></li>
+                <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?><span class="number"><i class="fa fa-tags" aria-hidden="true"></i></span></a></li>
+                <li><a href="<?=$contact; ?>"><?=$text_contact; ?><span class="number"><i class="fa fa-life-ring" aria-hidden="true"></i></span></a></li>
+            </ul>
         </ul>
       </div>
       <?php } ?>
       <div class="col-sm-3">
+
          <!--   <h5><i class="fa fa-life-ring" aria-hidden="true"></i> <?php echo $text_service; ?></h5>
         <ul class="list-unstyled">
        <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>

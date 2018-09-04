@@ -15,3 +15,7 @@ $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Рассылка';
 $_['text_powered']      = '%s &copy; %s';
+
+$_['about_us_text'] = 'О нас';
+$_['delivery_inf_text'] = 'Доставка';
+$_['payment_inf_text'] = 'Акции';
