@@ -167,7 +167,7 @@ var cart = {
 					
 					// Need to set timeout otherwise it wont update the total
 					setTimeout(function () {
-						$('#cart > button').html('<i class="fa fa-shopping-cart pull-right my_cart" aria-hidden="true"></i><span id="cart-total">Товарів: <b>' + json['total'] + '&nbsp &nbsp</b></span><span id="cart-total-price">Ціна: <b>' + json['total2'] + '&nbsp &nbsp</b></span>');
+						$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
 					}, 100);
 				
 					// $('html, body').animate({ scrollTop: 0 }, 'slow');
@@ -192,7 +192,7 @@ var cart = {
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
 				setTimeout(function () {
-					$('#cart > button').html('<i class="fa fa-shopping-cart pull-right my_cart" aria-hidden="true"></i><span id="cart-total">Товарів: <b>' + json['total'] + '&nbsp &nbsp</b></span><span id="cart-total-price">Ціна: <b>' + json['total2'] + '&nbsp &nbsp</b></span>');
+					$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
 				}, 100);
 
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
@@ -218,7 +218,7 @@ var cart = {
 			success: function(json) {
 				// Need to set timeout otherwise it wont update the total
 				setTimeout(function () {
-					$('#cart > button').html('<i class="fa fa-shopping-cart pull-right my_cart" aria-hidden="true"></i><span id="cart-total">Товарів: <b>' + json['total'] + '&nbsp &nbsp</b></span><span id="cart-total-price">Ціна: <b>' + json['total2'] + '&nbsp &nbsp</b></span>');
+					$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
 				}, 100);
 					
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {

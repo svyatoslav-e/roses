@@ -11,7 +11,10 @@
       line-height: 84px;
       font-weight: bold;
       color: $blue;
-      &:hover, &:visited, &:active {color: $blue;}
+      text-decoration: none;
+      &:hover, &:visited, &:active, &:focus {color: $blue;
+                                             text-decoration: none;
+                                             outline: none;}
 
       &-green {color: $green;}
       &-rose {color: $rose;}
@@ -27,10 +30,9 @@
   }
 //  MENU
   &__menu {
-    height: 90px;
     ul {
       display: inline-block;
-      text-align: center;
+      text-align: left;
       padding: 0;
       margin: 0;
       width: 100%;
@@ -41,7 +43,7 @@
             display: block;
             text-transform: uppercase;
             font-weight: bold;
-            line-height: 90px;
+            line-height: 53px;
             font-size: 19px;
             padding: 0 15px;
             //text-shadow: 1px 1px #333;

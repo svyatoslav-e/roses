@@ -1,11 +1,15 @@
-<div id="cart" class="btn-group col-xs-12 col-md-6">
-  <button type="button" data-toggle="dropdown" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-inverse btn-lg dropdown-toggle btn_cart_my pull-right"><i class="fa fa-shopping-cart pull-right my_cart" aria-hidden="true"></i><span id="cart-total">Товарів:  <b><?php echo $text_items; ?> &nbsp &nbsp</b></span>
- <span id="cart-total-price">   Ціна: <b><?php echo $text_items_price; ?></b></span> </button>
+<div id="cart" class="header-cart">
+  <button type="button" data-toggle="dropdown"
+                        data-loading-text="<?php echo $text_loading; ?>"
+                        class="header-cart__button pull-right">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    <span class="header-cart__button_total-items"><?php echo $text_items; ?></span>
+  </button>
 
 
 
 
-  <ul class="dropdown-menu pull-right cart_ul">
+  <ul class="dropdown-menu header-cart__total-list">
     <?php if ($products || $vouchers) { ?>
     <li>
       <table class="table table-striped">

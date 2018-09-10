@@ -47,10 +47,10 @@
 <body class="<?php echo $class; ?>">
 <header class="header-main">
 <!--<div class="conteiner-fluid top-linear"> </div>-->
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <!--LOGO-->
-            <div class="col-sm-3">
+            <div class="col-sm-4">
                 <div id="logo">
                     <h1 class="header-main__logo">
                         <a href="<?php echo $home; ?>" class="header-main__logo_link">
@@ -64,30 +64,43 @@
                     </h1>
                 </div>
             </div>
-            <!--Main menu-->
-            <div class="col-sm-5">
-                <nav id="menu" class="header-main__menu">
-                    <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-                        <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
-                        <ul>
-                            <?php foreach ($categories as $category) { ?>
-                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
-                            <?php }?>
-                        </ul>
-                    </div>
-                </nav>
+
+            <!--CART-->
+            <div class="col-sm-2 col-sm-offset-6">
+                <?php echo $cart; ?>
             </div>
         </div>
+
+
 
        <!--<p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p>-->
 
     </div>
-<div class="container-fluid top-linear"> </div>
 </header>
+<div class="container-fluid top-linear"> </div>
+<div class="container">
+    <div class="row">
+        <!--Main menu-->
+        <div class="col-sm-12">
+            <nav id="menu" class="header-main__menu">
+                <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
+                    <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
+                    <ul>
+                        <?php foreach ($categories as $category) { ?>
+                        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                        <?php }?>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container-fluid top-linear"> </div>
+
 
 
 

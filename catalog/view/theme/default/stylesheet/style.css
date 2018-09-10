@@ -9,9 +9,12 @@
       height: 90px;
       line-height: 84px;
       font-weight: bold;
-      color: #29b8e5; }
-      .header-main__logo_link:hover, .header-main__logo_link:visited, .header-main__logo_link:active {
-        color: #29b8e5; }
+      color: #29b8e5;
+      text-decoration: none; }
+      .header-main__logo_link:hover, .header-main__logo_link:visited, .header-main__logo_link:active, .header-main__logo_link:focus {
+        color: #29b8e5;
+        text-decoration: none;
+        outline: none; }
       .header-main__logo_link-green {
         color: #82d965; }
       .header-main__logo_link-rose {
@@ -23,22 +26,62 @@
         float: left;
         margin-right: 15px;
         margin-top: 10px; }
-  .header-main__menu {
-    height: 90px; }
-    .header-main__menu ul {
-      display: inline-block;
+  .header-main__menu ul {
+    display: inline-block;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    width: 100%; }
+    .header-main__menu ul li {
+      display: inline-block; }
+      .header-main__menu ul li a {
+        display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+        line-height: 53px;
+        font-size: 19px;
+        padding: 0 15px; }
+
+.header-cart {
+  display: block;
+  width: 100%;
+  height: 90px; }
+  .header-cart__button {
+    background: none;
+    border: none;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    text-align: right;
+    outline: none; }
+    .header-cart__button i.fa {
+      color: #29b8e5;
+      font-size: 52px;
+      width: 52px;
+      margin-left: 0;
+      margin-top: 17px; }
+    .header-cart__button_total-items {
+      position: absolute;
+      color: #333;
+      top: 8px;
+      right: 2px;
+      display: block;
+      width: 35px;
+      height: 35px;
+      border-radius: 20px;
+      background: #82d965;
       text-align: center;
-      padding: 0;
-      margin: 0;
-      width: 100%; }
-      .header-main__menu ul li {
-        display: inline-block; }
-        .header-main__menu ul li a {
-          display: block;
-          text-transform: uppercase;
-          font-weight: bold;
-          line-height: 90px;
-          font-size: 19px;
-          padding: 0 15px; }
+      line-height: 35px;
+      font-size: 16px;
+      font-weight: bold; }
+  .header-cart__total-list {
+    top: 80px;
+    right: 15px !important;
+    border: none;
+    min-width: 300px;
+    left: inherit; }
+
+.homepage {
+  padding-top: 50px; }
 
 /*# sourceMappingURL=style.css.map */

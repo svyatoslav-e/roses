@@ -379,7 +379,7 @@ class ControllerCheckoutCart extends Controller {
 				}
 
 			$json['total'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
-			$json['total2'] = $this->currency->format($total);
+//			$json['total2'] = $this->currency->format($total);
 			} else {
 				$json['redirect'] = str_replace('&amp;', '&', $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']));
 			}
@@ -469,7 +469,7 @@ class ControllerCheckoutCart extends Controller {
 			}
 
 			$json['total'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
-			$json['total2'] = $this->currency->format($total);
+//			$json['total2'] = $this->currency->format($total);
 		}
 
 		$this->response->addHeader('Content-Type: application/json');

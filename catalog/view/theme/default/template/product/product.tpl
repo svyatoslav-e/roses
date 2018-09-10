@@ -498,7 +498,7 @@ $('#button-cart').on('click', function() {
 			if (json['success']) {
 				$('.breadcrumb').after('<div class="alert alert-success">' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
-				$('#cart > button').html('<i class="fa fa-shopping-cart pull-right my_cart" aria-hidden="true"></i><span id="cart-total">Товарів: <b>' + json['total'] + '&nbsp &nbsp</b></span><span id="cart-total-price">Ціна: <b>' + json['total2'] + '&nbsp &nbsp</b></span>');
+				$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
 
 				$('html, body').animate({ scrollTop: 0 }, 'slow');
 

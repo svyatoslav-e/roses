@@ -4,10 +4,10 @@
 <div id="carousel_home_<?=$indicator; ?>">
 
   <?php foreach ($products as $product) { ?>
-  <div class="product-layout col-xs-12">
-    <ul class="label_ul">
+  <div class="product-layout col-sm-3">
+    <!--   <ul class="label_ul">
 
-    <?if ($product['come'] <= 70) {?>
+   <?php if ($product['come'] <= 70) { ?>
 
       <li class="labellatest">
 
@@ -15,9 +15,9 @@
 
       </li>
 
-    <?}?>
+    <?php } ?>
 
-    <?if ($product['special']) {?>
+    <?php if ($product['special']) { ?>
 
       <li class="labelspecial">
 
@@ -25,19 +25,19 @@
 
       </li>
 
-    <?}?>
+    <?php } ?>
 
-        <?if ($product['bestseller']) {?>
-<!-- 
+        <?php if($product['bestseller']) { ?>
+
       <li class="labelbestseller">
 
            <span>TOP</span>
 
-      </li> -->
+      </li>
 
-    <?}?>
+    <?php } ?>
 
-  </ul>
+  </ul>-->
 
     <div class="product-thumb transition cildren_<?php echo $product['cid']; ?>">
     <h4 class="product_title"><a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a></h4>
@@ -86,7 +86,7 @@
 </div>
 </div>
 
-<script type="text/javascript"><!--
+<!-- <script type="text/javascript"><!--
 $('#carousel_home_<?=$indicator; ?>').owlCarousel({
   items: 4,
   autoPlay: 5000,
@@ -96,7 +96,7 @@ $('#carousel_home_<?=$indicator; ?>').owlCarousel({
   stopOnHover: true,
   mouseDrag: false
 });
---></script>
+</script>-->
 
 <!-- <script>
   $('.back_color').css('height', $('.image').height());
