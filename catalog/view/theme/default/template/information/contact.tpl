@@ -19,7 +19,7 @@
       <div class="panel panel-default" id="contacts">
         <div class="panel-body">
           <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-4">
               <?php if ($open) { ?>
               <strong><?php echo $text_open; ?></strong><br />
               <?php echo $open; ?><br />
@@ -30,14 +30,14 @@
               <?php echo $comment; ?>
               <?php } ?>
             </div>
-            <div class="col-sm-12"><strong><?php echo $text_telephone; ?></strong>
+            <div class="col-sm-4"><strong><?php echo $text_telephone; ?></strong>
 
             <?php foreach ($telephone_arr as $tel) { ?>
                        <p  itemprop="telephone"> <?php echo $tel; ?></p>
               <?php } ?>
             </div>
 
-            <div class="col-sm-12">
+            <div class="col-sm-4">
             <strong><?=$text_location;?></strong>
                          <p><?=$address; ?></p>
               <?php if ($our_email) { ?>
