@@ -41,6 +41,22 @@
         line-height: 53px;
         font-size: 19px;
         padding: 0 15px; }
+  .header-main__lang {
+    font-size: 15px; }
+    .header-main__lang_list {
+      display: inline-block;
+      text-align: right;
+      padding: 0;
+      margin-bottom: 0;
+      width: 100%; }
+      .header-main__lang_list li {
+        display: inline; }
+        .header-main__lang_list li a, .header-main__lang_list li.active {
+          font-weight: bold;
+          color: #fd5c92;
+          line-height: 53px; }
+        .header-main__lang_list li.active {
+          color: #29b8e5; }
 
 .header-cart {
   display: block;

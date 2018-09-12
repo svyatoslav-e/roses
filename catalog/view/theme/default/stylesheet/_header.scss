@@ -51,4 +51,26 @@
         }
     }
   }
-}
+//  LANG
+  &__lang {
+    font-size: 15px;
+    &_list {
+      display: inline-block;
+      text-align: right;
+      padding: 0;
+      margin-bottom: 0;
+      width: 100%;
+      li {
+        display: inline;
+         a, &.active {
+           font-weight: bold;
+           color: $rose;
+           line-height: 53px;
+         }
+        &.active {
+          color: $blue;
+        }
+        }
+      }
+    }
+  }

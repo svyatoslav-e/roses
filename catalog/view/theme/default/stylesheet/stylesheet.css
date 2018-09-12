@@ -382,40 +382,6 @@ color: #616161;
     color: #333;
 }
 /*End stickers*/
-.lang_flag{
-    width: 30px;
-}
-.lang_text{
-  color: #fd5c92;
-}
-.lang_text:hover{
-    color: #29b8e5;
-}
-
-.lang_block{
-    display: block;
- /*   left: 0px;*/
-    position: absolute;
-    border: none;
-    text-align: center;
-    box-shadow: none;
-}
-.lang_ul{
-    margin-top: 15px;
-    padding-left: 0px;
-}
-
-.lang_ul .active a{
-border-bottom: 1px solid;
-}
-
-.lang_block li{
-    display: inline-block;
-    font-size: 18px;
-    color: #616161;
-    margin: 0 10px;
-}
-
 .btn-link:focus, .btn-link:hover{
     color: #616161;
     text-decoration: none;

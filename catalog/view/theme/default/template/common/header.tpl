@@ -81,7 +81,7 @@
 <div class="container">
     <div class="row">
         <!--Main menu-->
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <nav id="menu" class="header-main__menu">
                 <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
                     <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -96,6 +96,9 @@
                     </ul>
                 </div>
             </nav>
+        </div>
+        <div class="col-sm-2">
+            <?php echo $language; ?>
         </div>
     </div>
 </div>
