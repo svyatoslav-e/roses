@@ -315,8 +315,8 @@
 </div>
 <?php } ?>
 <div class="buttons">
-  <div class="pull-right">
-    <input type="button" value="<?php echo $button_continue; ?>" id="button-guest" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
+  <div class="pull-right col-xs-12 col-sm-3">
+    <input type="button" value="<?php echo $button_continue; ?>" id="button-guest" data-loading-text="<?php echo $text_loading; ?>" class="dtn-roses btn-orange" />
   </div>
 </div>
 <script type="text/javascript"><!--

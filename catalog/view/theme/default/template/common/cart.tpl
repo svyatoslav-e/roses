@@ -55,7 +55,12 @@
           </tr>
           <?php } ?>
         </table>
-        <p class="text-right"><a href="<?php echo $checkout; ?>"><strong><i class="fa fa-share"></i> <?php echo $text_checkout; ?></strong></a></p>
+
+        <div class="col-xs-12">
+          <a href="<?php echo $checkout; ?>" class="dtn-roses btn-orange">
+            <?php echo $text_checkout; ?>
+          </a>
+        </div>
       </div>
     </li>
     <?php } else { ?>

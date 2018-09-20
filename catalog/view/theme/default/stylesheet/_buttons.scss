@@ -1,0 +1,24 @@
+.dtn-roses {
+    height: 48px;
+    width: 100%;
+    line-height: 48px;
+    display: block;
+    text-align: center;
+    color: $white;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+
+  &.btn-orange {
+    background: $orange;
+    border: 1px solid $orange;
+  }
+
+  &:hover {
+    background: $gray;
+    border: 1px solid $black;
+    text-decoration: none;
+    color: $black;
+  }
+}

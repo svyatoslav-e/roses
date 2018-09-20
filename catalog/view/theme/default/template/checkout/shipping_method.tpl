@@ -28,7 +28,7 @@
   <textarea name="comment" rows="8" class="form-control"><?php echo $comment; ?></textarea>
 </p>
 <div class="buttons">
-  <div class="pull-right">
-    <input type="button" value="<?php echo $button_continue; ?>" id="button-shipping-method" data-loading-text="<?php echo $text_loading; ?>" class="btn btn-primary" />
+  <div class="pull-right col-xs-12 col-sm-3">
+    <input type="button" value="<?php echo $button_continue; ?>" id="button-shipping-method" data-loading-text="<?php echo $text_loading; ?>" class="dtn-roses btn-orange" />
   </div>
 </div>
