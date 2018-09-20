@@ -50,23 +50,29 @@
     <div class="container">
         <div class="row">
             <!--LOGO-->
-            <div class="col-sm-4">
+            <div class="col-xs-4 col-sm-6 col-lg-4">
                 <div id="logo">
                     <h1 class="header-main__logo">
                         <a href="<?php echo $home; ?>" class="header-main__logo_link">
                             <?php if ($logo) { ?>
                             <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>" class="img-responsive" />
                             <?php } ?>
-                            <span class="header-main__logo_link-green">Fruits</span>
-                            &
-                            <span class="header-main__logo_link-rose">Roses</span>
+                            <span class="header-main__logo_link-green hidden-xs">Fruits</span>
+                            <span class="header-main__logo_link-at hidden-xs">&</span>
+                            <span class="header-main__logo_link-rose hidden-xs">Roses</span>
                         </a>
                     </h1>
                 </div>
             </div>
+            <!--LANG BLOCK MOBILE-->
+            <div class="col-xs-5 visible-xs text-center">
+                <div class="row">
+                    <?php echo $language; ?>
+                </div>
+            </div>
 
             <!--CART-->
-            <div class="col-sm-2 col-sm-offset-6">
+            <div class="col-xs-3 col-sm-6 col-lg-2 col-lg-offset-6">
                 <?php echo $cart; ?>
             </div>
         </div>
@@ -83,8 +89,9 @@
         <!--Main menu-->
         <div class="col-sm-10">
             <nav id="menu" class="header-main__menu">
-                <div class="navbar-header"><span id="category" class="visible-xs"><?php echo $text_category; ?></span>
-                    <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <div class="navbar-header">
+                    <span id="category" class="visible-xs header-main__menu_title"><?php echo $text_category; ?></span>
+                    <button type="button" class="navbar-toggle header-main__menu_btn" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
                 </div>
@@ -97,7 +104,7 @@
                 </div>
             </nav>
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-2 hidden-xs">
             <?php echo $language; ?>
         </div>
     </div>

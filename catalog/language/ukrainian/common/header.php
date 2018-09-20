@@ -8,7 +8,7 @@
 $_['text_home']          = 'Головна';
 $_['text_wishlist']      = 'Список побажань (%s)';
 $_['text_shopping_cart'] = 'Кошик';
-$_['text_category']      = 'Меню';
+$_['text_category']      = 'Переглянути товари';
 $_['text_account']       = 'Обліковий запис';
 $_['text_register']      = 'Реєстрація';
 $_['text_login']         = 'Вхід';

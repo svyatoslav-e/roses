@@ -4,7 +4,7 @@
 <div id="carousel_home_<?=$indicator; ?>">
 
   <?php foreach ($products as $product) { ?>
-  <div class="product-layout col-sm-3">
+  <div class="product-layout col-xs-12 col-sm-6 col-lg-3">
     <!--   <ul class="label_ul">
 
    <?php if ($product['come'] <= 70) { ?>

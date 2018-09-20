@@ -1,9 +1,15 @@
 .header-main {
-  // LOGO
-  height: 90px;
+  @media (min-width: $small) {
+    height: 90px;
+  }
+// LOGO
   &__logo {
     margin: 0;
-    height: 90px;
+
+    @media (min-width: $small) {
+      height: 90px;
+    }
+
     &_link {
       display: inline-block;
       font-size: 35px;
@@ -16,8 +22,17 @@
                                              text-decoration: none;
                                              outline: none;}
 
-      &-green {color: $green;}
-      &-rose {color: $rose;}
+      &-green {
+        color: $green;
+        display: none;
+      }
+      &-at {
+        display: none;
+      }
+      &-rose {
+        color: $rose;
+        display: none;
+      }
       img {
         width: 70px;
         height: 70px;
@@ -30,6 +45,30 @@
   }
 //  MENU
   &__menu {
+    &_title {
+      float: left;
+      font-size: 21px;
+      font-weight: bold;
+      line-height: 50px;
+      color: $rose;
+    }
+
+    &_btn {
+      background: $blue;
+      float: right;
+      border-radius: 5px;
+      outline: none!important;
+      height: 40px;
+      width: 53px;
+      margin-top: 5px;
+      margin-right: 0;
+      margin-bottom: 0;
+      padding: 5px;
+       .fa {
+         font-size: 25px;
+         color: $white;
+       }
+    }
     ul {
       display: inline-block;
       text-align: left;
@@ -38,6 +77,11 @@
       width: 100%;
         li {
           display: inline-block;
+          @media (max-width: $beforeMedium) {
+            width: 100%;
+            text-align: center;
+            border-top: 1px solid $blue;
+          }
 
           a {
             display: block;
@@ -53,7 +97,10 @@
   }
 //  LANG
   &__lang {
-    font-size: 15px;
+    font-size: 21px;
+    @media (min-width: $small) {
+      font-size: 15px;
+    }
     &_list {
       display: inline-block;
       text-align: right;
@@ -62,10 +109,26 @@
       width: 100%;
       li {
         display: inline;
+        padding: 0 10px;
+
+        @media (min-width: $small) {
+          padding: 0 5px;
+        }
+
+
+        &:first-child {
+          border-right: 1px solid $blue;
+        }
+
+
          a, &.active {
            font-weight: bold;
            color: $rose;
-           line-height: 53px;
+           line-height: 90px;
+
+           @media (min-width: $small) {
+             line-height: 53px;
+           }
          }
         &.active {
           color: $blue;

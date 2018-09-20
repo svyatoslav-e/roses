@@ -4,9 +4,9 @@
               <ul class="header-main__lang_list">
                 <?php foreach ($languages as $language) { ?>
                     <?php if ($lang === $language['code']){ ?>
-                       <li class="active"><?php echo $language['code']; ?></li>
+                       <li class="active"><?php echo $language['name']; ?></li>
                     <?php } else { ?>
-                        <li><a href="<?php echo $language['code']; ?>" rel="nofollow"><noindex><?php echo $language['code']; ?></noindex></a></li>
+                        <li><a href="<?php echo $language['code']; ?>" rel="nofollow"><noindex><?php echo $language['name']; ?></noindex></a></li>
                     <?php } ?>
                 <?php } ?>
               </ul>
