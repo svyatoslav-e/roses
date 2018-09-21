@@ -22,7 +22,61 @@ function getURLVar(key) {
 	}
 }
 
+var insta = {
+	token: '6006421984.0a5f39f.902a301d86014770aab48ffaa279d8c7',
+	init: function () {
+		$.ajax({
+			type: 'GET',
+			url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token='+insta.token,
+			success: function (resp) {
+				insta.parseData(resp.data);
+			},
+			error: function (resp) {
+				console.log(resp);
+			},
+			complete: function (resp) {
+				console.log(resp);
+			}
+		});
+	},
+	images: [],
+	parseData: function (data) {
+		insta.showIDuserInsta(data[0].user);
+		data.forEach(function (item) {
+			var istaitem = {
+				images: item.images,
+        likes: item.likes.count
+			};
+			insta.images.push(istaitem);
+		});
+		insta.createHTMLview(insta.images);
+	},
+	createHTMLview: function (images) {
+		console.log(images);
+		images.forEach(function (item, index) {
+			if(index <= 5) {
+				var html = '<div class="col-sm-4 insta__item">' +
+					'<img src="'+ item.images.low_resolution.url +'" data-src-standart="'+ item.images.standard_resolution.url +'" class="insta__item_img"/>' +
+					'<span class="insta__item_likes-bg"></span><span class="insta__item_likes"><i class="fa fa-heart"></i>'+ item.likes +'</span>'+
+					'</div>';
+				$('#insta').prepend(html);
+			};
+		})
+	},
+	showIDuserInsta: function (user) {
+		var html = '<div class="col-sm-6 insta__title">' +
+			'<div class="insta__title_img">' +
+			'<img src="'+ user.profile_picture+'" alt="'+ user.full_name+'"></div>' +
+			'<span>'+ user.username +'</span></div>';
+
+		$('#insta-info').prepend(html);
+	}
+}
+
+
+
 $(document).ready(function() {
+	insta.init();
 	// Adding the clear Fix
 	cols1 = $('#column-right, #column-left').length;
 	
@@ -53,12 +107,12 @@ $(document).ready(function() {
 	});
 
 	// Language
-	$('#language a').on('click', function(e) {
+	$('.js-lang a').on('click', function(e) {
 		e.preventDefault();
 
-		$('#language input[name=\'code\']').attr('value', $(this).attr('href'));
+		$('.js-lang input[name=\'code\']').attr('value', $(this).attr('href'));
 
-		$('#language').submit();
+		$('.js-lang').submit();
 	});
 
 	/* Search */

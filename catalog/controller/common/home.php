@@ -26,6 +26,8 @@ class ControllerCommonHome extends Controller {
 		$data['shrubbery_text'] = $this->language->get('shrubbery_text');
 		$data['fruit_text'] = $this->language->get('fruit_text');
 		$data['roses_text'] = $this->language->get('roses_text');
+
+        $data['insta'] = $this->language->get('insta');
 		
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/home.tpl')) {

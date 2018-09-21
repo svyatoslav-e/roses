@@ -144,6 +144,66 @@
 .homepage {
   padding-top: 50px; }
 
+.insta__item {
+  max-height: 350px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  position: relative;
+  cursor: pointer; }
+  .insta__item_img {
+    width: 100%; }
+  .insta__item_likes {
+    position: absolute;
+    color: #fff;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 360px;
+    opacity: 0; }
+    .insta__item_likes-bg {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      height: 100%;
+      background: #333;
+      opacity: 0;
+      transition: all .5s ease; }
+    .insta__item_likes .fa {
+      font-size: 40px;
+      margin-right: 15px; }
+  .insta__item:hover .insta__item_likes {
+    opacity: 1; }
+  .insta__item:hover .insta__item_likes-bg {
+    opacity: 0.4; }
+.insta__title {
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: #333; }
+  .insta__title_img {
+    max-width: 80px;
+    display: block;
+    float: left; }
+    .insta__title_img img {
+      max-width: 100%; }
+  .insta__title span {
+    margin-left: 15px;
+    font-weight: bold;
+    line-height: 80px; }
+.insta__common {
+  text-align: right;
+  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 80px;
+  color: #29b8e5;
+  font-weight: bold;
+  padding-right: 15px; }
+
 .dtn-roses {
   height: 48px;
   width: 100%;

@@ -31,7 +31,7 @@ if (count($records) > 0) {
 						(<?php echo $record['comments']; ?>)
 						<?php } ?>
 						<?php } ?>
-					<span class="number"><i class="fa fa-users" aria-hidden="true"></i></span></a>
+					</a>
 						</li>
 <?php
 	}

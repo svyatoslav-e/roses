@@ -24,7 +24,7 @@ if (count($categories_blogs) > 0) {
 <?php if (isset($settings_widget['thumb_status']) && $settings_widget['thumb_status'] && $blogs['thumb']) { ?>
    	<img src="<?php echo $blogs['thumb']; ?>" title="<?php echo $blogs['name']; ?>" alt="<?php echo $blogs['name']; ?>">
 <?php } ?>
-<?php echo $blogs['name'];?><span class="number"><i class="fa fa-pencil-square" aria-hidden="true"></i></span>
+<?php echo $blogs['name'];?>
 </a>
 <?php if ($i >= $blogs['flag_end']) { ?>
 <div class="dropdown-menu"><div class="dropdown-inner"><ul class="list-unstyled">

@@ -22,6 +22,14 @@
           </nav>
         </div>-->
         <?php echo $content_top; ?>
+            <div class="col-xs-12">
+                <div class="row" id="insta-info">
+                    <div class="col-sm-6 insta__common">
+                        <span><?php echo $insta ?></span>
+                    </div>
+                </div>
+                <div class="row" id="insta" class="insta"></div>
+            </div>
         <?php echo $content_bottom; ?>
     </div>
     <?php echo $column_right; ?>

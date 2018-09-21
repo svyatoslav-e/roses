@@ -19,10 +19,10 @@
         <h5><i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $text_information; ?></h5>
         <ul class="list-unstyled">
             <ul class="big-list main_menu" id="blog">
-                <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?><span class="number"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></span></a></li>
-                <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?><span class="number"><i class="fa fa-truck" aria-hidden="true"></i></span></a></li>
-                <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?><span class="number"><i class="fa fa-tags" aria-hidden="true"></i></span></a></li>
-                <li><a href="<?=$contact; ?>"><?=$text_contact; ?><span class="number"><i class="fa fa-life-ring" aria-hidden="true"></i></span></a></li>
+                <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?></a></li>
+                <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?></a></li>
+                <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?></a></li>
+                <li><a href="<?=$contact; ?>"><?=$text_contact; ?></a></li>
             </ul>
         </ul>
       </div>
