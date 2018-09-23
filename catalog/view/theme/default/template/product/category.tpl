@@ -1,10 +1,16 @@
 <?php echo $header; ?>
+<div class="container-fluid breadcrumb-wrapper">
+  <div class="row">
+    <div class="container">
+      <ul class="breadcrumb">
+        <?php foreach ($breadcrumbs as $breadcrumb) { ?>
+        <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+        <?php } ?>
+      </ul>
+    </div>
+  </div>
+</div>
 <div class="container">
-  <ul class="breadcrumb">
-    <?php foreach ($breadcrumbs as $breadcrumb) { ?>
-    <li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
-    <?php } ?>
-  </ul>
   <div class="row">
           <h2 class="col-xs-12 text-center category_title"><?php echo $heading_title; ?></h2>
          <div class="col-xs-12"><span class="cildren_<?=$category_id?>"></span></div>

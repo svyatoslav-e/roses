@@ -1,7 +1,17 @@
 <?php echo $header; ?>
-
-<div class="container">
+<div class="container-fluid breadcrumb-wrapper">
 	<div class="row">
+		<div class="container">
+			<ul class="breadcrumb">
+				<?php foreach ($breadcrumbs as $breadcrumb) { ?>
+				<li><a href="<?php echo $breadcrumb['href']; ?>"><?php echo $breadcrumb['text']; ?></a></li>
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<!--<div class="row">
 		<div class="breadcrumb">
 			<span xmlns:v="http://rdf.data-vocabulary.org/#">
 			<?php $i=0; foreach ($breadcrumbs as $breadcrumb) { $i++; ?>
@@ -10,7 +20,7 @@
 			</span>
 			<?php } ?>
 			</span>
-		</div>
+		</div>-->
 <?php echo $column_left; ?>
 <?if ($column_left) {?>
 <? $class = 'col-xs-12 col-md-9'?>
