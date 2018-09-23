@@ -65,7 +65,9 @@
   margin: 0;
   width: 100%; }
   .header-main__menu ul li {
-    display: inline-block; }
+    display: inline-block;
+    position: relative;
+    transition: all .3s ease; }
     @media (max-width: 584px) {
       .header-main__menu ul li {
         width: 100%;
@@ -80,6 +82,31 @@
       padding: 0 15px;
       color: #616161;
       text-decoration: none !important; }
+    .header-main__menu ul li .header-main__sub-menu {
+      position: absolute;
+      width: 200px;
+      background: #fff;
+      display: none;
+      z-index: 10;
+      box-shadow: 0 6px 7px 0 #616161; }
+      .header-main__menu ul li .header-main__sub-menu li {
+        width: 100%;
+        border-top: 1px solid #82d965;
+        transition: all .3s ease; }
+        .header-main__menu ul li .header-main__sub-menu li a {
+          font-size: 15px;
+          text-transform: none;
+          padding-left: 30px; }
+        .header-main__menu ul li .header-main__sub-menu li:hover {
+          background: #82d965; }
+          .header-main__menu ul li .header-main__sub-menu li:hover a {
+            color: #fff; }
+    .header-main__menu ul li:hover {
+      background: #82d965; }
+      .header-main__menu ul li:hover > a {
+        color: #fff; }
+      .header-main__menu ul li:hover > .header-main__sub-menu {
+        display: block; }
 .header-main__phone {
   text-align: right;
   line-height: 90px;

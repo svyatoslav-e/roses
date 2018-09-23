@@ -102,7 +102,15 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse left-menu-dig-block no-padding">
                     <ul>
                         <?php foreach ($categories as $category) { ?>
-                        <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a></li>
+                            <li><a href="<?php echo $category['href']; ?>"><?php echo $category['name']; ?></a>
+                                <?php if ($category['children']) { ?>
+                                 <ul class="header-main__sub-menu hidden-xs">
+                                     <?php foreach ($category['children'] as $child) { ?>
+                                     <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+                                     <?php }?>
+                                 </ul>
+                                <?php } ?>
+                            </li>
                         <?php }?>
                     </ul>
                 </div>

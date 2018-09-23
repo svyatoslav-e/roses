@@ -77,6 +77,8 @@
       width: 100%;
         li {
           display: inline-block;
+          position: relative;
+          transition: all .3s ease;
           @media (max-width: $beforeMedium) {
             width: 100%;
             text-align: center;
@@ -94,6 +96,44 @@
             text-decoration: none !important;
             //text-shadow: 1px 1px #333;
           }
+
+        //  submenu
+          .header-main__sub-menu {
+            position: absolute;
+            width: 200px;
+            background: $white;
+            display: none;
+            z-index: 10;
+            box-shadow: 0 6px 7px 0 $black-1;
+
+              li {
+                width: 100%;
+                border-top: 1px solid $green;
+                transition: all .3s ease;
+                a {
+                  font-size: 15px;
+                  text-transform: none;
+                  padding-left: 30px;
+                }
+
+                &:hover {
+                  background: $green;
+                  a {
+                    color: $white;
+                  }
+                }
+              }
+          }
+
+          &:hover {
+            background: $green;
+            > a {
+              color: $white;
+            }
+            &> .header-main__sub-menu {display: block}
+          }
+
+
         }
     }
   }
