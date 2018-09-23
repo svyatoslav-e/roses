@@ -15,6 +15,11 @@
     border: 1px solid $orange;
   }
 
+  &.btn-green {
+    background: $green;
+    border: 1px solid $green;
+  }
+
   &:hover, &.btn-disabled {
     background: $gray;
     border: 1px solid $black;

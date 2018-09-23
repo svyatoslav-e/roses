@@ -459,7 +459,3 @@
 </div>
 
 <?php echo $footer; ?>
-
-<script>
-	console.log('sdsdsd');
-</script>

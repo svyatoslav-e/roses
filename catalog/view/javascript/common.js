@@ -35,7 +35,7 @@ var insta = {
 				console.log(resp);
 			},
 			complete: function (resp) {
-				console.log(resp);
+				console.log('COMPLETED');
 			}
 		});
 	},
@@ -52,7 +52,6 @@ var insta = {
 		insta.createHTMLview(insta.images);
 	},
 	createHTMLview: function (images) {
-		console.log(images);
 		images.forEach(function (item, index) {
 			if(index <= 5) {
 				var html = '<div class="col-sm-4 insta__item">' +

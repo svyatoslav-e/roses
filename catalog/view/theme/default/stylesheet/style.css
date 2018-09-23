@@ -288,6 +288,9 @@
   .dtn-roses.btn-orange {
     background: #ff8173;
     border: 1px solid #ff8173; }
+  .dtn-roses.btn-green {
+    background: #82d965;
+    border: 1px solid #82d965; }
   .dtn-roses:hover, .dtn-roses.btn-disabled {
     background: #f0f0f0;
     border: 1px solid #333;

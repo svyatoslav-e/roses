@@ -93,12 +93,6 @@
 							}
 							?>>
 
-						<?php  if (isset($customer_id) && !$customer_id)   { ?>
-						<div class="asc_textlogin"><a href="#" class="textdecoration_none hrefajax" data-cmswidget="<?php echo $cmswidget; ?>"><ins class="hrefajax customer_enter" data-cmswidget="<?php echo $cmswidget; ?>"><?php echo $text_customer_enter; ?></ins></a>
-						<?php echo $text_welcome; ?>
-						</div>
-						<?php } ?>
-
                          </div>
 						</div>
 						<div class=" bordernone width100 overflowhidden margintop5 lineheight1"></div>
