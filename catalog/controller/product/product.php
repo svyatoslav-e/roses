@@ -158,6 +158,7 @@ class ControllerProductProduct extends Controller {
 
 		$product_info = $this->model_catalog_product->getProduct($product_id);
 
+
 		if ($product_info) {
 			$url = '';
 
@@ -273,8 +274,10 @@ class ControllerProductProduct extends Controller {
             $data['price_shema'] = $product_info['price'];         
 			$data['shema_href'] = $this->url->link('product/product', $url . '&product_id=' . $this->request->get['product_id']);
 
+            $data['empty'] = false;
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
+                $data['empty'] = true;
 			} elseif ($this->config->get('config_stock_display')) {
 				$data['stock'] = $product_info['quantity'];
 			} else {

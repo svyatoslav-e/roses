@@ -25,7 +25,7 @@
             <div class="col-xs-12">
                 <div class="row" id="insta-info">
                     <div class="col-sm-6 insta__common">
-                        <span><?php echo $insta ?></span>
+                        <a href="https://www.instagram.com/fruitsandrosesshop/"><span><?php echo $insta ?></span></a>
                     </div>
                 </div>
                 <div class="row" id="insta" class="insta"></div>

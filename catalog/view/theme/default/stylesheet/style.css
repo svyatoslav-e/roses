@@ -65,7 +65,9 @@
   margin: 0;
   width: 100%; }
   .header-main__menu ul li {
-    display: inline-block; }
+    display: inline-block;
+    position: relative;
+    transition: all .3s ease; }
     @media (max-width: 584px) {
       .header-main__menu ul li {
         width: 100%;
@@ -80,6 +82,31 @@
       padding: 0 15px;
       color: #616161;
       text-decoration: none !important; }
+    .header-main__menu ul li .header-main__sub-menu {
+      position: absolute;
+      width: 200px;
+      background: #fff;
+      display: none;
+      z-index: 10;
+      box-shadow: 0 6px 7px 0 #616161; }
+      .header-main__menu ul li .header-main__sub-menu li {
+        width: 100%;
+        border-top: 1px solid #82d965;
+        transition: all .3s ease; }
+        .header-main__menu ul li .header-main__sub-menu li a {
+          font-size: 15px;
+          text-transform: none;
+          padding-left: 30px; }
+        .header-main__menu ul li .header-main__sub-menu li:hover {
+          background: #82d965; }
+          .header-main__menu ul li .header-main__sub-menu li:hover a {
+            color: #fff; }
+    .header-main__menu ul li:hover {
+      background: #82d965; }
+      .header-main__menu ul li:hover > a {
+        color: #fff; }
+      .header-main__menu ul li:hover > .header-main__sub-menu {
+        display: block; }
 .header-main__phone {
   text-align: right;
   line-height: 90px;
@@ -203,23 +230,35 @@
   font-size: 18px;
   color: #333; }
   .insta__title_img {
-    max-width: 80px;
+    max-width: 50px;
     display: block;
     float: left; }
+    @media (min-width: 769px) {
+      .insta__title_img {
+        max-width: 80px; } }
     .insta__title_img img {
       max-width: 100%; }
   .insta__title span {
     margin-left: 15px;
     font-weight: bold;
-    line-height: 80px; }
+    line-height: 50px; }
+    @media (min-width: 769px) {
+      .insta__title span {
+        line-height: 80px; } }
 .insta__common {
-  text-align: right;
   margin-bottom: 30px;
   font-size: 18px;
-  line-height: 80px;
+  text-align: center;
   color: #29b8e5;
   font-weight: bold;
   padding-right: 15px; }
+  @media (min-width: 769px) {
+    .insta__common {
+      line-height: 80px;
+      text-align: right; } }
+
+.footer__facebook {
+  padding-top: 15px; }
 
 .dtn-roses {
   height: 48px;
@@ -235,7 +274,7 @@
   .dtn-roses.btn-orange {
     background: #ff8173;
     border: 1px solid #ff8173; }
-  .dtn-roses:hover {
+  .dtn-roses:hover, .dtn-roses.btn-disabled {
     background: #f0f0f0;
     border: 1px solid #333;
     text-decoration: none;

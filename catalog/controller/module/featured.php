@@ -90,6 +90,7 @@ class ControllerModuleFeatured extends Controller {
 						'bestseller'  => $bestseller,
 					    'come'        => floor ((strtotime($datenow) - strtotime($product_info['date_available'])) / 86400),
 						'thumb'       => $image,
+                        'quantity'    => $product_info['quantity'],
 						'cid'	  => $this->model_catalog_product->getRowValue('product_to_category', 'category_id', 'product_id='.$product_info['product_id']),
 						'name'        => $product_info['name'],
 						'description' =>$data['button_view_more'].utf8_substr(strip_tags(html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8')), 0, $this->config->get('config_product_description_length')),

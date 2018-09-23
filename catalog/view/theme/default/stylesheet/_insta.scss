@@ -58,9 +58,13 @@
     color: $black;
     
     &_img {
-      max-width: 80px;
+      max-width: 50px;
       display: block;
       float: left;
+
+      @media (min-width: $tablet) {
+        max-width: 80px;
+      }
 
       img {
         max-width: 100%;
@@ -70,17 +74,25 @@
     span {
       margin-left: 15px;
       font-weight: bold;
-      line-height: 80px;
+      line-height: 50px;
+
+      @media (min-width: $tablet) {
+        line-height: 80px;
+      }
     }
   }
 
   &__common {
-    text-align: right;
     margin-bottom: 30px;
     font-size: 18px;
-    line-height: 80px;
+    text-align: center;
     color: $blue;
     font-weight: bold;
     padding-right: 15px;
+
+    @media (min-width: $tablet) {
+      line-height: 80px;
+      text-align: right;
+    }
   }
 }

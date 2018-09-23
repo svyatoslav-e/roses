@@ -4,7 +4,7 @@
 <div id="carousel_home_<?=$indicator; ?>">
 
   <?php foreach ($products as $product) { ?>
-  <div class="product-layout col-xs-12 col-sm-6 col-lg-3">
+  <div class="product-layout col-xs-12 col-sm-6 col-md-4 col-lg-3">
     <!--   <ul class="label_ul">
 
    <?php if ($product['come'] <= 70) { ?>
@@ -75,7 +75,11 @@
         <?php } ?>
       </div>
       <div class="button-group">
+        <?php if ($product['quantity'] <= 3){ ?>
+        <button type="button" class="filter_stock"><span class="">Продано</span></button>
+        <?php }else{ ?>
         <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');" id="button_<?php echo $product['product_id']; ?>"><span><?php echo $button_cart; ?></span></button>
+        <?php } ?>
       </div>
     </div>
   </div>
