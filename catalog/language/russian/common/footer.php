@@ -15,6 +15,7 @@ $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Рассылка';
 $_['text_powered']      = '%s &copy; %s';
+$_['call']              = 'Позвонить';
 
 $_['about_us_text'] = 'О нас';
 $_['delivery_inf_text'] = 'Доставка';

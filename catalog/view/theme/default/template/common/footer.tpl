@@ -17,14 +17,12 @@
       <?php if ($informations) { ?>
       <div class="col-sm-3">
         <h5><i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $text_information; ?></h5>
-        <ul class="list-unstyled">
-            <ul class="big-list main_menu" id="blog">
+            <ul class="list-unstyled" id="blog">
                 <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?></a></li>
                 <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?></a></li>
                 <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?></a></li>
                 <li><a href="<?=$contact; ?>"><?=$text_contact; ?></a></li>
             </ul>
-        </ul>
       </div>
       <?php } ?>
       <div class="col-sm-3">
@@ -46,6 +44,9 @@
     <p><?php echo $powered; ?></p>
   </div>
 </footer>
+<div class="visible-xs site__call-action">
+    <a href="tel:<?php echo $telephone_arr[0]; ?>" class="dtn-roses btn-orange"><?php echo $call; ?></a>
+</div>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];

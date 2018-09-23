@@ -71,8 +71,12 @@
                 </div>
             </div>
 
+            <div class="hidden-xs col-sm-4 col-lg-6 header-main__phone">
+                <a href="tel:<?php echo $telephone_arr[0]; ?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a>
+            </div>
+
             <!--CART-->
-            <div class="col-xs-3 col-sm-6 col-lg-2 col-lg-offset-6">
+            <div class="col-xs-3 col-sm-2 col-lg-2">
                 <?php echo $cart; ?>
             </div>
         </div>

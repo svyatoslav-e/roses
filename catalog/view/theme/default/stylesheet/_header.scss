@@ -90,12 +90,30 @@
             line-height: 53px;
             font-size: 19px;
             padding: 0 15px;
+            color: $black-1;
+            text-decoration: none !important;
             //text-shadow: 1px 1px #333;
           }
         }
     }
   }
-//  LANG
+  //PHONE
+  &__phone {
+    text-align: right;
+    line-height: 90px;
+    font-size: 25px;
+
+    a {
+      text-decoration: none!important;
+      color: $black-1;
+
+      .fa {
+        font-size: 25px;
+        margin-right: 5px;
+      }
+    }
+  }
+  //  LANG
   &__lang {
     font-size: 21px;
     @media (min-width: $small) {

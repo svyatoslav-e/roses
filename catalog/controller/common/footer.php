@@ -17,6 +17,7 @@ class ControllerCommonFooter extends Controller {
 		$data['text_order'] = $this->language->get('text_order');
 		$data['text_wishlist'] = $this->language->get('text_wishlist');
 		$data['text_newsletter'] = $this->language->get('text_newsletter');
+        $data['call'] = $this->language->get('call');
 
 		$data['text_category'] = $this->language->get('text_category');
 
@@ -30,6 +31,9 @@ class ControllerCommonFooter extends Controller {
         $data['delivery_inf_text'] = $this->language->get('delivery_inf_text');
         $data['payment_inf_text'] = $this->language->get('payment_inf_text');
         $data['text_contact'] = $this->language->get('text_contact');
+        $data['telephone'] = $this->config->get('config_telephone');
+
+        $data['telephone_arr'] = explode(",", $data['telephone']);
 
 		$this->load->model('catalog/information');
 
