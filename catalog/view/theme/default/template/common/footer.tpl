@@ -1,4 +1,4 @@
-<footer>
+<footer class="footer">
 <div class="conteiner-fluid top-linear"></div>
   <div class="container">
     <div class="row">
@@ -25,18 +25,7 @@
             </ul>
       </div>
       <?php } ?>
-      <div class="col-sm-3">
-
-         <!--   <h5><i class="fa fa-life-ring" aria-hidden="true"></i> <?php echo $text_service; ?></h5>
-        <ul class="list-unstyled">
-       <li><a href="<?php echo $contact; ?>"><?php echo $text_contact; ?></a></li>
-         <li><a href="<?php echo $return; ?>"><?php echo $text_return; ?></a></li>
-          <li><a href="<?php echo $sitemap; ?>"><?php echo $text_sitemap; ?></a></li> 
-        </ul>
-        <ul class="social">
-          <li class="vk"><a href="https://vk.com/fruitsandroses" target="_blank"><i class="fa fa-vk" aria-hidden="true"></i></a></li>
-          <li class="fb"><a href="https://www.facebook.com/fruitsandrosescomua" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        </ul> -->
+      <div class="col-sm-6 text-center footer__facebook">
         <div class="fb-page" data-href="https://www.facebook.com/fruitsandrosescomua" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fruitsandrosescomua" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fruitsandrosescomua">Fruits&amp;Roses</a></blockquote></div>
       </div>
     </div>
