@@ -55,7 +55,7 @@ var insta = {
 		images.forEach(function (item, index) {
 			if(index <= 5) {
 				var html = '<div class="col-sm-4 insta__item">' +
-					'<img src="'+ item.images.low_resolution.url +'" data-src-standart="'+ item.images.standard_resolution.url +'" class="insta__item_img"/>' +
+					'<img src="'+ item.images.standard_resolution.url +'" data-src-standart="'+ item.images.low_resolution.url +'" class="insta__item_img"/>' +
 					'<span class="insta__item_likes-bg"></span><span class="insta__item_likes"><i class="fa fa-heart"></i>'+ item.likes +'</span>'+
 					'</div>';
 				$('#insta').prepend(html);
