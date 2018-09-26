@@ -938,10 +938,6 @@ background: #333;
     color: #616161; 
 }
 
-.information-contact {
-    font-size: 15px;
-}
-
 .email_home{
     font-size: 16px!important;
 }
@@ -1167,7 +1163,7 @@ color: #82d965;
 border-bottom: 1px solid #616161;
 }
 .category_title{
-    font: bold 45px/45px "PT Sans",sans-serif;
+    font: bold 45px/45px "PT Sans",sans-serif;.information-contact
     color: #616161;
 }
 

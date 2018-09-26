@@ -90,11 +90,11 @@
             text-transform: uppercase;
             font-weight: bold;
             line-height: 53px;
-            font-size: 19px;
-            padding: 0 15px;
+            font-size: 17px;
+            padding: 0 13px;
             @media (min-width: $small) and (max-width: $smallDesktop) {
-              font-size: 15px;
-              padding: 0 10px;
+              font-size: 13px;
+              padding: 0 9px;
             }
             color: $black-1;
             text-decoration: none !important;

@@ -92,14 +92,14 @@
       text-transform: uppercase;
       font-weight: bold;
       line-height: 53px;
-      font-size: 19px;
-      padding: 0 15px;
+      font-size: 17px;
+      padding: 0 13px;
       color: #616161;
       text-decoration: none !important; }
       @media (min-width: 426px) and (max-width: 1024px) {
         .header-main__menu ul li a {
-          font-size: 15px;
-          padding: 0 10px; } }
+          font-size: 13px;
+          padding: 0 9px; } }
     .header-main__menu ul li .header-main__sub-menu {
       position: absolute;
       width: 200px;
