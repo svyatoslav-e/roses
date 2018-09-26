@@ -31,6 +31,14 @@ $_['text_semi_month']                         = 'полмесяца';
 $_['text_month']                              = 'месяц';
 $_['text_year']                               = 'год';
 
+$_['text_delivery']                           = 'Доставка по Украине';
+$_['text_sales']                              = 'Действуют скидки';
+$_['text_how_packed']                         = 'КАК УПАКОВАН САЖЕНЕЦ?';
+$_['text_condition']                          = 'При заказе от: ';
+$_['text_sale_value']                         = 'Скидка';
+
+
+
 // Entry
 $_['entry_qty']                               = 'Количество';
 $_['entry_name']                              = 'Ваше имя:';

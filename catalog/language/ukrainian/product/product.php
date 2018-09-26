@@ -45,6 +45,12 @@ $_['entry_good']                              = 'Хороший';
 $_['entry_bad']                               = 'Поганий';
 $_['entry_captcha']                           = 'Введіть код з зображення в поле';
 
+$_['text_delivery']                           = 'Доставка по Україні';
+$_['text_sales']                              = 'Діють знижки';
+$_['text_how_packed']                         = 'Як запакований саджанець?';
+$_['text_condition']                          = 'При замовленні від: ';
+$_['text_sale_value']                         = 'Знижка';
+
 // Tabs
 $_['tab_description']                         = 'Опис';
 $_['tab_attribute']                           = 'Специфікація';

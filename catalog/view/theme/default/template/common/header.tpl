@@ -91,7 +91,7 @@
 <div class="container">
     <div class="row">
         <!--Main menu-->
-        <div class="col-sm-10">
+        <div class="col-sm-12 col-md-10">
             <nav id="menu" class="header-main__menu">
                 <div class="navbar-header">
                     <span id="category" class="visible-xs header-main__menu_title"><?php echo $text_category; ?></span>
@@ -112,11 +112,19 @@
                                 <?php } ?>
                             </li>
                         <?php }?>
+                        <li class="special-item"><a href="<?=$about_us; ?>"><?=$about_us_text; ?></a></li>
+                        <li class="special-item"><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?>
+                            <ul class="header-main__sub-menu special-item-tooltype hidden-xs">
+                                <li><img src="/image/catalog/np.png" alt="Доставка новой почтой"></li>
+                                <li><img src="/image/catalog/intime.jpg" alt="Доставка Интайм"></li>
+                            </ul>
+                            </a></li>
+                        <li class="special-item"><a href="<?=$contact; ?>"><?=$text_contact; ?></a></li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <div class="col-sm-2 hidden-xs">
+        <div class="hidden-xs hidden-sm col-md-2">
             <?php echo $language; ?>
         </div>
     </div>

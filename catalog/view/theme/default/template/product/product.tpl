@@ -268,6 +268,55 @@
         <div id="prod_description" unselectable="on"><?php echo $description; ?></div>
         </div>
 
+   <div class="col-xs-12 product-info">
+     <div class="col-sm-6 product-info__sale">
+       <div class="col-sm-12">
+         <h4><?php echo $text_sales; ?></h4>
+         <table>
+           <thead>
+             <tr>
+               <td><?php echo $text_condition; ?></td>
+               <td><?php echo $text_sale_value; ?></td>
+             </tr>
+           </thead>
+           <tbody>
+             <tr>
+               <td>400 грн</td>
+               <td class="discount"> -5% </td>
+             </tr>
+             <tr>
+               <td>700 грн</td>
+               <td class="discount"> -10% </td>
+             </tr>
+             <tr>
+               <td>1000 грн</td>
+               <td class="discount"> -15% </td>
+             </tr>
+           </tbody>
+         </table>
+       </div>
+       <div class="col-sm-12 product-info__pack">
+         <a href="http://fruitsandroses.com.ua/novosti/upakovka-sazhentsev-poshagovyj-fotootchet/">
+           <span ><i class="fa fa-truck" aria-hidden="true"></i>
+           <?php echo $text_how_packed; ?>
+           </span>
+         </a>
+       </div>
+     </div>
+     <div class="col-sm-6 product-info__delivery">
+       <div class="product-info__delivery_ukr">
+         <h4 class="text-center"><?php echo $text_delivery; ?></h4>
+         <img src="/image/catalog/ukraine.jpg" alt="">
+       </div>
+       <div class="col-sm-6 product-info__delivery_comp">
+         <img src="/image/catalog/nova-poshta.png" alt="">
+       </div>
+       <div class="col-sm-6 product-info__delivery_comp">
+         <img src="/image/catalog/intime-big.png" alt="">
+       </div>
+     </div>
+   </div>
+
    <div class="col-xs-12">
            <?php if ($attribute_groups) { ?>
             <div id="prod_specification">

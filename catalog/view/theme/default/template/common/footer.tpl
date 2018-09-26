@@ -18,10 +18,7 @@
       <div class="col-sm-3">
         <h5><i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $text_information; ?></h5>
             <ul class="list-unstyled" id="blog">
-                <li><a href="<?=$about_us; ?>"><?=$about_us_text; ?></a></li>
-                <li><a href="<?=$delivery_inf; ?>"><?=$delivery_inf_text; ?></a></li>
                 <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?></a></li>
-                <li><a href="<?=$contact; ?>"><?=$text_contact; ?></a></li>
             </ul>
       </div>
       <?php } ?>

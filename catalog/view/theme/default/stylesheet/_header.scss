@@ -92,9 +92,12 @@
             line-height: 53px;
             font-size: 19px;
             padding: 0 15px;
+            @media (min-width: $small) and (max-width: $smallDesktop) {
+              font-size: 15px;
+              padding: 0 10px;
+            }
             color: $black-1;
             text-decoration: none !important;
-            //text-shadow: 1px 1px #333;
           }
 
         //  submenu
@@ -125,12 +128,38 @@
               }
           }
 
+          .special-item-tooltype {
+            position: absolute;
+            width: 100px;
+            background: $gray;
+            display: none;
+            z-index: 10;
+            box-shadow: 0 6px 7px 0 $black-1;
+
+            li {
+              display: inline-block;
+              width: 50%;
+              background: none!important;
+              float: left;
+               img {
+                 width: 100%;
+                 max-width: 100%;
+               }
+            };
+          }
+
           &:hover {
             background: $green;
             > a {
               color: $white;
             }
             &> .header-main__sub-menu {display: block}
+          }
+
+          &.special-item:hover {
+            background: $blue;
+
+            & .special-item-tooltype {display: block}
           }
 
 
