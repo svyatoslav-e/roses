@@ -17,6 +17,43 @@
       width: 25px;
       height: 25px; }
 
+.filter_block .panel-heading {
+  font-weight: bold; }
+
+.filter {
+  position: relative; }
+  .filter__label {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 15px; }
+    .filter__label:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: #fff;
+      border: 2px solid #f0f0f0;
+      z-index: 2; }
+  .filter__inpt {
+    position: absolute;
+    top: 0;
+    cursor: pointer; }
+    .filter__inpt:checked:before {
+      content: '';
+      position: absolute;
+      top: 1px;
+      left: 5px;
+      background: #82d965;
+      display: block;
+      width: 14px;
+      height: 14px;
+      z-index: 3; }
+
 @media (min-width: 426px) {
   .header-main {
     height: 90px; } }
@@ -370,6 +407,9 @@
   .dtn-roses.btn-green {
     background: #82d965;
     border: 1px solid #82d965; }
+  .dtn-roses.btn-blue {
+    background: #29b8e5;
+    border: 1px solid #29b8e5; }
   .dtn-roses:hover, .dtn-roses.btn-disabled {
     background: #f0f0f0;
     border: 1px solid #333;

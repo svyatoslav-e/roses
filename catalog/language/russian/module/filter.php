@@ -1,4 +1,4 @@
 <?php
 // Heading
-$_['heading_title'] = 'Фильтр';
+$_['heading_title'] = 'Уточнить поиск';
 

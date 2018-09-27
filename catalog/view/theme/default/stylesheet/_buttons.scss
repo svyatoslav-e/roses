@@ -20,6 +20,11 @@
     border: 1px solid $green;
   }
 
+  &.btn-blue {
+    background: $blue;
+    border: 1px solid $blue;
+  }
+
   &:hover, &.btn-disabled {
     background: $gray;
     border: 1px solid $black;

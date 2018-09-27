@@ -6,16 +6,15 @@
     <div class="list-group-item">
       <div id="filter-group<?php echo $filter_group['filter_group_id']; ?>">
         <?php foreach ($filter_group['filter'] as $filter) { ?>
-        <div class="checkbox">
-          <label>
-            <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
-            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" />
+        <div class="filter">
+          <label class="filter__label" for="filter_<?php echo $filter['filter_id']; ?>">
             <?php echo $filter['name']; ?>
-            <?php } else { ?>
-            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" />
-            <?php echo $filter['name']; ?>
-            <?php } ?>
           </label>
+            <?php if (in_array($filter['filter_id'], $filter_category)) { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" checked="checked" id="filter_<?php echo $filter['filter_id']; ?>" class="filter__inpt" />
+            <?php } else { ?>
+            <input type="checkbox" name="filter[]" value="<?php echo $filter['filter_id']; ?>" id="filter_<?php echo $filter['filter_id']; ?>" class="filter__inpt" />
+            <?php } ?>
         </div>
         <?php } ?>
       </div>
@@ -23,7 +22,7 @@
     <?php } ?>
   </div>
   <div class="panel-footer text-right">
-    <button type="button" id="button-filter" class="btn btn-primary"><?php echo $button_filter; ?></button>
+    <button type="button" id="button-filter" class="dtn-roses btn-orange"><?php echo $button_filter; ?></button>
   </div>
 </div>
 <script type="text/javascript"><!--
@@ -40,12 +39,9 @@ $('#button-filter').on('click', function() {
 
 <script>
 var offsetFilter =  $('.filter_block').offset().top;
-console.log(offsetFilter);
 $(window).scroll(function(){
   var scrollHF = $(this).scrollTop();
-  console.log(scrollHF);
   if (scrollHF >= offsetFilter){
-   console.log('now');
    $('.filter_block').offset({top:scrollHF});
   }
 });
