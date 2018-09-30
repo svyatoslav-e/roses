@@ -39,8 +39,14 @@
 			</form>
 		</div>
 		<?php } ?>
+        <div class="col-sm-6" style="margin-bottom: 30px">
+			<div class="row">
+				<a class="dtn-roses btn-blue" href="<?php echo $href; ?>#<?php echo $prefix;?>comment-title">
+					<?php echo $text_write_review; ?>
+				</a>
+			</div>
+		</div>
 
-		<a class="textdecoration_none leavereview-<?php echo $cmswidget; ?>" href="<?php echo $href; ?>#<?php echo $prefix;?>comment-title"><ins class="hrefajax textdecoration_none"><?php echo $text_write_review; ?>&nbsp;&darr;</ins></a>
 
 		<div class="width100 overflowhidden lineheight1">&nbsp;</div>
 		<div id="<?php echo $prefix;?>div_comment_<?php echo $mark_id; ?>" >
@@ -48,7 +54,7 @@
 				<?php  echo $html_comment; ?>
 			</div>
 			<div id="<?php echo $prefix;?>comment-title">
-				<a href="#"  id="<?php echo $prefix;?>comment_id_reply_0" data-cmswidget="<?php echo $cmswidget; ?>" class="comment_reply comment_buttons form_reply">
+				<a href="#"  id="<?php echo $prefix;?>comment_id_reply_0" data-cmswidget="<?php echo $cmswidget; ?>" class="comment_reply comment_buttons form_reply hidden">
 				<ins id="<?php echo $prefix;?>reply_0" class="hrefajax text_write_review"><?php echo $text_write; ?></ins>
 				</a>
 			</div>
@@ -181,8 +187,10 @@
 								<div class="left"><a class="button button-comment" id="<?php echo $prefix;?>button-comment-0"><span><?php echo $button_write; ?></span></a></div>
 							</div>
 						<?php } else { ?>
-				   			<div class="buttons">
-				                <button type="button" id="<?php echo $prefix;?>button-comment-0" data-loading-text="" class="btn btn-primary button button-comment"><i class="fa fa-pencil-square-o"></i> <?php echo $button_write; ?></button>
+				   			<div class="buttons col-sm-6">
+								<div class="row">
+									<button type="button" id="<?php echo $prefix;?>button-comment-0" data-loading-text="" class="dtn-roses btn-blue"><i class="fa fa-pencil-square-o"></i> <?php echo $button_write; ?></button>
+								</div>
 				             </div>
 						<?php } ?>
 

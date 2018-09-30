@@ -32,7 +32,7 @@
 		}
 	?>
 
-	<div id="commentlink_<?php  echo $comment['comment_id']; ?>_<?php  echo $cmswidget; ?>" class="<?php echo $prefix;?>form_customer_pointer comment_content level_<?php  echo $comment['level']; ?>">
+	<div id="commentlink_<?php  echo $comment['comment_id']; ?>_<?php  echo $cmswidget; ?>" class="<?php echo $prefix;?>form_customer_pointer comment_content level_<?php  echo $comment['level']; ?>" style="margin-bottom: 30px">
 
 		<div class="container_comment_vars" id="container_comment_<?php echo $mark;?>_<?php echo $mark_id;?>_<?php echo  $comment['comment_id']; ?>" style="display: none">
 			<div class="comment_id"><?php echo  $comment['comment_id']; ?></div>
@@ -205,14 +205,7 @@
 ?>
 
 <noindex>
-<div class="floatright displayinline sc_h_s">
-	<select name="sorting" id="sorting_<?php echo $cmswidget; ?>" data-cmswidget="<?php echo $cmswidget; ?>" class="comments_sorting form-control">
-		<option <?php if ($sorting == 'desc')  echo 'selected="selected"'; ?> data-cmswidget="<?php echo $cmswidget; ?>" value="desc"><?php echo $text_sorting_desc; ?></option>
-		<option <?php if ($sorting == 'asc')   echo 'selected="selected"'; ?> data-cmswidget="<?php echo $cmswidget; ?>" value="asc"><?php  echo $text_sorting_asc;  ?></option>
-	</select>
-	<label for="sorting_<?php echo $cmswidget; ?>"><?php  echo $entry_sorting; ?></label>
 
-</div>
 <div class="pagination sc_h_s"><?php echo $pagination; ?></div>
 </noindex>
 <div class="overflowhidden">&nbsp;</div>

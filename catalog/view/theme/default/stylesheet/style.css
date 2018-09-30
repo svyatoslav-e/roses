@@ -318,6 +318,38 @@
         .product-info__pack a:hover .fa {
           color: #82d965; }
 
+.contacts {
+  margin-top: 50px; }
+  .contacts__phone, .contacts__address {
+    text-align: center;
+    background: #f8f8f8;
+    border: 1px solid #f0f0f0;
+    padding: 30px;
+    height: 280px; }
+    .contacts__phone_title, .contacts__address_title {
+      font-size: 18px;
+      font-weight: bold;
+      padding: 15px;
+      display: inline-block; }
+  .contacts__phone_social {
+    padding: 0;
+    margin: 0; }
+  .contacts__question h3 {
+    margin: 30px 0;
+    padding: 30px;
+    background: #29b8e5;
+    color: #fff;
+    font-weight: bold; }
+  .contacts__question input, .contacts__question textarea {
+    border: 2px solid #29b8e5;
+    height: 46px;
+    text-align: left;
+    color: #616161;
+    text-shadow: none;
+    outline: none; }
+  .contacts__question textarea {
+    height: 88px; }
+
 .insta__item {
   max-height: 350px;
   overflow: hidden;
