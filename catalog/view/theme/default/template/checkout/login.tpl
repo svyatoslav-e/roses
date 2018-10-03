@@ -1,10 +1,10 @@
-<script>
+<!--<script>
  $(document).ready(function(){
  setTimeout(function(){
   $('#button-account').trigger('click');
   }, 400);
  });
-</script>
+</script>-->
 <div class="row">
   <div class="col-sm-6">
     <h2><?php echo $text_new_customer; ?></h2>
