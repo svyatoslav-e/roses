@@ -86,6 +86,18 @@
           </table>
         </div>
       </form>
+      <div class="row">
+        <div class="col-sm-6 pull-right">
+          <table class="table table-bordered">
+            <?php foreach ($totals as $total) { ?>
+            <tr>
+              <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>
+              <td class="text-right"><?php echo $total['text']; ?></td>
+            </tr>
+            <?php } ?>
+          </table>
+        </div>
+      </div>
       <!-- NEXT DEFAULT -->
       <div class="panel-group" id="accordion">
         <div class="panel panel-default hidden">

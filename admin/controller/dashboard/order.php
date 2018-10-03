@@ -26,17 +26,29 @@ class ControllerDashboardOrder extends Controller {
 
 		$order_total = $this->model_sale_order->getTotalOrders();
 
-		if ($order_total > 1000000000000) {
-			$data['total'] = round($order_total / 1000000000000, 1) . 'T';
-		} elseif ($order_total > 1000000000) {
-			$data['total'] = round($order_total / 1000000000, 1) . 'B';
-		} elseif ($order_total > 1000000) {
-			$data['total'] = round($order_total / 1000000, 1) . 'M';
-		} elseif ($order_total > 1000) {
-			$data['total'] = round($order_total / 1000, 1) . 'K';
-		} else {
-			$data['total'] = $order_total;
-		}
+//		if ($order_total > 1000000000000) {
+//			$data['total'] = round($order_total / 1000000000000, 1) . 'T';
+//		} elseif ($order_total > 1000000000) {
+//			$data['total'] = round($order_total / 1000000000, 1) . 'B';
+//		} elseif ($order_total > 1000000) {
+//			$data['total'] = round($order_total / 1000000, 1) . 'M';
+//		} elseif ($order_total > 1000) {
+//			$data['total'] = round($order_total / 1000, 1) . 'K';
+//		} else {
+//			$data['total'] = $order_total;
+//		}
+
+        if($order_total > 1000) {
+            $total_value = $order_total*0.85;
+        } elseif ($order_total > 700) {
+            $total_value = $order_total*0.90;
+        } elseif ($order_total > 400) {
+            $total_value = $order_total*0.95;
+        } else {
+            $total_value = $order_total;
+        }
+
+        $data['total'] = round($total_value);
 
 		$data['order'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL');
 

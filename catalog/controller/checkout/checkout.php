@@ -90,7 +90,7 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['action'] = $this->url->link('checkout/checkout/edit', '', true);
 
         $this->load->model('tool/image');
-			$this->load->model('tool/upload');
+		$this->load->model('tool/upload');
 
 			$data['products'] = array();
 
@@ -188,6 +188,68 @@ class ControllerCheckoutCheckout extends Controller {
 				);
 			}
 		// END Products
+
+        // Totals
+        $this->load->model('extension/extension');
+
+        $total_data = array();
+        $total = 0;
+        $taxes = $this->cart->getTaxes();
+
+        // Display prices
+        if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+            $sort_order = array();
+
+            $results = $this->model_extension_extension->getExtensions('total');
+
+            foreach ($results as $key => $value) {
+                $sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
+            }
+
+            array_multisort($sort_order, SORT_ASC, $results);
+
+            foreach ($results as $result) {
+                if ($this->config->get($result['code'] . '_status')) {
+                    $this->load->model('total/' . $result['code']);
+
+                    $this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
+                }
+            }
+
+            $sort_order = array();
+
+            foreach ($total_data as $key => $value) {
+                $sort_order[$key] = $value['sort_order'];
+            }
+
+            array_multisort($sort_order, SORT_ASC, $total_data);
+        }
+
+        $data['totals'] = array();
+
+        foreach ($total_data as $result) {
+
+            if($result['code'] == 'total') {
+
+                if ($result['value'] > 1000 ) {
+                    $text = $this->currency->format($result['value']*0.85);
+                } elseif($result['value'] > 700){
+                    $text = $this->currency->format($result['value']*0.90);
+                } elseif($result['value'] > 400){
+                    $text = $this->currency->format($result['value']*0.95);
+                } else {
+                    $text = $this->currency->format($result['value']);
+                }
+
+            }else{
+                $text = $this->currency->format($result['value']);
+            }
+
+            $data['totals'][] = array(
+                'title' => $result['title'],
+                'text'  => $text,
+            );
+        }
 
 		$data['logged'] = $this->customer->isLogged();
 

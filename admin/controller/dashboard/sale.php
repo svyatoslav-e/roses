@@ -25,17 +25,18 @@ class ControllerDashboardSale extends Controller {
 
 		$sale_total = $this->model_report_sale->getTotalSales();
 
-		if ($sale_total > 1000000000000) {
-			$data['total'] = round($sale_total / 1000000000000, 1) . 'T';
-		} elseif ($sale_total > 1000000000) {
-			$data['total'] = round($sale_total / 1000000000, 1) . 'B';
-		} elseif ($sale_total > 1000000) {
-			$data['total'] = round($sale_total / 1000000, 1) . 'M';
-		} elseif ($sale_total > 1000) {
-			$data['total'] = round($sale_total / 1000, 1) . 'K';
-		} else {
-			$data['total'] = round($sale_total);
-		}
+        if($sale_total > 1000) {
+            $total_value = $sale_total*0.85;
+        } elseif ($sale_total > 700) {
+            $total_value = $sale_total*0.90;
+        } elseif ($sale_total > 400) {
+            $total_value = $sale_total*0.95;
+        } else {
+            $total_value = $sale_total;
+        }
+
+
+        $data['total'] = round($total_value);
 
 		$data['sale'] = $this->url->link('sale/order', 'token=' . $this->session->data['token'], 'SSL');
 

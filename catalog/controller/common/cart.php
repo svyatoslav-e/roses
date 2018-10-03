@@ -111,27 +111,33 @@ class ControllerCommonCart extends Controller {
 			);
 		}
 
-		// Gift Voucher
-		$data['vouchers'] = array();
-
-		if (!empty($this->session->data['vouchers'])) {
-			foreach ($this->session->data['vouchers'] as $key => $voucher) {
-				$data['vouchers'][] = array(
-					'key'         => $key,
-					'description' => $voucher['description'],
-					'amount'      => $this->currency->format($voucher['amount'])
-				);
-			}
-		}
-
 		$data['totals'] = array();
 
+
 		foreach ($total_data as $result) {
+
+		    if($result['code'] == 'total') {
+
+		        if ($result['value'] > 1000 ) {
+                    $text = $this->currency->format($result['value']*0.85);
+                } elseif($result['value'] > 700){
+                    $text = $this->currency->format($result['value']*0.90);
+                } elseif($result['value'] > 400){
+                    $text = $this->currency->format($result['value']*0.95);
+                } else {
+                    $text = $this->currency->format($result['value']);
+                }
+
+            }else{
+                $text = $this->currency->format($result['value']);
+            }
+
 			$data['totals'][] = array(
 				'title' => $result['title'],
-				'text'  => $this->currency->format($result['value']),
+				'text'  => $text,
 			);
 		}
+
 
 		$data['cart'] = $this->url->link('checkout/cart');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');

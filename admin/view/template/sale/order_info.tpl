@@ -96,7 +96,7 @@
               <?php } ?>
               <tr>
                 <td><?php echo $text_total; ?></td>
-                <td><?php echo $total; ?></td>
+                <td><b><?php echo $total; ?></b>(<?php echo $total_sale; ?>)</td>
               </tr>
               <?php if ($customer && $reward) { ?>
               <tr>

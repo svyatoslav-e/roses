@@ -1144,7 +1144,16 @@ class ControllerSaleOrder extends Controller {
 			$data['comment'] = nl2br($order_info['comment']);
 			$data['shipping_method'] = $order_info['shipping_method'];
 			$data['payment_method'] = $order_info['payment_method'];
-			$data['total'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']);
+
+                if($order_info['total'] > 1000) {
+                    $total_value = $order_info['total']*0.85;
+                } elseif ($order_info['total'] > 700) {
+                    $total_value = $order_info['total']*0.90;
+                } elseif ($order_info['total'] > 400) {
+                    $total_value = $order_info['total']*0.95;
+                }
+            $data['total_sale'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']);
+			$data['total'] = $this->currency->format($total_value, $order_info['currency_code'], $order_info['currency_value']);
 
 			$this->load->model('sale/customer');
 
