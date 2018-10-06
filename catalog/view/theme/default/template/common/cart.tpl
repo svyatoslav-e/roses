@@ -29,10 +29,19 @@
       <li>
         <div>
           <table class="table table-bordered">
-            <?php foreach ($totals as $total) { ?>
+            <?php if($subtotal_value == $total_value) { ?>
             <tr>
-              <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>
-              <td class="text-right"><?php echo $total['text']; ?></td>
+              <td class="text-right"><strong><?php echo $total_title; ?></strong></td>
+              <td class="text-right header-cart__total-list_total"><?php echo $total_value; ?></td>
+            </tr>
+            <?php } else { ?>
+            <tr>
+              <td class="text-right"><strong><?php echo $total_title; ?></strong></td>
+              <td class="text-right header-cart__total-list_without-sale"><?php echo $total_value; ?></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong><?php echo $text_sale; ?></strong></td>
+              <td class="text-right header-cart__total-list_sale"><?php echo $subtotal_value; ?></td>
             </tr>
             <?php } ?>
           </table>

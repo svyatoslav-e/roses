@@ -45,6 +45,8 @@ $_['text_semi_month']                = 'половину місяця';
 $_['text_month']                     = 'місяць';
 $_['text_year']                      = 'рік';
 
+$_['text_sale']  = 'Зі знижкою';
+
 // Column
 $_['column_name']                    = 'Назва товару';
 $_['column_model']                   = 'Модель';

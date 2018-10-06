@@ -48,6 +48,7 @@ class ControllerCommonCart extends Controller {
 		$data['text_loading'] = $this->language->get('text_loading');
 
 		$data['button_remove'] = $this->language->get('button_remove');
+		$data['text_sale'] = $this->language->get('text_sale');
 
 		$this->load->model('tool/image');
 		$this->load->model('tool/upload');
@@ -128,14 +129,20 @@ class ControllerCommonCart extends Controller {
                     $text = $this->currency->format($result['value']);
                 }
 
+                $data['subtotal_title'] = $result['title'];
+                $data['subtotal_value'] = $text;
+
             }else{
                 $text = $this->currency->format($result['value']);
+
+                $data['total_title'] = $result['title'];
+                $data['total_value'] = $text;
             }
 
-			$data['totals'][] = array(
-				'title' => $result['title'],
-				'text'  => $text,
-			);
+            $data['totals'][] = array(
+                'title' => $result['title'],
+                'text'  => $text,
+            );
 		}
 
 

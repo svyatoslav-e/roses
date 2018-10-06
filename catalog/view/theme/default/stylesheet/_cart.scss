@@ -41,5 +41,45 @@
     border: none;
     min-width: 300px;
     left: inherit;
+
+    &_without-sale {
+      color: $dark-gray;
+      text-decoration: line-through;
+      font-size: 16px;
+    }
+
+    &_sale {
+      color: $green;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    &_total {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+  }
+}
+
+//CHECKOUT
+.checkout {
+  &__cart {
+    &_without-sale {
+      color: $dark-gray;
+      text-decoration: line-through;
+      font-size: 16px;
+    }
+
+    &_sale {
+      color: $green;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    &_total {
+      font-size: 18px;
+      font-weight: bold;
+    }
   }
 }

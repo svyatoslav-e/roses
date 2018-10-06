@@ -323,6 +323,7 @@ class ControllerCheckoutConfirm extends Controller {
 			$data['column_quantity'] = $this->language->get('column_quantity');
 			$data['column_price'] = $this->language->get('column_price');
 			$data['column_total'] = $this->language->get('column_total');
+            $data['text_sale'] = $this->language->get('text_sale');
 
 			$this->load->model('tool/upload');
 
@@ -414,8 +415,13 @@ class ControllerCheckoutConfirm extends Controller {
                         $text = $this->currency->format($total['value']);
                     }
 
+                    $data['subtotal_title'] = $total['title'];
+                    $data['subtotal_value'] = $text;
+
                 }else{
                     $text = $this->currency->format($total['value']);
+                    $data['total_title'] = $total['title'];
+                    $data['total_value'] = $text;
                 }
 				$data['totals'][] = array(
 					'title' => $total['title'],

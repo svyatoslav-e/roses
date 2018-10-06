@@ -86,6 +86,7 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['button_remove'] = $this->language->get('button_remove');
 			$data['button_shopping'] = $this->language->get('button_shopping');
 			$data['button_checkout'] = $this->language->get('button_checkout');
+            $data['text_sale'] = $this->language->get('text_sale');
 
 			$data['action'] = $this->url->link('checkout/checkout/edit', '', true);
 
@@ -241,8 +242,13 @@ class ControllerCheckoutCheckout extends Controller {
                     $text = $this->currency->format($result['value']);
                 }
 
+                $data['subtotal_title'] = $result['title'];
+                $data['subtotal_value'] = $text;
+
             }else{
                 $text = $this->currency->format($result['value']);
+                $data['total_title'] = $result['title'];
+                $data['total_value'] = $text;
             }
 
             $data['totals'][] = array(

@@ -31,6 +31,8 @@ $_['text_trial_description'] 	              = '%s кожний %d %s(s) для %
 $_['text_payment_description'] 	              = '%s кожний %d %s(s) для %d платіж(ів)';
 $_['text_payment_until_canceled_description'] = '%s кожний %d %s(s) поки не скасовано';
 
+$_['text_sale']  = 'Зі знижкою';
+
 // Column
 $_['column_image']          = 'Зображення';
 $_['column_name']           = 'Назва товару';

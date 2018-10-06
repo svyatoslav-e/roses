@@ -42,6 +42,8 @@ $_['text_semi_month']                = 'полмесяца';
 $_['text_month']                     = 'месяц';
 $_['text_year']                      = 'год';
 
+$_['text_sale']  = 'Со скидкой';
+
 // Column
 $_['column_name']                    = 'Название товара';
 $_['column_model']                   = 'Модель';

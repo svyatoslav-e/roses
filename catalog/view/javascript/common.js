@@ -70,10 +70,11 @@ var insta = {
 
 		$('#insta-info').prepend(html);
 	}
-}
+};
 
 
 
+//instagramm
 $(document).ready(function() {
 	insta.init();
 	// Adding the clear Fix
@@ -186,6 +187,10 @@ $(document).ready(function() {
 	$(document).ajaxStop(function() {
 		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
 	});
+
+	$(document).on('change', '.js-qty-checkout', function (e) {
+		$('#form-cart').submit();
+    });
 });
 
 // Cart add remove functions

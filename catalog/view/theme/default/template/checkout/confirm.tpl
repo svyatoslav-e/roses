@@ -38,11 +38,20 @@
       </tr>
       <?php } ?>
     </tbody>
-    <tfoot>
-      <?php foreach ($totals as $total) { ?>
+    <tfoot class="checkout__cart">
+      <?php if($subtotal_value == $total_value) { ?>
       <tr>
-        <td colspan="4" class="text-right"><strong><?php echo $total['title']; ?>:</strong></td>
-        <td class="text-right"><?php echo $total['text']; ?></td>
+        <td  colspan="4" class="text-right"><strong><?php echo $total_title; ?></strong></td>
+        <td class="text-right checkout__cart_total"><?php echo $total_value; ?></td>
+      </tr>
+      <?php } else { ?>
+      <tr>
+        <td  colspan="4" class="text-right"><strong><?php echo $total_title; ?></strong></td>
+        <td class="text-right checkout__cart_without-sale"><?php echo $total_value; ?></td>
+      </tr>
+      <tr>
+        <td  colspan="4" class="text-right"><strong><?php echo $text_sale; ?></strong></td>
+        <td class="text-right checkout__cart_sale"><?php echo $subtotal_value; ?></td>
       </tr>
       <?php } ?>
     </tfoot>

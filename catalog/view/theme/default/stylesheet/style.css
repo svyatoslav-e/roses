@@ -258,6 +258,29 @@
     border: none;
     min-width: 300px;
     left: inherit; }
+    .header-cart__total-list_without-sale {
+      color: #aaa;
+      text-decoration: line-through;
+      font-size: 16px; }
+    .header-cart__total-list_sale {
+      color: #82d965;
+      font-weight: bold;
+      font-size: 18px; }
+    .header-cart__total-list_total {
+      font-size: 18px;
+      font-weight: bold; }
+
+.checkout__cart_without-sale {
+  color: #aaa;
+  text-decoration: line-through;
+  font-size: 16px; }
+.checkout__cart_sale {
+  color: #82d965;
+  font-weight: bold;
+  font-size: 18px; }
+.checkout__cart_total {
+  font-size: 18px;
+  font-weight: bold; }
 
 .homepage {
   padding-top: 50px; }

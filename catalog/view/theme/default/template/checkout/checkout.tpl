@@ -10,7 +10,7 @@
     </div>
   </div>
 </div>
-<div class="container">
+<div class="container checkout">
   <?php if ($error_warning) { ?>
   <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> <?php echo $error_warning; ?>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -66,16 +66,8 @@
                   <span class="label label-info"><?php echo $text_recurring_item; ?></span> <small><?php echo $product['recurring']; ?></small>
                   <?php } ?></td>
                 <td class="text-left"><?php echo $product['model']; ?></td>
-                <td class="text-left"><div class="input-group btn-block" style="max-width: 200px;">
-                    <button type="submit" data-toggle="tooltip" title="minus" class="hidden"><i class="fa fa-minus"></i></button>
-                    <button type="submit" data-toggle="tooltip" title="minus" class="update_quant" id="minus"><i class="fa fa-minus"></i></button>
-
-                  
-                    <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control" />
-                    
-                    <button type="submit" data-toggle="tooltip" title="plus" class="update_quant" id="plus"><i class="fa fa-plus"></i></button>
-                    </div>
-
+                <td class="text-left">
+                  <input type="text" name="quantity[<?php echo $product['key']; ?>]" value="<?php echo $product['quantity']; ?>" size="1" class="form-control js-qty-checkout" />
                 </td>
                 <td class="text-right"><?php echo $product['price']; ?></td>
                 <td class="text-right"><?php echo $product['total']; ?></td>
@@ -87,12 +79,21 @@
         </div>
       </form>
       <div class="row">
-        <div class="col-sm-6 pull-right">
+        <div class="col-sm-6 pull-right checkout__cart">
           <table class="table table-bordered">
-            <?php foreach ($totals as $total) { ?>
+            <?php if($subtotal_value == $total_value) { ?>
             <tr>
-              <td class="text-right"><strong><?php echo $total['title']; ?></strong></td>
-              <td class="text-right"><?php echo $total['text']; ?></td>
+              <td class="text-right"><strong><?php echo $total_title; ?></strong></td>
+              <td class="text-right checkout__cart_total"><?php echo $total_value; ?></td>
+            </tr>
+            <?php } else { ?>
+            <tr>
+              <td class="text-right"><strong><?php echo $total_title; ?></strong></td>
+              <td class="text-right checkout__cart_without-sale"><?php echo $total_value; ?></td>
+            </tr>
+            <tr>
+              <td class="text-right"><strong><?php echo $text_sale; ?></strong></td>
+              <td class="text-right checkout__cart_sale"><?php echo $subtotal_value; ?></td>
             </tr>
             <?php } ?>
           </table>
@@ -179,18 +180,6 @@
     }
 
    $('#form-cart').submit();
-
-    // var data=$('#form-cart').serialize();
-    // console.log(data);
-    // var url='';
-    // $.ajax({
-    //   url: url,
-    //   data: data,
-    //   success: function(msg)
-    //   {
-    //     console.log(msg);
-    //   }
-    // });
   });
 </script>
 <script type="text/javascript"><!--
