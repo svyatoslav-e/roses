@@ -444,6 +444,8 @@ class ModelCheckoutOrder extends Model {
 				$data['text_total'] = $language->get('text_new_total');
 				$data['text_footer'] = $language->get('text_new_footer');
 
+                $data['text_sale'] = $this->language->get('text_sale');
+
 				$data['logo'] = $this->config->get('config_url') . 'image/' . $this->config->get('config_logo');
 				$data['store_name'] = $order_info['store_name'];
 				$data['store_url'] = $order_info['store_url'];
@@ -594,6 +596,29 @@ class ModelCheckoutOrder extends Model {
 				$order_total_query = $this->db->query("SELECT * FROM `" . DB_PREFIX . "order_total` WHERE order_id = '" . (int)$order_id . "' ORDER BY sort_order ASC");
 
 				foreach ($order_total_query->rows as $total) {
+
+                    if($total['code'] == 'total') {
+
+                        if ($total['value'] > 1000 ) {
+                            $text = $this->currency->format($total['value']*0.85);
+                        } elseif($total['value'] > 700){
+                            $text = $this->currency->format($total['value']*0.90);
+                        } elseif($total['value'] > 400){
+                            $text = $this->currency->format($total['value']*0.95);
+                        } else {
+                            $text = $this->currency->format($total['value']);
+                        }
+
+                        $data['subtotal_title'] = $total['title'];
+                        $data['subtotal_value'] = $text;
+
+                    }else{
+                        $text = $this->currency->format($total['value']);
+
+                        $data['total_title'] = $total['title'];
+                        $data['total_value'] = $text;
+                    }
+
 					$data['totals'][] = array(
 						'title' => $total['title'],
 						'text'  => $this->currency->format($total['value'], $order_info['currency_code'], $order_info['currency_value']),

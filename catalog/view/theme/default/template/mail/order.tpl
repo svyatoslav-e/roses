@@ -103,10 +103,19 @@
       <?php } ?>
     </tbody>
     <tfoot>
-      <?php foreach ($totals as $total) { ?>
+      <?php if($subtotal_value == $total_value) { ?>
       <tr>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;" colspan="4"><b><?php echo $total['title']; ?>:</b></td>
-        <td style="font-size: 12px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $total['text']; ?></td>
+        <td  style="font-size: 17px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;" colspan="4"><strong><?php echo $total_title; ?></strong></td>
+        <td style="font-size: 17px;	 font-weight: bold; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $total_value; ?></td>
+      </tr>
+      <?php } else { ?>
+      <tr>
+        <td  style="font-size: 17px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;" colspan="4"><strong><?php echo $total_title; ?></strong></td>
+        <td style="font-size: 16px; color: #aaa; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px; text-decoration: line-through;"><?php echo $total_value; ?></td>
+      </tr>
+      <tr>
+        <td  style="font-size: 17px;	border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;" colspan="4"><strong><?php echo $text_sale; ?></strong></td>
+        <td style="font-size: 18px;	 font-weight: bold; color: #82d965; border-right: 1px solid #DDDDDD; border-bottom: 1px solid #DDDDDD; text-align: right; padding: 7px;"><?php echo $subtotal_value; ?></td>
       </tr>
       <?php } ?>
     </tfoot>
