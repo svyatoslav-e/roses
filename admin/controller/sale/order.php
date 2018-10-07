@@ -1151,7 +1151,10 @@ class ControllerSaleOrder extends Controller {
                     $total_value = $order_info['total']*0.90;
                 } elseif ($order_info['total'] > 400) {
                     $total_value = $order_info['total']*0.95;
+                } else {
+                    $total_value = $order_info['total'];
                 }
+
             $data['total_sale'] = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value']);
 			$data['total'] = $this->currency->format($total_value, $order_info['currency_code'], $order_info['currency_value']);
 
