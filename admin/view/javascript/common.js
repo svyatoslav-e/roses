@@ -130,7 +130,7 @@ $(document).ready(function() {
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
-		
+        console.log('IMAGE TOGGLE');
 		$('.popover').popover('hide', function() {
 			$('.popover').remove();
 		});

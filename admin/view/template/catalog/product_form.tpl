@@ -35,6 +35,7 @@
             <li><a href="#tab-discount" data-toggle="tab"><?php echo $tab_discount; ?></a></li>
             <li><a href="#tab-special" data-toggle="tab"><?php echo $tab_special; ?></a></li>
             <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
+            <li><a href="#tab-video" data-toggle="tab">VIdeo</a></li>
             <li><a href="#tab-reward" data-toggle="tab"><?php echo $tab_reward; ?></a></li>
             <li><a href="#tab-design" data-toggle="tab"><?php echo $tab_design; ?></a></li>
           </ul>
@@ -841,6 +842,49 @@
                 </table>
               </div>
             </div>
+            <!--Video TAb-->
+            <div class="tab-pane" id="tab-video">
+              <div class="table-responsive">
+                <table id="video" class="table table-striped table-bordered table-hover">
+                  <thead>
+                  <tr>
+                    <td class="text-left"><?php echo $entry_image; ?></td>
+                    <td class="text-right"><?php echo $entry_sort_order; ?></td>
+                    <td></td>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <?php $image_row = 0; ?>
+                  <?php foreach ($product_images as $product_image) { ?>
+                  <tr id="image-row<?php echo $image_row; ?>">
+                    <td class="text-left">
+                      <a href="" id="thumb-image<?php echo $image_row; ?>" data-toggle="image" class="img-thumbnail">
+                        <img src="<?php echo $product_image['thumb']; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" />
+                      </a>
+                      <input type="hidden" name="product_image[<?php echo $image_row; ?>][image]" value="<?php echo $product_image['image']; ?>" id="input-image<?php echo $image_row; ?>" />
+                    </td>
+                    <td class="text-right">
+                      <input type="text" name="product_image[<?php echo $image_row; ?>][sort_order]" value="<?php echo $product_image['sort_order']; ?>" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" />
+                    </td>
+                    <td class="text-left">
+                      <button type="button" onclick="$('#image-row<?php echo $image_row; ?>').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger">
+                        <i class="fa fa-minus-circle"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <?php $image_row++; ?>
+                  <?php } ?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <td colspan="2"></td>
+                    <td class="text-left"><button type="button" onclick="addVideo();" data-toggle="tooltip" title="<?php echo $button_image_add; ?>" class="btn btn-primary"><i class="fa fa-plus-circle"></i></button></td>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+            <!--End vdeo tab-->
             <div class="tab-pane" id="tab-reward">
               <div class="form-group">
                 <label class="col-lg-2 control-label" for="input-points"><span data-toggle="tooltip" title="<?php echo $help_points; ?>"><?php echo $entry_points; ?></span></label>
@@ -1352,7 +1396,23 @@ function addImage() {
 	
 	image_row++;
 }
-//--></script> 
+//--></script>
+  <script type="text/javascript"><!--
+      var image_row = <?php echo $image_row; ?>;
+
+      function addVideo() {
+          // html  = '<tr id="image-row' + image_row + '">';
+          // html += '  <td class="text-left"><a href="" id="thumb-image' + image_row + '"data-toggle="image" class="img-thumbnail"><img src="<?php echo $placeholder; ?>" alt="" title="" data-placeholder="<?php echo $placeholder; ?>" /><input type="hidden" name="product_image[' + image_row + '][image]" value="" id="input-image' + image_row + '" /></td>';
+          // html += '  <td class="text-right"><input type="text" name="product_image[' + image_row + '][sort_order]" value="" placeholder="<?php echo $entry_sort_order; ?>" class="form-control" /></td>';
+          // html += '  <td class="text-left"><button type="button" onclick="$(\'#image-row' + image_row  + '\').remove();" data-toggle="tooltip" title="<?php echo $button_remove; ?>" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>';
+          // html += '</tr>';
+          //
+          // $('#images tbody').append(html);
+          //
+          // image_row++;
+          console.log('ADD VIDEO ROW');
+      }
+      //--></script>
   <script type="text/javascript"><!--
 var recurring_row = <?php echo $recurring_row; ?>;
 
