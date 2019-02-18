@@ -126,11 +126,68 @@ $(document).ready(function() {
 			}
 		});	
 	});
+
+	$(document).delegate('a[data-toggle=\'video\']', 'click', function(e) {
+		e.preventDefault();
+		console.log('VIDEO');
+		$('.popover').popover('hide', function() {
+			$('.popover').remove();
+		});
+
+		var element = this;
+    //Configurate popover
+		$(element).popover({
+			html: true,
+			placement: 'right',
+			trigger: 'manual',
+			content: function() {
+				return '<button type="button" id="button-video" class="btn btn-primary"><i class="fa fa-pencil"></i></button>' +
+					' <button type="button" id="button-clear-video" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>';
+			}
+		});
+		//Show buttons near prev img
+		$(element).popover('show');
+
+		$('#button-video').on('click', function() {
+			$('#modal-video').remove();
+
+			$.ajax({
+				url: 'index.php?route=common/filemanager&token=' + getURLVar('token') + '&target=' + $(element).parent().find('input').attr('id') + '&thumb=' + $(element).attr('id'),
+				dataType: 'html',
+				beforeSend: function() {
+					$('#button-video i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');
+					$('#button-video').prop('disabled', true);
+				},
+				complete: function() {
+					$('#button-video i').replaceWith('<i class="fa fa-pencil"></i>');
+					$('#button-video').prop('disabled', false);
+				},
+				success: function(html) {
+					$('body').append('<div id="modal-video" class="modal">' + html + '</div>');
+
+					$('#modal-video').modal('show');
+				}
+			});
+
+			$(element).popover('hide', function() {
+				$('.popover').remove();
+			});
+		});
+
+		$('#button-clear').on('click', function() {
+			// $(element).find('img').attr('src', $(element).find('img').attr('data-placeholder'));
+			//
+			// $(element).parent().find('input').attr('value', '');
+			//
+			// $(element).popover('hide', function() {
+			// 	$('.popover').remove();
+			// });
+		});
+	});
 	
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
-        console.log('IMAGE TOGGLE');
 		$('.popover').popover('hide', function() {
 			$('.popover').remove();
 		});
