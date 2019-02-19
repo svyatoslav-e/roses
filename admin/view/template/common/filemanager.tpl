@@ -45,6 +45,7 @@
     <div class="modal-footer"><?php echo $pagination; ?></div>
   </div>
 </div>
+
 <script type="text/javascript"><!--
 $('a.thumbnail').on('click', function(e) {
 	e.preventDefault();
@@ -119,11 +120,13 @@ $('#button-search').on('click', function(e) {
 			
 	$('#modal-image').load(url);
 });
-//--></script> 
+//--></script>
+
 <script type="text/javascript"><!--
 $('#button-upload').on('click', function() {
-	$('#form-upload').remove();
-	
+    console.log('BUTTON UPLOAD');
+    $('#form-upload').remove();
+
 	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');
 	
 	$('#form-upload input[name=\'file\']').trigger('click');
