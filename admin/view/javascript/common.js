@@ -126,11 +126,10 @@ $(document).ready(function() {
 			}
 		});	
 	});
-	
+
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
-		
 		$('.popover').popover('hide', function() {
 			$('.popover').remove();
 		});
