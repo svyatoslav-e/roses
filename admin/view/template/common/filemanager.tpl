@@ -23,20 +23,32 @@
       <?php foreach (array_chunk($images, 4) as $image) { ?>
       <div class="row">
         <?php foreach ($image as $image) { ?>
-        <div class="col-sm-3 text-center">
-          <?php if ($image['type'] == 'directory') { ?>
-          <div class="text-center"><a href="<?php echo $image['href']; ?>" class="directory" style="vertical-align: middle;"><i class="fa fa-folder fa-5x"></i></a></div>
-          <label>
-            <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
-            <?php echo $image['name']; ?></label>
-          <?php } ?>
-          <?php if ($image['type'] == 'image') { ?>
-          <a href="<?php echo $image['href']; ?>" class="thumbnail"><img src="<?php echo $image['thumb']; ?>" alt="<?php echo $image['name']; ?>" title="<?php echo $image['name']; ?>" /></a>
-          <label>
-            <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
-            <?php echo $image['name']; ?></label>
-          <?php } ?>
-        </div>
+            <div class="col-sm-3 text-center">
+              <?php if ($image['type'] == 'directory') { ?>
+              <div class="text-center"><a href="<?php echo $image['href']; ?>" class="directory" style="vertical-align: middle;"><i class="fa fa-folder fa-5x"></i></a></div>
+              <label>
+                <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
+                <?php echo $image['name']; ?></label>
+              <?php } ?>
+
+              <?php if ($image['type'] == 'image') { ?>
+              <a href="<?php echo $image['href']; ?>" class="thumbnail">
+                  <?php if($image['mime'] == 'video/mp4') { ?>
+                  <video controls>
+                      <source src="<?php echo $image['path']; ?>" type="video/mp4">
+                      Your browser does not support the video tag.
+                  </video>
+                  <?php } else { ?>
+                      <img src="<?php echo $image['thumb']; ?>" alt="<?php echo $image['name']; ?>" title="<?php echo $image['name']; ?>" />
+                  <?php } ?>
+              </a>
+              <label>
+                <input type="checkbox" name="path[]" value="<?php echo $image['path']; ?>" />
+                <?php echo $image['name']; ?></label>
+              <?php } ?>
+
+
+            </div>
         <?php } ?>
       </div>
       <br />
