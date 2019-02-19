@@ -126,10 +126,10 @@ $(document).ready(function() {
 			}
 		});	
 	});
-
+	//=================================VIDEO===================================//
 	$(document).delegate('a[data-toggle=\'video\']', 'click', function(e) {
 		e.preventDefault();
-		console.log('VIDEO');
+
 		$('.popover').popover('hide', function() {
 			$('.popover').remove();
 		});
@@ -184,7 +184,7 @@ $(document).ready(function() {
 			// });
 		});
 	});
-	
+	//=================================END VIDEO===================================//
 	// Image Manager
 	$(document).delegate('a[data-toggle=\'image\']', 'click', function(e) {
 		e.preventDefault();
