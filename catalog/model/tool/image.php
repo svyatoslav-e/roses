@@ -1,7 +1,7 @@
 <?php
 class ModelToolImage extends Model {
 	public function resize($filename, $width, $height, $watermark = FALSE) {
-		if (!is_file(DIR_IMAGE . $filename)) {
+		if (!is_file(DIR_IMAGE . $filename) || mime_content_type(DIR_IMAGE . $filename) === 'video/mp4') {
 			return;
 		}
 

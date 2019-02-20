@@ -29,22 +29,43 @@
         <?php } else { ?>
         <?php $class = 'col-xs-12 col-sm-6'; ?>
         <?php } ?>
-        <div class="<?php echo $class; ?>">
+        <div class="<?php echo $class; ?> product-media">
           <?php if ($thumb || $images) { ?>
-          
-          <ul class="thumbnails">
+            <ul class="thumbnails product-media__images">
             <?php if ($thumb) { ?>
-            <meta itemprop="image" content="<?php echo $thumb; ?>">
-            <li><a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>"><img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
+              <meta itemprop="image" content="<?php echo $thumb; ?>">
+              <li>
+                <a class="thumbnail" href="<?php echo $popup; ?>" title="<?php echo $heading_title; ?>">
+                  <img src="<?php echo $thumb; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+                </a>
+              </li>
             <?php } ?>
             <?php if ($images) { ?>
-            <?php foreach ($images as $image) { ?>
-
-            <meta itemprop="image" content="<?php echo $image['thumb']; ?>">
-            <li class="image-additional"><a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>"> <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" /></a></li>
-            <?php } ?>
+              <?php foreach ($images as $image) { ?>
+                <?php if($image['mime'] !== 'video/mp4') { ?>
+                  <meta itemprop="image" content="<?php echo $image['thumb']; ?>">
+                  <li class="image-additional">
+                    <a class="thumbnail" href="<?php echo $image['popup']; ?>" title="<?php echo $heading_title; ?>">
+                      <img src="<?php echo $image['thumb']; ?>" title="<?php echo $heading_title; ?>" alt="<?php echo $heading_title; ?>" />
+                    </a>
+                  </li>
+                <?php } ?>
+              <?php } ?>
             <?php } ?>
           </ul>
+          <?php } ?>
+          <!--VIDEO-->
+          <?php if ($images) { ?>
+              <div class="product-media__video" itemtype="http://schema.org/VideoObject" itemprop="video">
+                <?php foreach ($images as $image) { ?>
+                  <?php if($image['mime'] === 'video/mp4') { ?>
+                    <video controls >
+                      <source src="image/<?php echo $image['path']; ?>" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  <?php } ?>
+                <?php } ?>
+              </div>
           <?php } ?>
         </div>
 
