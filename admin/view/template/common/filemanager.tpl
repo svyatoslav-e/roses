@@ -34,8 +34,8 @@
               <?php if ($image['type'] == 'image') { ?>
               <a href="<?php echo $image['href']; ?>" class="thumbnail">
                   <?php if($image['mime'] == 'video/mp4') { ?>
-                  <video controls>
-                      <source src="<?php echo $image['path']; ?>" type="video/mp4">
+                  <video controls width="100">
+                      <source src="/image/<?php echo $image['path']; ?>" type="video/mp4">
                       Your browser does not support the video tag.
                   </video>
                   <?php } else { ?>
