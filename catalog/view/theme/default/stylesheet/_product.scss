@@ -25,7 +25,6 @@
       }
     }
   }
-
   &__sale {
     text-align: center;
     table {
@@ -77,5 +76,23 @@
        }
      }
    }
+  }
+}
+
+.product-media {
+  &__images {
+    .image-additional {
+      a {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+  }
+  &__video {
+    video {
+      max-width: 100%;
+      margin-bottom: 30px;
+    }
   }
 }

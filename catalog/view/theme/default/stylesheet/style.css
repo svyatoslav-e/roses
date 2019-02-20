@@ -341,6 +341,14 @@
         .product-info__pack a:hover .fa {
           color: #82d965; }
 
+.product-media__images .image-additional a {
+  padding: 0;
+  border: 0;
+  border-radius: 0; }
+.product-media__video video {
+  max-width: 100%;
+  margin-bottom: 30px; }
+
 .contacts {
   margin-top: 50px; }
   .contacts__phone, .contacts__address {
