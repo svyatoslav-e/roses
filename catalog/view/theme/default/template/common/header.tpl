@@ -80,11 +80,6 @@
                 <?php echo $cart; ?>
             </div>
         </div>
-
-
-
-       <!--<p class="viber"><a href="tel:<?=$telephone_arr[0];?>"><i class="fa fa-phone-square" aria-hidden="true"></i><?php echo $telephone_arr[0]; ?></a></p>-->
-
     </div>
 </header>
 <div class="container-fluid top-linear"> </div>

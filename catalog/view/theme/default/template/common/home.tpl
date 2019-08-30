@@ -9,18 +9,25 @@
     <?php $class = 'col-sm-12'; ?>
     <?php } ?>
     <div id="content" class="<?php echo $class; ?>">
-        <!--<div class="row">
-          <nav id="menu-categories">
-
-              <ul class="main-categorie-list container">
-               <li class="col-sm-3"><a href="<?echo $roses; ?>" class="roses"><div class="mid-align"><span class="inblock"><?echo $roses_text; ?></span></div></a></li>
-               <li class="col-sm-3"><a href="<?echo $fruit; ?>" class="trees"><div class="mid-align"><span class="inblock"><?echo $fruit_text; ?></span></div></a></li>
-               <li class="col-sm-3"><a href="<?echo $shrubbery; ?>" class="green"><div class="mid-align"><span class="inblock"><?echo $shrubbery_text; ?></span></div></a></li>
-               <li class="col-sm-3"><a href="<?echo $decorative; ?>" class="decor"><div class="mid-align"><span class="inblock"><?echo $decorative_text; ?></span></div></a></li>
-              </ul>
-
-          </nav>
-        </div>-->
+        <div class="col-sm-12">
+            <div class="row youtube">
+                <div class="col-sm-6 youtube__video">
+                    <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/ekCdd3g33t4"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+                <div class="col-sm-6 youtube__video">
+                    <iframe width="560" height="315"
+                            src="https://www.youtube.com/embed/fnQPOHujxK0"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
         <?php echo $content_top; ?>
             <div class="col-xs-12">
                 <div class="row" id="insta-info">
@@ -28,7 +35,7 @@
                         <a href="https://www.instagram.com/fruitsandrosesshop/"><span><?php echo $insta ?></span></a>
                     </div>
                 </div>
-                <div class="row" id="insta" class="insta"></div>
+                <div class="row insta" id="insta"></div>
             </div>
         <?php echo $content_bottom; ?>
     </div>
