@@ -36,7 +36,6 @@
                                      data-layout="default" data-count="hidden">
                                 </div>
                             </ul>
-
                         </div>
                     </div>
 
@@ -44,6 +43,8 @@
                         <div class="col-xs-12 contacts__address">
                             <span class="contacts__address_title"><?= $text_location; ?></span>
                             <p><?= $address; ?></p>
+                            <span class="contacts__address_title"><?php echo $text_email; ?></span>
+                            <p><a href="mailto:<?php echo $our_email; ?>"><?php echo $our_email; ?></a></p>
                         </div>
                     </div>
                 </div>
