@@ -600,10 +600,8 @@ class ModelCheckoutOrder extends Model {
                     if($total['code'] == 'total') {
 
                         if ($total['value'] > 1000 ) {
-                            $text = $this->currency->format($total['value']*0.85);
-                        } elseif($total['value'] > 700){
                             $text = $this->currency->format($total['value']*0.90);
-                        } elseif($total['value'] > 400){
+                        } elseif($total['value'] > 700){
                             $text = $this->currency->format($total['value']*0.95);
                         } else {
                             $text = $this->currency->format($total['value']);

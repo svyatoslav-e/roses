@@ -39,10 +39,8 @@ class ControllerDashboardOrder extends Controller {
 //		}
 
         if($order_total > 1000) {
-            $total_value = $order_total*0.85;
-        } elseif ($order_total > 700) {
             $total_value = $order_total*0.90;
-        } elseif ($order_total > 400) {
+        } elseif ($order_total > 700) {
             $total_value = $order_total*0.95;
         } else {
             $total_value = $order_total;

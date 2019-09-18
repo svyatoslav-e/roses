@@ -120,10 +120,8 @@ class ControllerCommonCart extends Controller {
 		    if($result['code'] == 'total') {
 
 		        if ($result['value'] > 1000 ) {
-                    $text = $this->currency->format($result['value']*0.85);
-                } elseif($result['value'] > 700){
                     $text = $this->currency->format($result['value']*0.90);
-                } elseif($result['value'] > 400){
+                } elseif($result['value'] > 700){
                     $text = $this->currency->format($result['value']*0.95);
                 } else {
                     $text = $this->currency->format($result['value']);
