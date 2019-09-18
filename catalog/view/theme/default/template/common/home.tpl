@@ -85,6 +85,7 @@
                     });
                 </script>
                 <?php echo $content_top; ?>
+                <?php echo $content_bottom; ?>
                 <div class="col-xs-12">
                     <div class="row" id="insta-info">
                         <div class="col-sm-6 insta__common">
@@ -93,7 +94,6 @@
                     </div>
                     <div class="row insta" id="insta"></div>
                 </div>
-                <?php echo $content_bottom; ?>
             </div>
             <?php echo $column_right; ?>
         </div>
