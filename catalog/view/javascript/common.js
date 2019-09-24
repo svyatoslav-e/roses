@@ -77,6 +77,7 @@ var insta = {
 //instagramm
 $(document).ready(function() {
 	insta.init();
+	$('.js-lazyYT').lazyYT();
 	// Adding the clear Fix
 	cols1 = $('#column-right, #column-left').length;
 	

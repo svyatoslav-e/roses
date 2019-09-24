@@ -12,65 +12,34 @@
             <div class="col-sm-12">
                 <div class="row youtube">
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/ekCdd3g33t4"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="ekCdd3g33t4" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12  youtube__video">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/fnQPOHujxK0"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                        </iframe>
+                        <div class="js-lazyYT" data-youtube-id="fnQPOHujxK0" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/f4dRrK3L6uE"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                        </iframe>
+                        <div class="js-lazyYT" data-youtube-id="f4dRrK3L6uE" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/1x3MUmB6a4c"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen>
-                        </iframe>
+                        <div class="js-lazyYT" data-youtube-id="1x3MUmB6a4c" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/v9ejbqe4PqQ" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="v9ejbqe4PqQ" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/shBS28xqoOA" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="shBS28xqoOA" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/zarIqtDE8no" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="zarIqtDE8no" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/PcpXqg9F3PA" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="PcpXqg9F3PA" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/4Sc_ZiSXpRk" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="4Sc_ZiSXpRk" data-ratio="16:9"></div>
                     </div>
                     <div class="col-am-12 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/jp82RUrhK9k" frameborder="0"
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                        <div class="js-lazyYT" data-youtube-id="jp82RUrhK9k" data-ratio="16:9"></div>
                     </div>
                 </div>
                 <script type="text/javascript">
