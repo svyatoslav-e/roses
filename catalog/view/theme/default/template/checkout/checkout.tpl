@@ -834,6 +834,7 @@ $(document).delegate('#button-shipping-method', 'click', function() {
 });
 
 $(document).delegate('#button-payment-method', 'click', function() {
+    gtag_report_conversion();
     $.ajax({
         url: 'index.php?route=checkout/payment_method/save',
         type: 'post',
