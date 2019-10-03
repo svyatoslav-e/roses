@@ -82,11 +82,13 @@ class ControllerCommonHeader extends Controller {
 		$data['about_us'] = $this->url->link('information/information', 'information_id=4', 'SSL');
 		$data['delivery_inf'] = $this->url->link('information/information', 'information_id=6', 'SSL');
 		$data['payment_inf'] = $this->url->link('information/information', 'information_id=7', 'SSL');
+		$data['videos'] = $this->url->link('information/information', 'information_id=8', 'SSL');
 
 		$data['about_us_text'] = $this->language->get('about_us_text');
 		$data['delivery_inf_text'] = $this->language->get('delivery_inf_text');
 		$data['payment_inf_text'] = $this->language->get('payment_inf_text');
 		$data['text_contact'] = $this->language->get('text_contact');
+        $data['videos_title'] = $this->language->get('videos_title');
 
 
 

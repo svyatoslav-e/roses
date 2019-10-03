@@ -23,3 +23,4 @@ $_['text_all']           = 'Переглянути всі';
 		$_['about_us_text'] = 'Про нас';
 		$_['delivery_inf_text'] = 'Доставка';
 		$_['payment_inf_text'] = 'Акції';
+		$_['videos_title'] = 'Відео';

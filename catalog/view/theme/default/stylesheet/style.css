@@ -159,14 +159,14 @@
   font-weight: bold;
   line-height: 53px;
   font-size: 17px;
-  padding: 0 13px;
+  padding: 0 10px;
   color: #616161;
   text-decoration: none !important;
 }
 @media (min-width: 426px) and (max-width: 1024px) {
   .header-main__menu ul li a {
     font-size: 13px;
-    padding: 0 9px;
+    padding: 0 8px;
   }
 }
 .header-main__menu ul li .header-main__sub-menu {

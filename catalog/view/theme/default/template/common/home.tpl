@@ -11,49 +11,14 @@
         <div id="content" class="<?php echo $class; ?>">
             <div class="col-sm-12">
                 <div class="row youtube">
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="CsQa1ZLQ39o" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="8IOMNQpjLCo" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="ekCdd3g33t4" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12  youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="fnQPOHujxK0" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="f4dRrK3L6uE" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="1x3MUmB6a4c" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="v9ejbqe4PqQ" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="shBS28xqoOA" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="zarIqtDE8no" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="PcpXqg9F3PA" data-ratio="16:9"></div>
+                    <div class="col-sm-6 youtube__video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CsQa1ZLQ39o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
                     </div>
 
+                    <div class="col-sm-6 youtube__video">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8IOMNQpjLCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+                    </div>
                 </div>
-                <script type="text/javascript">
-                    $('.youtube').owlCarousel({
-                        items: 2,
-                        autoPlay: 3000,
-                        navigation: true,
-                        navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-                        pagination: false,
-                        stopOnHover: true,
-                        mouseDrag: false
-                    });
-                </script>
                 <?php echo $content_top; ?>
                 <?php echo $content_bottom; ?>
                 <div class="col-xs-12">
