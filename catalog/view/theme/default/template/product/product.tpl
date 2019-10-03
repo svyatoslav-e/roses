@@ -313,7 +313,7 @@
          </table>
        </div>
        <div class="col-sm-12 product-info__pack">
-         <a href="http://fruitsandroses.com.ua/novosti/upakovka-sazhentsev-poshagovyj-fotootchet/">
+         <a href="https://fruitsandroses.com.ua/novosti/upakovka-sazhentsev-poshagovyj-fotootchet/">
            <span ><i class="fa fa-truck" aria-hidden="true"></i>
            <?php echo $text_how_packed; ?>
            </span>

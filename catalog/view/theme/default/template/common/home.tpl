@@ -12,6 +12,12 @@
             <div class="col-sm-12">
                 <div class="row youtube">
                     <div class="col-sm-12 youtube__video">
+                        <div class="js-lazyYT" data-youtube-id="CsQa1ZLQ39o" data-ratio="16:9"></div>
+                    </div>
+                    <div class="col-sm-12 youtube__video">
+                        <div class="js-lazyYT" data-youtube-id="8IOMNQpjLCo" data-ratio="16:9"></div>
+                    </div>
+                    <div class="col-sm-12 youtube__video">
                         <div class="js-lazyYT" data-youtube-id="ekCdd3g33t4" data-ratio="16:9"></div>
                     </div>
                     <div class="col-sm-12  youtube__video">
@@ -35,12 +41,7 @@
                     <div class="col-sm-12 youtube__video">
                         <div class="js-lazyYT" data-youtube-id="PcpXqg9F3PA" data-ratio="16:9"></div>
                     </div>
-                    <div class="col-sm-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="4Sc_ZiSXpRk" data-ratio="16:9"></div>
-                    </div>
-                    <div class="col-am-12 youtube__video">
-                        <div class="js-lazyYT" data-youtube-id="jp82RUrhK9k" data-ratio="16:9"></div>
-                    </div>
+
                 </div>
                 <script type="text/javascript">
                     $('.youtube').owlCarousel({
