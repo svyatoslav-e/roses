@@ -10,15 +10,6 @@
         <?php } ?>
         <div id="content" class="<?php echo $class; ?>">
             <div class="col-sm-12">
-                <div class="row youtube">
-                    <div class="col-sm-6 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/CsQa1ZLQ39o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                    </div>
-
-                    <div class="col-sm-6 youtube__video">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8IOMNQpjLCo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-                    </div>
-                </div>
                 <?php echo $content_top; ?>
                 <?php echo $content_bottom; ?>
                 <div class="col-xs-12">
