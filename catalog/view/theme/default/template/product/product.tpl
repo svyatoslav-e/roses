@@ -302,22 +302,18 @@
            </thead>
            <tbody>
              <tr>
-               <td>400 грн</td>
+               <td>700 грн</td>
                <td class="discount"> -5% </td>
              </tr>
              <tr>
-               <td>700 грн</td>
-               <td class="discount"> -10% </td>
-             </tr>
-             <tr>
                <td>1000 грн</td>
-               <td class="discount"> -15% </td>
+               <td class="discount"> -10% </td>
              </tr>
            </tbody>
          </table>
        </div>
        <div class="col-sm-12 product-info__pack">
-         <a href="http://fruitsandroses.com.ua/novosti/upakovka-sazhentsev-poshagovyj-fotootchet/">
+         <a href="https://fruitsandroses.com.ua/novosti/upakovka-sazhentsev-poshagovyj-fotootchet/">
            <span ><i class="fa fa-truck" aria-hidden="true"></i>
            <?php echo $text_how_packed; ?>
            </span>

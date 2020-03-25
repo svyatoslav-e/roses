@@ -31,11 +31,8 @@ var insta = {
 			success: function (resp) {
 				insta.parseData(resp.data);
 			},
-			error: function (resp) {
+			err: function (resp) {
 				console.log(resp);
-			},
-			complete: function (resp) {
-				console.log('COMPLETED');
 			}
 		});
 	},

@@ -14,5 +14,7 @@ $_['text_logout']        = 'Выход';
 $_['text_checkout']      = 'Оформление заказа';
 $_['text_search']        = 'Поиск';
 $_['text_all']           = 'Смотреть Все';
+$_['videos_title']        = 'Видео';
+
 
 

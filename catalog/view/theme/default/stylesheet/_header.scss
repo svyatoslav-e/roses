@@ -91,10 +91,10 @@
             font-weight: bold;
             line-height: 53px;
             font-size: 17px;
-            padding: 0 13px;
+            padding: 0 10px;
             @media (min-width: $small) and (max-width: $smallDesktop) {
               font-size: 13px;
-              padding: 0 9px;
+              padding: 0 8px;
             }
             color: $black-1;
             text-decoration: none !important;
