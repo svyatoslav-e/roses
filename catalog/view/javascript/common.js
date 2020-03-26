@@ -69,8 +69,6 @@ var insta = {
 	}
 };
 
-
-
 //instagramm
 $(document).ready(function() {
 	insta.init();
@@ -188,6 +186,18 @@ $(document).ready(function() {
 	$(document).on('change', '.js-qty-checkout', function (e) {
 		$('#form-cart').submit();
     });
+
+	$(window).scroll(function () {
+		var window_top = $(window).scrollTop(),
+			headerHeight = $('.header-main').height();
+
+		if(window_top > headerHeight) {
+			console.log('HEY');
+			$('.header-main').addClass('sticky-header');
+		} else {
+			$('.header-main').removeClass('sticky-header');
+		}
+	});
 });
 
 // Cart add remove functions
@@ -198,62 +208,24 @@ var cart = {
 			type: 'post',
 			data: 'product_id=' + product_id + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
 			dataType: 'json',
-			beforeSend: function() {
-				$('#cart > button').button('loading');
-			
-				
-			},
-			complete: function() {
-				$('#cart > button').button('reset');
-				
-			},			
 			success: function(json) {
+				cartApp.refetch = true;
+				cartApp.showCart = true;
 				$('.alert, .text-danger').remove();
-
-				if (json['redirect']) {
-					location = json['redirect'];
-				}
-
-				if (json['success']) {
-
-					$('#button_'+product_id).parent().before('<div class="alert alert-success message"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-					// $('#content').parent().before('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-					
-					// Need to set timeout otherwise it wont update the total
-					setTimeout(function () {
-						$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
-					}, 100);
-				
-					// $('html, body').animate({ scrollTop: 0 }, 'slow');
-
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
-				}
 			}
 		});
 	},
 	'update': function(key, quantity) {
+		console.log(key, quantity);
 		$.ajax({
 			url: 'index.php?route=checkout/cart/edit',
 			type: 'post',
 			data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
-			dataType: 'json',
-			beforeSend: function() {
-				$('#cart > button').button('loading');
-			},
-			complete: function() {
-				$('#cart > button').button('reset');
-			},			
 			success: function(json) {
-				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
-				}, 100);
-
+				console.log(json);
+				cartApp.refetch = true;
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
-				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			}
 		});
@@ -264,27 +236,15 @@ var cart = {
 			type: 'post',
 			data: 'key=' + key,
 			dataType: 'json',
-			beforeSend: function() {
-				$('#cart > button').button('loading');
-			},
-			complete: function() {
-				$('#cart > button').button('reset');
-			},			
 			success: function(json) {
-				// Need to set timeout otherwise it wont update the total
-				setTimeout(function () {
-					$('#cart > button').html('<i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="header-cart__button_total-items">'+json['total']+'</span>');
-				}, 100);
-					
+				cartApp.refetch = true;
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
-				} else {
-					$('#cart > ul').load('index.php?route=common/cart/info ul li');
 				}
 			}
 		});
 	}
-}
+};
 
 var voucher = {
 	'add': function() {
@@ -316,7 +276,7 @@ var voucher = {
 			}
 		});
 	}
-}
+};
 
 var wishlist = {
 	'add': function(product_id) {
@@ -346,7 +306,7 @@ var wishlist = {
 	'remove': function() {
 
 	}
-}
+};
 
 var compare = {
 	'add': function(product_id) {
@@ -371,7 +331,7 @@ var compare = {
 	'remove': function() {
 
 	}
-}
+};
 
 /* Agree to Terms */
 $(document).delegate('.agree', 'click', function(e) {
@@ -531,8 +491,6 @@ $(document).delegate('.agree', 'click', function(e) {
 		});
 	}
 })(window.jQuery);
-
-
 
 function slyLink() {
   var istS = 'Источник:';
