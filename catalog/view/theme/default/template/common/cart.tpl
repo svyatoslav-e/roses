@@ -72,7 +72,6 @@
         },
 
         created() {
-            console.log('GET');
             this.getCartData();
         },
 
@@ -88,9 +87,6 @@
             getCartData() {
                 $.ajax({
                     url: 'index.php?route=common/cart',
-                    complete: function(resp) {
-                        console.log('COMPLETE', resp);
-                    },
                     success: function(json) {
                         cartApp.setData(json);
                     }
@@ -118,7 +114,6 @@
 
             removeProduct(productIndex, confirmed) {
                 this.cartData.products[productIndex].removing = true;
-                console.log(productIndex);
                 if(confirmed) {
                     cart.remove(cartApp.cartData.products[productIndex].key);
                     this.cartData.products.splice(productIndex, 1);

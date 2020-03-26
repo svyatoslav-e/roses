@@ -136,7 +136,6 @@ $('#button-search').on('click', function(e) {
 
 <script type="text/javascript"><!--
 $('#button-upload').on('click', function() {
-    console.log('BUTTON UPLOAD');
     $('#form-upload').remove();
 
 	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" value="" /></form>');

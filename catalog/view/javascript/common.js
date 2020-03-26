@@ -192,7 +192,6 @@ $(document).ready(function() {
 			headerHeight = $('.header-main').height();
 
 		if(window_top > headerHeight) {
-			console.log('HEY');
 			$('.header-main').addClass('sticky-header');
 		} else {
 			$('.header-main').removeClass('sticky-header');
@@ -216,13 +215,11 @@ var cart = {
 		});
 	},
 	'update': function(key, quantity) {
-		console.log(key, quantity);
 		$.ajax({
 			url: 'index.php?route=checkout/cart/edit',
 			type: 'post',
 			data: 'key=' + key + '&quantity=' + (typeof(quantity) != 'undefined' ? quantity : 1),
 			success: function(json) {
-				console.log(json);
 				cartApp.refetch = true;
 				if (getURLVar('route') == 'checkout/cart' || getURLVar('route') == 'checkout/checkout') {
 					location = 'index.php?route=checkout/cart';
