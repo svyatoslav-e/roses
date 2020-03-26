@@ -44,6 +44,9 @@
 
     <link rel="stylesheet" href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" type="text/css">
     <script type="text/javascript" src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js"></script>
+<!--    VUE -->
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <?php echo $google_analytics; ?>
     <!-- Event snippet for Покупка conversion page
@@ -67,12 +70,11 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 <body class="<?php echo $class; ?>">
 <header class="header-main">
     <!--<div class="conteiner-fluid top-linear"> </div>-->
-    <div class="container">
-        <div class="row">
+    <div class="container header-wrapper">
             <!--LOGO-->
             <div class="col-xs-4 col-sm-6 col-lg-4">
-                <div id="logo">
-                    <h1 class="header-main__logo">
+                <div id="logo" class="header-main__logo">
+                    <h1 class="header-main__logo_wrapper">
                         <a href="<?php echo $home; ?>" class="header-main__logo_link">
                             <?php if ($logo) { ?>
                                 <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"
@@ -99,12 +101,10 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             </div>
 
             <!--CART-->
-            <div class="col-xs-3 col-sm-2 col-lg-2">
+            <div class="col-xs-3 col-sm-2 col-lg-2 header-main__cart">
                 <?php echo $cart; ?>
             </div>
-        </div>
     </div>
-</header>
 <div class="container-fluid top-linear"></div>
 <div class="container">
     <div class="row">
@@ -154,7 +154,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     </div>
 </div>
 <div class="container-fluid top-linear"></div>
-
+</header>
 
 
 

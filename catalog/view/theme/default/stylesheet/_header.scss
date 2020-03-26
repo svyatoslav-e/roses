@@ -1,20 +1,26 @@
 .header-main {
-  @media (min-width: $small) {
-    height: 90px;
+  .header-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
   }
+
 // LOGO
   &__logo {
-    margin: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
 
-    @media (min-width: $small) {
-      height: 90px;
+    &_wrapper {
+      margin: 0;
+      display: flex;
+      align-items: center;
     }
 
     &_link {
-      display: inline-block;
+      display: flex;
+      align-items: center;
       font-size: 35px;
-      height: 90px;
-      line-height: 84px;
       font-weight: bold;
       color: $blue;
       text-decoration: none;
@@ -23,6 +29,7 @@
                                              outline: none;}
 
       &-green {
+        margin-left: 15px;
         color: $green;
         display: none;
       }
@@ -37,9 +44,6 @@
         width: 70px;
         height: 70px;
         display: block;
-        float: left;
-        margin-right: 15px;
-        margin-top: 10px;
       }
     }
   }
@@ -169,11 +173,15 @@
   //PHONE
   &__phone {
     text-align: right;
-    line-height: 90px;
     font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
     a {
       text-decoration: none!important;
+      display: flex;
+      align-items: center;
       color: $black-1;
 
       .fa {
@@ -223,4 +231,36 @@
         }
       }
     }
+
+  &__cart {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+
+  &.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 200;
+
+    .header-main__logo_link {
+      font-size: 15px;
+      transition: all 0.3s ease;
+
+      img {
+        width: 30px;
+        height: 30px;
+        transition: all 0.3s ease;
+      }
+    }
+
+    .header-main__phone {
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+  }
   }

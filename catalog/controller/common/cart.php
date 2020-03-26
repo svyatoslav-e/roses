@@ -38,14 +38,19 @@ class ControllerCommonCart extends Controller {
 
 			array_multisort($sort_order, SORT_ASC, $total_data);
 		}
-
+        $data['text_yes'] = $this->language->get('text_yes');
+        $data['text_no'] = $this->language->get('text_no');
 		$data['text_empty'] = $this->language->get('text_empty');
 		$data['text_cart'] = $this->language->get('text_cart');
 		$data['text_checkout'] = $this->language->get('text_checkout');
+        $data['text_continue_shopping'] = $this->language->get('text_continue_shopping');
 		$data['text_recurring'] = $this->language->get('text_recurring');
 		$data['text_items'] = $this->cart->countProducts() + (isset($this->session->data['vouchers']) ? count($this->session->data['vouchers']) : 0);
 		$data['text_items_price'] = $this->currency->format($total);
 		$data['text_loading'] = $this->language->get('text_loading');
+        $data['text_in_cart'] = $this->language->get('text_in_cart');
+        $data['text_main_in_cart'] = $this->language->get('text_main_in_cart');
+
 
 		$data['button_remove'] = $this->language->get('button_remove');
 		$data['text_sale'] = $this->language->get('text_sale');
@@ -147,11 +152,8 @@ class ControllerCommonCart extends Controller {
 		$data['cart'] = $this->url->link('checkout/cart');
 		$data['checkout'] = $this->url->link('checkout/checkout', '', 'SSL');
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/cart.tpl')) {
-			return $this->load->view($this->config->get('config_template') . '/template/common/cart.tpl', $data);
-		} else {
-			return $this->load->view('default/template/common/cart.tpl', $data);
-		}
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($data));
 	}
 
 	public function info() {
