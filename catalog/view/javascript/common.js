@@ -23,7 +23,7 @@ function getURLVar(key) {
 }
 
 var insta = {
-	token: '6006421984.0a5f39f.902a301d86014770aab48ffaa279d8c7',
+	token: '6006421984.0a5f39f.e5f3bbfa597548359de3270451298f2d',
 	init: function () {
 		$.ajax({
 			type: 'GET',
