@@ -36,11 +36,6 @@
         <label class="control-label" for="input-payment-email"><?php echo $entry_email; ?></label>
         <input type="text" name="email" value="<?php echo $email; ?>" placeholder="<?php echo $entry_email; ?>" id="input-payment-email" class="form-control" />
       </div>
-
-<!--       <div class="form-group">
-        <label class="control-label" for="input-payment-fax"><?php echo $entry_fax; ?></label>
-        <input type="text" name="fax" value="<?php echo $fax; ?>" placeholder="<?php echo $entry_fax; ?>" id="input-payment-fax" class="form-control" />
-      </div> -->
       <?php foreach ($custom_fields as $custom_field) { ?>
       <?php if ($custom_field['location'] == 'account') { ?>
       <?php if ($custom_field['type'] == 'select') { ?>
@@ -155,26 +150,10 @@
   <div class="col-sm-6">
     <fieldset id="address">
       <legend><?php echo $text_your_address; ?></legend>
-<!--       <div class="form-group">
-        <label class="control-label" for="input-payment-company"><?php echo $entry_company; ?></label>
-        <input type="text" name="company" value="<?php echo $company; ?>" placeholder="<?php echo $entry_company; ?>" id="input-payment-company" class="form-control" />
-      </div> -->
-<!--       <div class="form-group required">
-        <label class="control-label" for="input-payment-address-1"><?php echo $entry_address_1; ?></label>
-        <input type="text" name="address_1" value="<?php echo $address_1; ?>" placeholder="<?php echo $entry_address_1; ?>" id="input-payment-address-1" class="form-control" />
-      </div> -->
-<!--       <div class="form-group">
-        <label class="control-label" for="input-payment-address-2"><?php echo $entry_address_2; ?></label>
-        <input type="text" name="address_2" value="<?php echo $address_2; ?>" placeholder="<?php echo $entry_address_2; ?>" id="input-payment-address-2" class="form-control" />
-      </div> -->
       <div class="form-group required">
         <label class="control-label" for="input-payment-city"><?php echo $entry_city; ?></label>
         <input type="text" name="city" value="<?php echo $city; ?>" placeholder="<?php echo $entry_city; ?>" id="input-payment-city" class="form-control" />
       </div>
-<!--       <div class="form-group required">
-        <label class="control-label" for="input-payment-postcode"><?php echo $entry_postcode; ?></label>
-        <input type="text" name="postcode" value="<?php echo $postcode; ?>" placeholder="<?php echo $entry_postcode; ?>" id="input-payment-postcode" class="form-control" />
-      </div> -->
       <div class="form-group required">
         <label class="control-label" for="input-payment-country"><?php echo $entry_country; ?></label>
         <select name="country_id" id="input-payment-country" class="form-control">
@@ -319,131 +298,7 @@
     <input type="button" value="<?php echo $button_continue; ?>" id="button-guest" data-loading-text="<?php echo $text_loading; ?>" class="dtn-roses btn-orange" />
   </div>
 </div>
-<script type="text/javascript"><!--
-// Sort the custom fields
-$('#account .form-group[data-sort]').detach().each(function() {
-	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#account .form-group').length) {
-		$('#account .form-group').eq($(this).attr('data-sort')).before(this);
-	}
 
-	if ($(this).attr('data-sort') > $('#account .form-group').length) {
-		$('#account .form-group:last').after(this);
-	}
-
-	if ($(this).attr('data-sort') < -$('#account .form-group').length) {
-		$('#account .form-group:first').before(this);
-	}
-});
-
-$('#address .form-group[data-sort]').detach().each(function() {
-	if ($(this).attr('data-sort') >= 0 && $(this).attr('data-sort') <= $('#address .form-group').length) {
-		$('#address .form-group').eq($(this).attr('data-sort')).before(this);
-	}
-
-	if ($(this).attr('data-sort') > $('#address .form-group').length) {
-		$('#address .form-group:last').after(this);
-	}
-
-	if ($(this).attr('data-sort') < -$('#address .form-group').length) {
-		$('#address .form-group:first').before(this);
-	}
-});
-
-$('#collapse-payment-address input[name=\'customer_group_id\']').on('change', function() {
-	$.ajax({
-		url: 'index.php?route=checkout/checkout/customfield&customer_group_id=' + this.value,
-		dataType: 'json',
-		success: function(json) {
-			$('#collapse-payment-address .custom-field').hide();
-			$('#collapse-payment-address .custom-field').removeClass('required');
-
-			for (i = 0; i < json.length; i++) {
-				custom_field = json[i];
-
-				$('#payment-custom-field' + custom_field['custom_field_id']).show();
-
-				if (custom_field['required']) {
-					$('#payment-custom-field' + custom_field['custom_field_id']).addClass('required');
-				} else {
-					$('#payment-custom-field' + custom_field['custom_field_id']).removeClass('required');
-				}
-			}
-		},
-		error: function(xhr, ajaxOptions, thrownError) {
-			alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-		}
-	});
-});
-
-$('#collapse-payment-address input[name=\'customer_group_id\']:checked').trigger('change');
-//--></script>
-<script type="text/javascript"><!--
-$('#collapse-payment-address button[id^=\'button-payment-custom-field\']').on('click', function() {
-	var node = this;
-
-	$('#form-upload').remove();
-
-	$('body').prepend('<form enctype="multipart/form-data" id="form-upload" style="display: none;"><input type="file" name="file" /></form>');
-
-	$('#form-upload input[name=\'file\']').trigger('click');
-
-	if (typeof timer != 'undefined') {
-    	clearInterval(timer);
-	}
-
-	timer = setInterval(function() {
-		if ($('#form-upload input[name=\'file\']').val() != '') {
-			clearInterval(timer);
-
-			$.ajax({
-				url: 'index.php?route=tool/upload',
-				type: 'post',
-				dataType: 'json',
-				data: new FormData($('#form-upload')[0]),
-				cache: false,
-				contentType: false,
-				processData: false,
-				beforeSend: function() {
-					$(node).button('loading');
-				},
-				complete: function() {
-					$(node).button('reset');
-				},
-				success: function(json) {
-					$(node).parent().find('.text-danger').remove();
-
-					if (json['error']) {
-						$(node).parent().find('input[name^=\'custom_field\']').after('<div class="text-danger">' + json['error'] + '</div>');
-					}
-
-					if (json['success']) {
-						alert(json['success']);
-
-						$(node).parent().find('input[name^=\'custom_field\']').attr('value', json['code']);
-					}
-				},
-				error: function(xhr, ajaxOptions, thrownError) {
-					alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-				}
-			});
-		}
-	}, 500);
-});
-//--></script>
-<script type="text/javascript"><!--
-$('.date').datetimepicker({
-	pickTime: false
-});
-
-$('.time').datetimepicker({
-	pickDate: false
-});
-
-$('.datetime').datetimepicker({
-	pickDate: true,
-	pickTime: true
-});
-//--></script>
 <script type="text/javascript"><!--
 $('#collapse-payment-address select[name=\'country_id\']').on('change', function() {
 	$.ajax({
@@ -456,6 +311,7 @@ $('#collapse-payment-address select[name=\'country_id\']').on('change', function
 			$('.fa-spin').remove();
 		},
 		success: function(json) {
+		    console.log(json);
 			if (json['postcode_required'] == '1') {
 				$('#collapse-payment-address input[name=\'postcode\']').parent().parent().addClass('required');
 			} else {
