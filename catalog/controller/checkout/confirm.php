@@ -163,14 +163,14 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
 				$order_data['shipping_custom_field'] = (isset($this->session->data['shipping_address']['custom_field']) ? $this->session->data['shipping_address']['custom_field'] : array());
 
-				if (isset($this->session->data['shipping_method']['title'])) {
-					$order_data['shipping_method'] = $this->session->data['shipping_method']['title'];
+				if (isset($this->session->data['shipping_method'])) {
+					$order_data['shipping_method'] = $this->session->data['shipping_method'];
 				} else {
 					$order_data['shipping_method'] = '';
 				}
 
-				if (isset($this->session->data['shipping_method']['code'])) {
-					$order_data['shipping_code'] = $this->session->data['shipping_method']['code'];
+				if (isset($this->session->data['shipping_method'])) {
+					$order_data['shipping_code'] = $this->session->data['shipping_method'];
 				} else {
 					$order_data['shipping_code'] = '';
 				}
@@ -421,8 +421,6 @@ class ControllerCheckoutConfirm extends Controller {
 					'text'  => $text,
 				);
 			}
-
-			$data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
 		} else {
 			$data['redirect'] = $redirect;
             $data['error'] = $error;

@@ -7,6 +7,7 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+        $this->document->addScript('vuelidate/dist/vuelidate.min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		// Required by klarna
@@ -279,63 +280,8 @@ class ControllerCheckoutCheckout extends Controller {
             $json['account'] = '';
         }
 
-//        WARNINGS
-        if (empty($this->session->data['shipping_methods'])) {
-            $json['error_warning'] = sprintf($this->language->get('error_no_shipping'), $this->url->link('information/contact'));
-        } else {
-            $json['error_warning'] = '';
-        }
-
-        if (empty($this->session->data['payment_methods'])) {
-            $json['error_warning'] = sprintf($this->language->get('error_no_payment'), $this->url->link('information/contact'));
-        } else {
-            $json['error_warning'] = '';
-        }
-
         //SHIPPING METHOD
-        if (isset($this->session->data['shipping_address'])) {
-            // Shipping Methods
-            $method_data = array();
-
-            $this->load->model('extension/extension');
-
-            $results = $this->model_extension_extension->getExtensions('shipping');
-
-            foreach ($results as $result) {
-                if ($this->config->get($result['code'] . '_status')) {
-                    $this->load->model('shipping/' . $result['code']);
-
-                    $quote = $this->{'model_shipping_' . $result['code']}->getQuote($this->session->data['shipping_address']);
-
-                    if ($quote) {
-                        $method_data[$result['code']] = array(
-                            'title'      => $quote['title'],
-                            'quote'      => $quote['quote'],
-                            'sort_order' => $quote['sort_order'],
-                            'error'      => $quote['error']
-                        );
-                    }
-                }
-            }
-
-            $sort_order = array();
-
-            foreach ($method_data as $key => $value) {
-                $sort_order[$key] = $value['sort_order'];
-            }
-
-            array_multisort($sort_order, SORT_ASC, $method_data);
-
-            $this->session->data['shipping_methods'] = $method_data;
-        }
-
-        if (isset($this->session->data['shipping_methods'])) {
-            $json['shipping_methods'] = $this->session->data['shipping_methods'];
-        } else {
-            $json['shipping_methods'] = array();
-        }
-
-        $json['code'] = 'free.free';
+        $json['shipping_method'] = 'free.free';
 
 
         if (isset($this->session->data['comment'])) {
@@ -346,86 +292,23 @@ class ControllerCheckoutCheckout extends Controller {
 
 //        END SHIPPING METHOD
 //        PAYMENT METHOD
-        if (isset($this->session->data['payment_address'])) {
-            // Totals
-            $total_data = array();
-            $total = 0;
-            $taxes = $this->cart->getTaxes();
-
-            $this->load->model('extension/extension');
-
-            $sort_order = array();
-
-            $results = $this->model_extension_extension->getExtensions('total');
-
-            foreach ($results as $key => $value) {
-                $sort_order[$key] = $this->config->get($value['code'] . '_sort_order');
-            }
-
-            array_multisort($sort_order, SORT_ASC, $results);
-
-            foreach ($results as $result) {
-                if ($this->config->get($result['code'] . '_status')) {
-                    $this->load->model('total/' . $result['code']);
-
-                    $this->{'model_total_' . $result['code']}->getTotal($total_data, $total, $taxes);
-                }
-            }
-
-            // Payment Methods
-            $method_data = array();
-
-            $this->load->model('extension/extension');
-
-            $results = $this->model_extension_extension->getExtensions('payment');
-
-            $recurring = $this->cart->hasRecurringProducts();
-
-            foreach ($results as $result) {
-                if ($this->config->get($result['code'] . '_status')) {
-                    $this->load->model('payment/' . $result['code']);
-
-                    $method = $this->{'model_payment_' . $result['code']}->getMethod($this->session->data['payment_address'], $total);
-
-                    if ($method) {
-                        if ($recurring) {
-                            if (method_exists($this->{'model_payment_' . $result['code']}, 'recurringPayments') && $this->{'model_payment_' . $result['code']}->recurringPayments()) {
-                                $method_data[$result['code']] = $method;
-                            }
-                        } else {
-                            $method_data[$result['code']] = $method;
-                        }
-                    }
-                }
-            }
-
-            $sort_order = array();
-
-            foreach ($method_data as $key => $value) {
-                $sort_order[$key] = $value['sort_order'];
-            }
-
-            array_multisort($sort_order, SORT_ASC, $method_data);
-
-            $this->session->data['payment_methods'] = $method_data;
-        }
 
         $data['text_payment_method'] = $this->language->get('text_payment_method');
         $data['text_comments'] = $this->language->get('text_comments');
         $data['text_loading'] = $this->language->get('text_loading');
-
         $data['button_continue'] = $this->language->get('button_continue');
 
-        if (isset($this->session->data['payment_methods'])) {
-            $json['payment_methods'] = $this->session->data['payment_methods'];
-        } else {
-            $json['payment_methods'] = array();
-        }
 
         if (isset($this->session->data['payment_method']['code'])) {
             $json['payment_method'] = $this->session->data['payment_method']['code'];
         } else {
             $json['payment_method'] = 'cod';
+        }
+
+        if (isset($this->session->data['payment_method']['title'])) {
+            $json['payment_title'] = $this->session->data['payment_method']['title'];
+        } else {
+            $json['payment_title'] = 'Оплата при получении';
         }
 
         if ($this->config->get('config_checkout_id')) {
@@ -564,11 +447,6 @@ class ControllerCheckoutCheckout extends Controller {
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 
-				unset($this->session->data['shipping_method']);
-				unset($this->session->data['shipping_methods']);
-				unset($this->session->data['payment_method']);
-				unset($this->session->data['payment_methods']);
-
 				// Totals
 				$this->load->model('extension/extension');
 
@@ -627,10 +505,6 @@ class ControllerCheckoutCheckout extends Controller {
 				$this->cart->update($key, $value);
 			}
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
 
 			$this->response->redirect($this->url->link('checkout/checkout'));
@@ -655,10 +529,6 @@ class ControllerCheckoutCheckout extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_remove');
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
 
 			// Totals

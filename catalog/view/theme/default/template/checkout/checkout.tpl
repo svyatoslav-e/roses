@@ -54,9 +54,9 @@
                     <label for="checkout-comment">
                         <input type="text" id="customer-comment" v-model="checkoutData.comment">
                     </label> <br>
-                    <label for="checkout-payment" v-for="(payment, paymentIndex) in checkoutData.payment_methods">
+                    <label for="checkout-payment" v-for="(payment, paymentIndex) in paymentMethods">
                         {{payment.title}}
-                        <input type="radio" :id="payment.code" v-model="checkoutData.payment_method" :value="payment.code">
+                        <input type="radio" :id="payment.code" v-model="checkoutData.payment_method" :value="payment.code" @change="handleChangePayment">
                     </label> <br>
                     <label>
                         <span v-html="checkoutData.text_agree"></span>
@@ -106,21 +106,31 @@
                 checkoutData: null,
                 customer: null,
                 zones: null,
+                paymentMethods: {
+                    cod: {
+                        code: 'cod',
+                        title: 'Оплата при отриманні',
+                    },
+                    free_checkout: {
+                        code: 'free_checkout',
+                        title: 'Оплата на картку',
+                    },
+                }
             }
         },
 
         computed: {
           customerArea() {
-              if(this.zones) {
+              if(this.zones && this.customer.zone_id !== '') {
                   const zoneIndex = this.zones.map(e => e.zone_id).indexOf(this.customer.zone_id);
-                  return zoneIndex ? this.zones[zoneIndex].name : null;
+                  return this.zones[zoneIndex].name;
               } else {
                   return null;
               }
           },
             paymentMethod() {
               if(this.checkoutData) {
-                  return this.checkoutData.payment_methods[this.checkoutData.payment_method].title;
+                  return this.paymentMethods[this.checkoutData.payment_method].title;
               } else {
                   return null;
               }
@@ -132,12 +142,15 @@
         },
 
         methods: {
+            handleChangePayment() {
+                this.checkoutData.payment_title = this.paymentMethod;
+            },
             getCheckoutData() {
                 $.ajax({
                     url: 'index.php?route=checkout/checkout/instance',
                     type: 'post',
                     success: function(json) {
-                        checkoutApp.checkoutData = json
+                        checkoutApp.checkoutData = json;
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
                         console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
@@ -168,7 +181,7 @@
             },
             handleSaveOrder() {
                 console.log('save order');
-                const {payment_method, comment, code} = this.checkoutData;
+                const {payment_method, payment_title, shipping_method, comment} = this.checkoutData;
                 const {firstname, lastname, telephone, email, city, country_id, zone_id, customer_group_id, shipping_address } = this.customer;
                 const preOrderData = {
                     firstname,
@@ -179,9 +192,10 @@
                     country_id,
                     zone_id,
                     payment_method,
+                    payment_title,
                     comment,
                     customer_group_id,
-                    shipping_method: code,
+                    shipping_method,
                     shipping_address,
                 };
                 $.ajax({
@@ -203,7 +217,7 @@
                     url: 'index.php?route=checkout/confirm',
                     dataType: 'json',
                     success: function(json) {
-                        console.log(json);
+                        console.log('CONFIRMED',json);
                         checkoutApp.saveOrder(payment_method);
                     },
                     error: function(xhr, ajaxOptions, thrownError) {
@@ -218,7 +232,8 @@
                     type: 'get',
                     url: `index.php?route=payment/${payment_method}/confirm`,
                     cache: false,
-                    success: function() {
+                    success: function(resp) {
+                        console.log('CREATED',resp);
                         location = checkoutApp.checkoutData.continue;
                     }
                 });

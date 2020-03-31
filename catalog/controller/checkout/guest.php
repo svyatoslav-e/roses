@@ -96,25 +96,6 @@ class ControllerCheckoutGuest extends Controller {
 			$data['zone_id'] = '';
 		}
 
-		$this->load->model('localisation/country');
-
-		$data['countries'] = $this->model_localisation_country->getCountries();
-
-
-        $country_info = $this->model_localisation_country->getCountry('220');
-
-        if ($country_info) {
-            $this->session->data['payment_address']['country'] = $country_info['name'];
-            $this->session->data['payment_address']['iso_code_2'] = $country_info['iso_code_2'];
-            $this->session->data['payment_address']['iso_code_3'] = $country_info['iso_code_3'];
-            $this->session->data['payment_address']['address_format'] = $country_info['address_format'];
-        } else {
-            $this->session->data['payment_address']['country'] = '';
-            $this->session->data['payment_address']['iso_code_2'] = '';
-            $this->session->data['payment_address']['iso_code_3'] = '';
-            $this->session->data['payment_address']['address_format'] = '';
-        }
-
 		$data['shipping_required'] = $this->cart->hasShipping();
 
 		if (isset($this->session->data['guest']['shipping_address'])) {
@@ -201,7 +182,9 @@ class ControllerCheckoutGuest extends Controller {
 			$this->session->data['payment_address']['city'] = $this->request->post['city'];
 			$this->session->data['payment_address']['country_id'] = $this->request->post['country_id'];
 			$this->session->data['payment_address']['zone_id'] = $this->request->post['zone_id'];
-            $this->session->data['payment_method'] = $this->session->data['payment_methods'][$this->request->post['payment_method']];
+            $this->session->data['payment_method']['code'] = $this->request->post['payment_method'];
+            $this->session->data['payment_method']['title'] = $this->request->post['payment_title'];
+
 			$this->load->model('localisation/country');
 
 			$country_info = $this->model_localisation_country->getCountry($this->request->post['country_id']);
@@ -268,16 +251,10 @@ class ControllerCheckoutGuest extends Controller {
 
             if (!isset($this->request->post['shipping_method'])) {
                 $json['error']['warning'] = $this->language->get('error_shipping');
-            } else {
-                $shipping = explode('.', $this->request->post['shipping_method']);
-
-                if (!isset($shipping[0]) || !isset($shipping[1]) || !isset($this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]])) {
-                    $json['error']['warning'] = $this->language->get('error_shipping');
-                }
             }
 
             if (!$json) {
-                $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+                $this->session->data['shipping_method'] = $this->request->post['shipping_method'];
 
                 $this->session->data['comment'] = strip_tags($this->request->post['comment']);
 
