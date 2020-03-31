@@ -7,7 +7,8 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-        $this->document->addScript('vuelidate/dist/vuelidate.min.js');
+        $this->document->addScript('catalog/view/javascript/vuelidate/dist/vuelidate.min.js');
+        $this->document->addScript('catalog/view/javascript/vuelidate/dist/validators.min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		// Required by klarna

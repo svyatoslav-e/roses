@@ -32,35 +32,44 @@
                 <h3>{{ checkoutData.text_checkout_payment_address }}</h3>
                 <form id="checkout-form" v-if="customer">
                     <label for="customer-firstname">
-                        <input type="text" id="customer-name" v-model="customer.firstname">
+                        <input type="text" id="customer-name" v-model="$v.customer.firstname.$model">
+                        <span class="error" v-if="$v.customer.firstname.$error">Field is invalid</span>
                     </label> <br>
                     <label for="customer-lastname">
-                        <input type="text" id="customer-name" v-model="customer.lastname">
+                        <input type="text" id="customer-name" v-model="$v.customer.lastname.$model">
+                        <span class="error" v-if="$v.customer.lastname.$error">Field is invalid</span>
                     </label> <br>
                     <label for="customer-telephone">
-                        <input type="text" id="customer-name" v-model="customer.telephone">
+                        <input type="text" id="customer-name" v-model="$v.customer.telephone.$model">
+                        <span class="error" v-if="$v.customer.telephone.$error">Field is invalid</span>
                     </label> <br>
                     <label for="customer-email">
-                        <input type="text" id="customer-name" v-model="customer.email">
+                        <input type="text" id="customer-name" v-model="$v.customer.email.$model">
+                        <span class="error" v-if="$v.customer.email.$error">Field is invalid</span>
                     </label> <br>
                     <label for="">
-                        <select v-model="customer.zone_id">
+                        <select v-model="$v.customer.zone_id.$model">
                             <option :value="zone.zone_id" v-for="zone in zones" :selected="customer.zone_id === zone.zone_id">{{zone.name}}</option>
                         </select>
+                        <span class="error" v-if="$v.customer.zone_id.$error">Field is invalid</span>
                     </label><br>
                     <label for="customer-city">
-                        <input type="text" id="customer-name" v-model="customer.city">
+                        <input type="text" id="customer-name" v-model="$v.customer.city.$model">
+                        <span class="error" v-if="$v.customer.city.$error">Field is invalid</span>
                     </label> <br>
                     <label for="checkout-comment">
-                        <input type="text" id="customer-comment" v-model="checkoutData.comment">
+                        <input type="text" id="customer-comment" v-model="$v.checkoutData.comment.$model">
+                        <span class="error" v-if="$v.checkoutData.comment.$error">Field is invalid</span>
                     </label> <br>
                     <label for="checkout-payment" v-for="(payment, paymentIndex) in paymentMethods">
                         {{payment.title}}
-                        <input type="radio" :id="payment.code" v-model="checkoutData.payment_method" :value="payment.code" @change="handleChangePayment">
+                        <input type="radio" :id="payment.code" v-model="$v.checkoutData.payment_method.$model" :value="payment.code" @change="handleChangePayment">
+                        <span class="error" v-if="$v.checkoutData.payment_method.$error">Field is invalid</span>
                     </label> <br>
                     <label>
                         <span v-html="checkoutData.text_agree"></span>
-                        <input type="checkbox" v-model="checkoutData.agree">
+                        <input type="checkbox" v-model="$v.checkoutData.agree.$model">
+                        <span class="error" v-if="$v.checkoutData.agree.$error">Field is invalid</span>
                     </label>
                 </form>
                 <button @click="handleSaveOrder">SAVE ORDER</button>
@@ -99,8 +108,11 @@
 </script>
 
 <script>
+    var validationMixin = window.vuelidate.validationMixin;
+    const { required, minLength, email, numeric } = window.validators;
     var checkoutApp = new Vue({
         el: '#checkout-app',
+        mixins: [validationMixin],
         data() {
             return {
                 checkoutData: null,
@@ -115,6 +127,43 @@
                         code: 'free_checkout',
                         title: 'Оплата на картку',
                     },
+                }
+            }
+        },
+
+        validations: {
+            customer: {
+                firstname: {
+                    required,
+                },
+                lastname: {
+                    required,
+                },
+                telephone: {
+                    required,
+                    numeric,
+                },
+                email: {
+                    required,
+                    email,
+                },
+                zone_id: {
+                    required,
+                },
+                city: {
+                    required,
+                }
+            },
+            checkoutData: {
+                comment: {
+                    required,
+                    numeric,
+                },
+                payment_method: {
+                    required,
+                },
+                agree: {
+                    required,
                 }
             }
         },
@@ -180,6 +229,11 @@
                 });
             },
             handleSaveOrder() {
+                if(this.$v.$invalid) {
+                   console.log('VALIDATION');
+                    this.$v.$touch();
+                   return;
+                }
                 console.log('save order');
                 const {payment_method, payment_title, shipping_method, comment} = this.checkoutData;
                 const {firstname, lastname, telephone, email, city, country_id, zone_id, customer_group_id, shipping_address } = this.customer;
