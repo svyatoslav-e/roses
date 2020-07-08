@@ -1,5 +1,5 @@
 <?php if (count($languages) > 1) { ?>
-          <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="js-lang">
+          <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" class="js-lang header-main__lang-form">
             <div class="header-main__lang">
               <ul class="header-main__lang_list">
                 <?php foreach ($languages as $language) { ?>

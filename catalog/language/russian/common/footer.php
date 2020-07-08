@@ -20,3 +20,4 @@ $_['call']              = 'Позвонить';
 $_['about_us_text'] = 'О нас';
 $_['delivery_inf_text'] = 'Доставка';
 $_['payment_inf_text'] = 'Акции';
+$_['terms_text'] = 'Условия использования';

@@ -225,7 +225,7 @@
 }
 @media (min-width: 426px) and (max-width: 1024px) {
   .header-main__menu ul li a {
-    font-size: 13px;
+    font-size: 12px;
     padding: 0 8px;
   }
 }
@@ -309,6 +309,7 @@
 @media (min-width: 426px) {
   .header-main__lang {
     font-size: 15px;
+    margin: 0 -20px;
   }
 }
 .header-main__lang_list {
