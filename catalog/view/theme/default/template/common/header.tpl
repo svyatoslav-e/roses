@@ -74,7 +74,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             <!--LOGO-->
             <div class="col-xs-4 col-sm-6 col-lg-4">
                 <div id="logo" class="header-main__logo">
-                    <h1 class="header-main__logo_wrapper">
+                    <h5 class="header-main__logo_wrapper">
                         <a href="<?php echo $home; ?>" class="header-main__logo_link">
                             <?php if ($logo) { ?>
                                 <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"
@@ -84,7 +84,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                             <span class="header-main__logo_link-at hidden-xs">&</span>
                             <span class="header-main__logo_link-rose hidden-xs">Roses</span>
                         </a>
-                    </h1>
+                    </h5>
                 </div>
             </div>
             <!--LANG BLOCK MOBILE-->
