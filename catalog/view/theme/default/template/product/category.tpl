@@ -17,8 +17,6 @@
 
 
         <?php if ($categories) { ?>
-
-
             <div class="col-sm-12 hidden-xs hidden-sm">
                 <ul class="category_list">
                     <?php foreach ($categories as $category) { ?>
@@ -39,7 +37,8 @@
             <?php $class = 'col-lg-12'; ?>
         <?php } ?>
 
-        <div id="content" class="<?php echo $class; ?>"><?php echo $content_top; ?>
+        <div id="content" class="<?php echo $class; ?>">
+            <?php echo $content_top; ?>
             <?php if ($products) { ?>
                 <?php foreach ($products as $product) { ?>
 
@@ -112,20 +111,21 @@
                                                class="btn btn-primary"><?php echo $button_continue; ?></a></div>
                 </div>
             <?php } ?>
-            <?php if ($thumb || $description) { ?>
-                <div class="row">
-                    <?php if ($thumb) { ?>
-                        <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>"
-                                                   title="<?php echo $heading_title; ?>" class="img-thumbnail"/>
-                        </div>
-                    <?php } ?>
-                    <?php if ($description) { ?>
-                        <div class="col-sm-12"><?php echo $description; ?></div>
-                    <?php } ?>
+        </div>
+        <?php echo $column_right; ?>
+    </div>
+    <?php if ($thumb || $description) { ?>
+        <div class="row">
+            <?php if ($thumb) { ?>
+                <div class="col-sm-2"><img src="<?php echo $thumb; ?>" alt="<?php echo $heading_title; ?>"
+                                           title="<?php echo $heading_title; ?>" class="img-thumbnail"/>
                 </div>
-
             <?php } ?>
-            <?php echo $content_bottom; ?></div>
-        <?php echo $column_right; ?></div>
+            <?php if ($description) { ?>
+                <div class="col-sm-12"><?php echo $description; ?></div>
+            <?php } ?>
+        </div>
+    <?php } ?>
+    <?php echo $content_bottom; ?>
 </div>
 <?php echo $footer; ?>
