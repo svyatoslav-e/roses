@@ -80,15 +80,18 @@ class ControllerCheckoutShippingMethod extends Controller {
 		$this->load->language('checkout/checkout');
 
 		$json = array();
+        $json['success'] = true;
 
 		// Validate if shipping is required. If not the customer should not have reached this page.
 		if (!$this->cart->hasShipping()) {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+            $json['success'] = false;
 		}
 
 		// Validate if shipping address has been set.
 		if (!isset($this->session->data['shipping_address'])) {
 			$json['redirect'] = $this->url->link('checkout/checkout', '', 'SSL');
+            $json['success'] = false;
 		}
 
 		// Validate cart has products and has stock.
@@ -125,11 +128,9 @@ class ControllerCheckoutShippingMethod extends Controller {
 			}
 		}
 
-		if (!$json) {
-			$this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+        $this->session->data['shipping_method'] = $this->session->data['shipping_methods'][$shipping[0]]['quote'][$shipping[1]];
+        $this->session->data['comment'] = strip_tags($this->request->post['comment']);
 
-			$this->session->data['comment'] = strip_tags($this->request->post['comment']);
-		}
 
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
