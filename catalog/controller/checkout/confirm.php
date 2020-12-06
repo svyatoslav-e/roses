@@ -4,16 +4,19 @@ class ControllerCheckoutConfirm extends Controller {
         $this->load->language('checkout/checkout');
 		$data['text_info_conf'] = $this->language->get('text_info_conf');
 		$redirect = '';
+		$error = '';
 
 		if ($this->cart->hasShipping()) {
 			// Validate if shipping address has been set.
 			if (!isset($this->session->data['shipping_address'])) {
 				$redirect = $this->url->link('checkout/checkout', '', 'SSL');
+                $error = 'shipping_address';
 			}
 
 			// Validate if shipping method has been set.
 			if (!isset($this->session->data['shipping_method'])) {
 				$redirect = $this->url->link('checkout/checkout', '', 'SSL');
+                $error = 'shipping_method';
 			}
 		} else {
 			unset($this->session->data['shipping_address']);
@@ -24,16 +27,19 @@ class ControllerCheckoutConfirm extends Controller {
 		// Validate if payment address has been set.
 		if (!isset($this->session->data['payment_address'])) {
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
+            $error = 'payment_address';
 		}
 
 		// Validate if payment method has been set.
 		if (!isset($this->session->data['payment_method'])) {
 			$redirect = $this->url->link('checkout/checkout', '', 'SSL');
+            $error = 'payment_method';
 		}
 
 		// Validate cart has products and has stock.
 		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
 			$redirect = $this->url->link('checkout/cart');
+            $error = 'vouchers';
 		}
 
 		// Validate minimum quantity requirements.
@@ -50,7 +56,7 @@ class ControllerCheckoutConfirm extends Controller {
 
 			if ($product['minimum'] > $product_total) {
 				$redirect = $this->url->link('checkout/cart');
-
+                $error = 'minimum';
 				break;
 			}
 		}
@@ -122,17 +128,11 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['lastname'] = $this->session->data['guest']['lastname'];
 				$order_data['email'] = $this->session->data['guest']['email'];
 				$order_data['telephone'] = $this->session->data['guest']['telephone'];
-				// $order_data['fax'] = $this->session->data['guest']['fax'];
-				$order_data['custom_field'] = $this->session->data['guest']['custom_field'];
 			}
 
 			$order_data['payment_firstname'] = $this->session->data['payment_address']['firstname'];
 			$order_data['payment_lastname'] = $this->session->data['payment_address']['lastname'];
-			// $order_data['payment_company'] = $this->session->data['payment_address']['company'];
-			// $order_data['payment_address_1'] = $this->session->data['payment_address']['address_1'];
-			// $order_data['payment_address_2'] = $this->session->data['payment_address']['address_2'];
 			$order_data['payment_city'] = $this->session->data['payment_address']['city'];
-			// $order_data['payment_postcode'] = $this->session->data['payment_address']['postcode'];
 			$order_data['payment_zone'] = $this->session->data['payment_address']['zone'];
 			$order_data['payment_zone_id'] = $this->session->data['payment_address']['zone_id'];
 			$order_data['payment_country'] = $this->session->data['payment_address']['country'];
@@ -155,11 +155,7 @@ class ControllerCheckoutConfirm extends Controller {
 			if ($this->cart->hasShipping()) {
 				$order_data['shipping_firstname'] = $this->session->data['shipping_address']['firstname'];
 				$order_data['shipping_lastname'] = $this->session->data['shipping_address']['lastname'];
-				// $order_data['shipping_company'] = $this->session->data['shipping_address']['company'];
-				// $order_data['shipping_address_1'] = $this->session->data['shipping_address']['address_1'];
-				// $order_data['shipping_address_2'] = $this->session->data['shipping_address']['address_2'];
 				$order_data['shipping_city'] = $this->session->data['shipping_address']['city'];
-				// $order_data['shipping_postcode'] = $this->session->data['shipping_address']['postcode'];
 				$order_data['shipping_zone'] = $this->session->data['shipping_address']['zone'];
 				$order_data['shipping_zone_id'] = $this->session->data['shipping_address']['zone_id'];
 				$order_data['shipping_country'] = $this->session->data['shipping_address']['country'];
@@ -167,14 +163,14 @@ class ControllerCheckoutConfirm extends Controller {
 				$order_data['shipping_address_format'] = $this->session->data['shipping_address']['address_format'];
 				$order_data['shipping_custom_field'] = (isset($this->session->data['shipping_address']['custom_field']) ? $this->session->data['shipping_address']['custom_field'] : array());
 
-				if (isset($this->session->data['shipping_method']['title'])) {
-					$order_data['shipping_method'] = $this->session->data['shipping_method']['title'];
+				if (isset($this->session->data['shipping_method'])) {
+					$order_data['shipping_method'] = $this->session->data['shipping_method'];
 				} else {
 					$order_data['shipping_method'] = '';
 				}
 
-				if (isset($this->session->data['shipping_method']['code'])) {
-					$order_data['shipping_code'] = $this->session->data['shipping_method']['code'];
+				if (isset($this->session->data['shipping_method'])) {
+					$order_data['shipping_code'] = $this->session->data['shipping_method'];
 				} else {
 					$order_data['shipping_code'] = '';
 				}
@@ -404,7 +400,6 @@ class ControllerCheckoutConfirm extends Controller {
 
 			foreach ($order_data['totals'] as $total) {
                 if($total['code'] == 'total') {
-
                     if ($total['value'] > 1000 ) {
                         $text = $this->currency->format($total['value']*0.90);
                     } elseif($total['value'] > 700){
@@ -426,16 +421,12 @@ class ControllerCheckoutConfirm extends Controller {
 					'text'  => $text,
 				);
 			}
-
-			$data['payment'] = $this->load->controller('payment/' . $this->session->data['payment_method']['code']);
 		} else {
 			$data['redirect'] = $redirect;
+            $data['error'] = $error;
 		}
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/confirm.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/confirm.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/confirm.tpl', $data));
-		}
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($data));
 	}
 }

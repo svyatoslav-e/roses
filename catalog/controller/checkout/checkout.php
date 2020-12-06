@@ -1,36 +1,14 @@
 <?php
 class ControllerCheckoutCheckout extends Controller {
 	public function index() {
-		// Validate cart has products and has stock.
-		if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
-			$this->response->redirect($this->url->link('checkout/cart'));
-		}
-
-		// print_r($this->cart);
-
-		// Validate minimum quantity requirements.
-		$products = $this->cart->getProducts();
-
-		foreach ($products as $product) {
-			$product_total = 0;
-
-			foreach ($products as $product_2) {
-				if ($product_2['product_id'] == $product['product_id']) {
-					$product_total += $product_2['quantity'];
-				}
-			}
-
-			if ($product['minimum'] > $product_total) {
-				$this->response->redirect($this->url->link('checkout/cart'));
-			}
-		}
-
 		$this->load->language('checkout/checkout');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
+        $this->document->addScript('catalog/view/javascript/vuelidate/dist/vuelidate.min.js');
+        $this->document->addScript('catalog/view/javascript/vuelidate/dist/validators.min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		// Required by klarna
@@ -45,11 +23,6 @@ class ControllerCheckoutCheckout extends Controller {
 			'href' => $this->url->link('common/home')
 		);
 
-		// $data['breadcrumbs'][] = array(
-		// 	'text' => $this->language->get('text_cart'),
-		// 	'href' => $this->url->link('checkout/cart')
-		// );
-
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('checkout/checkout', '', 'SSL')
@@ -57,13 +30,7 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$data['heading_title'] = $this->language->get('heading_title');
 
-		$data['text_checkout_option'] = $this->language->get('text_checkout_option');
-		$data['text_checkout_account'] = $this->language->get('text_checkout_account');
-		$data['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
-		$data['text_checkout_shipping_address'] = $this->language->get('text_checkout_shipping_address');
-		$data['text_checkout_shipping_method'] = $this->language->get('text_checkout_shipping_method');
-		$data['text_checkout_payment_method'] = $this->language->get('text_checkout_payment_method');
-		$data['text_checkout_confirm'] = $this->language->get('text_checkout_confirm');
+
 
 		if (isset($this->session->data['error'])) {
 			$data['error_warning'] = $this->session->data['error'];
@@ -72,124 +39,175 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['error_warning'] = '';
 		}
 
-		// PRODUCTS
-		$this->load->language('checkout/cart');
+		$data['column_left'] = $this->load->controller('common/column_left');
+		$data['column_right'] = $this->load->controller('common/column_right');
+		$data['content_top'] = $this->load->controller('common/content_top');
+		$data['content_bottom'] = $this->load->controller('common/content_bottom');
+		$data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
 
-			$data['column_image'] = $this->language->get('column_image');
-			$data['column_name'] = $this->language->get('column_name');
-			$data['column_model'] = $this->language->get('column_model');
-			$data['column_quantity'] = $this->language->get('column_quantity');
-			$data['column_price'] = $this->language->get('column_price');
-			$data['column_total'] = $this->language->get('column_total');
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
+			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/checkout.tpl', $data));
+		} else {
+			$this->response->setOutput($this->load->view('default/template/checkout/checkout.tpl', $data));
+		}
+	}
 
-			$data['button_update'] = $this->language->get('button_update');
-			$data['button_remove'] = $this->language->get('button_remove');
-			$data['button_shopping'] = $this->language->get('button_shopping');
-			$data['button_checkout'] = $this->language->get('button_checkout');
-            $data['text_sale'] = $this->language->get('text_sale');
+    public function instance() {
+        $this->load->language('checkout/checkout');
+        $json = array();
 
-			$data['action'] = $this->url->link('checkout/checkout/edit', '', true);
+        $json['text_checkout_option'] = $this->language->get('text_checkout_option');
+        $json['text_checkout_account'] = $this->language->get('text_checkout_account');
+        $json['text_checkout_payment_address'] = $this->language->get('text_checkout_payment_address');
+        $json['text_checkout_shipping_address'] = $this->language->get('text_checkout_shipping_address');
+        $json['text_checkout_shipping_method'] = $this->language->get('text_checkout_shipping_method');
+        $json['text_checkout_payment_method'] = $this->language->get('text_checkout_payment_method');
+        $json['text_checkout_confirm'] = $this->language->get('text_checkout_confirm');
+        $json['text_shipping_method'] = $this->language->get('text_shipping_method');
+        $json['text_comments'] = $this->language->get('text_comments');
+        $json['text_loading'] = $this->language->get('text_loading');
+        $json['button_continue'] = $this->language->get('button_continue');
+        $json['text_info_conf'] = $this->language->get('text_info_conf');
+        $json['continue'] = $this->url->link('checkout/success');
+
+        // Validate cart has products and has stock.
+        if ((!$this->cart->hasProducts() && empty($this->session->data['vouchers'])) || (!$this->cart->hasStock() && !$this->config->get('config_stock_checkout'))) {
+            $this->response->redirect($this->url->link('checkout/cart'));
+        }
+
+        // Validate minimum quantity requirements.
+        $products = $this->cart->getProducts();
+
+        foreach ($products as $product) {
+            $product_total = 0;
+
+            foreach ($products as $product_2) {
+                if ($product_2['product_id'] == $product['product_id']) {
+                    $product_total += $product_2['quantity'];
+                }
+            }
+
+            if ($product['minimum'] > $product_total) {
+                $this->response->redirect($this->url->link('checkout/cart'));
+            }
+        }
+
+        // PRODUCTS
+        $this->load->language('checkout/cart');
+
+        $json['column_image'] = $this->language->get('column_image');
+        $json['column_name'] = $this->language->get('column_name');
+        $json['column_model'] = $this->language->get('column_model');
+        $json['column_quantity'] = $this->language->get('column_quantity');
+        $json['column_price'] = $this->language->get('column_price');
+        $json['column_total'] = $this->language->get('column_total');
+        $json['button_update'] = $this->language->get('button_update');
+        $json['button_remove'] = $this->language->get('button_remove');
+        $json['button_shopping'] = $this->language->get('button_shopping');
+        $json['button_checkout'] = $this->language->get('button_checkout');
+        $json['text_sale'] = $this->language->get('text_sale');
+        $json['action'] = $this->url->link('checkout/checkout/edit', '', true);
 
         $this->load->model('tool/image');
-		$this->load->model('tool/upload');
+        $this->load->model('tool/upload');
 
-			$data['products'] = array();
+        $json['products'] = array();
 
-			$products = $this->cart->getProducts();
+        $products = $this->cart->getProducts();
 
-			foreach ($products as $product) {
-				$product_total = 0;
+        foreach ($products as $product) {
+            $product_total = 0;
 
-				foreach ($products as $product_2) {
-					if ($product_2['product_id'] == $product['product_id']) {
-						$product_total += $product_2['quantity'];
-					}
-				}
+            foreach ($products as $product_2) {
+                if ($product_2['product_id'] == $product['product_id']) {
+                    $product_total += $product_2['quantity'];
+                }
+            }
 
-				if ($product['minimum'] > $product_total) {
-					$data['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
-				}
+            if ($product['minimum'] > $product_total) {
+                $data['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
+            }
 
-				if ($product['image']) {
-					$image = $this->model_tool_image->resize($product['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height'));
-				} else {
-					$image = '';
-				}
+            if ($product['image']) {
+                $image = $this->model_tool_image->resize($product['image'], $this->config->get('config_image_cart_width'), $this->config->get('config_image_cart_height'));
+            } else {
+                $image = '';
+            }
 
-				$option_data = array();
+            $option_data = array();
 
-				foreach ($product['option'] as $option) {
-					if ($option['type'] != 'file') {
-						$value = $option['value'];
-					} else {
-						$upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
+            foreach ($product['option'] as $option) {
+                if ($option['type'] != 'file') {
+                    $value = $option['value'];
+                } else {
+                    $upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
 
-						if ($upload_info) {
-							$value = $upload_info['name'];
-						} else {
-							$value = '';
-						}
-					}
+                    if ($upload_info) {
+                        $value = $upload_info['name'];
+                    } else {
+                        $value = '';
+                    }
+                }
 
-					$option_data[] = array(
-						'name'  => $option['name'],
-						'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
-					);
-				}
+                $option_data[] = array(
+                    'name'  => $option['name'],
+                    'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+                );
+            }
 
-				// Display prices
-				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-					$price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
-				} else {
-					$price = false;
-				}
+            // Display prices
+            if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+                $price = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')));
+            } else {
+                $price = false;
+            }
 
-				// Display prices
-				if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
-					$total = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity']);
-				} else {
-					$total = false;
-				}
+            // Display prices
+            if (($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) {
+                $total = $this->currency->format($this->tax->calculate($product['price'], $product['tax_class_id'], $this->config->get('config_tax')) * $product['quantity']);
+            } else {
+                $total = false;
+            }
 
-				$recurring = '';
+            $recurring = '';
 
-				if ($product['recurring']) {
-					$frequencies = array(
-						'day'        => $this->language->get('text_day'),
-						'week'       => $this->language->get('text_week'),
-						'semi_month' => $this->language->get('text_semi_month'),
-						'month'      => $this->language->get('text_month'),
-						'year'       => $this->language->get('text_year'),
-					);
+            if ($product['recurring']) {
+                $frequencies = array(
+                    'day'        => $this->language->get('text_day'),
+                    'week'       => $this->language->get('text_week'),
+                    'semi_month' => $this->language->get('text_semi_month'),
+                    'month'      => $this->language->get('text_month'),
+                    'year'       => $this->language->get('text_year'),
+                );
 
-					if ($product['recurring']['trial']) {
-						$recurring = sprintf($this->language->get('text_trial_description'), $this->currency->format($this->tax->calculate($product['recurring']['trial_price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['trial_cycle'], $frequencies[$product['recurring']['trial_frequency']], $product['recurring']['trial_duration']) . ' ';
-					}
+                if ($product['recurring']['trial']) {
+                    $recurring = sprintf($this->language->get('text_trial_description'), $this->currency->format($this->tax->calculate($product['recurring']['trial_price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['trial_cycle'], $frequencies[$product['recurring']['trial_frequency']], $product['recurring']['trial_duration']) . ' ';
+                }
 
-					if ($product['recurring']['duration']) {
-						$recurring .= sprintf($this->language->get('text_payment_description'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
-					} else {
-						$recurring .= sprintf($this->language->get('text_payment_cancel'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
-					}
-				}
+                if ($product['recurring']['duration']) {
+                    $recurring .= sprintf($this->language->get('text_payment_description'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
+                } else {
+                    $recurring .= sprintf($this->language->get('text_payment_cancel'), $this->currency->format($this->tax->calculate($product['recurring']['price'] * $product['quantity'], $product['tax_class_id'], $this->config->get('config_tax'))), $product['recurring']['cycle'], $frequencies[$product['recurring']['frequency']], $product['recurring']['duration']);
+                }
+            }
 
-				$data['products'][] = array(
-					'key'       => $product['key'],
-					'thumb'     => $image,
-					'name'      => $product['name'],
-					'model'     => $product['model'],
-					'option'    => $option_data,
-					'recurring' => $recurring,
-					'quantity'  => $product['quantity'],
-					'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
-					'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
-					'price'     => $price,
-					'total'     => $total,
-					'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
-				);
-			}
-		// END Products
-
+            $json['products'][] = array(
+                'key'       => $product['key'],
+                'thumb'     => $image,
+                'name'      => $product['name'],
+                'model'     => $product['model'],
+                'option'    => $option_data,
+                'recurring' => $recurring,
+                'quantity'  => $product['quantity'],
+                'stock'     => $product['stock'] ? true : !(!$this->config->get('config_stock_checkout') || $this->config->get('config_stock_warning')),
+                'reward'    => ($product['reward'] ? sprintf($this->language->get('text_points'), $product['reward']) : ''),
+                'price'     => $price,
+                'total'     => $total,
+                'href'      => $this->url->link('product/product', 'product_id=' . $product['product_id'])
+            );
+        }
+        // END Products
         // Totals
         $this->load->model('extension/extension');
 
@@ -226,7 +244,7 @@ class ControllerCheckoutCheckout extends Controller {
             array_multisort($sort_order, SORT_ASC, $total_data);
         }
 
-        $data['totals'] = array();
+        $json['totals'] = array();
 
         foreach ($total_data as $result) {
 
@@ -240,46 +258,83 @@ class ControllerCheckoutCheckout extends Controller {
                     $text = $this->currency->format($result['value']);
                 }
 
-                $data['subtotal_title'] = $result['title'];
-                $data['subtotal_value'] = $text;
+                $json['subtotal_title'] = $result['title'];
+                $json['subtotal_value'] = $text;
 
             }else{
                 $text = $this->currency->format($result['value']);
-                $data['total_title'] = $result['title'];
-                $data['total_value'] = $text;
+                $json['total_title'] = $result['title'];
+                $json['total_value'] = $text;
             }
 
-            $data['totals'][] = array(
+            $json['totals'][] = array(
                 'title' => $result['title'],
                 'text'  => $text,
             );
         }
 
-		$data['logged'] = $this->customer->isLogged();
+        $json['logged'] = $this->customer->isLogged();
 
-		if (isset($this->session->data['account'])) {
-			$data['account'] = $this->session->data['account'];
-		} else {
-			$data['account'] = '';
-		}
+        if (isset($this->session->data['account'])) {
+            $json['account'] = $this->session->data['account'];
+        } else {
+            $json['account'] = '';
+        }
 
-		$data['shipping_required'] = $this->cart->hasShipping();
+        //SHIPPING METHOD
+        $json['shipping_method'] = 'free.free';
 
-		// print_r($data['shipping_required']);
 
-		$data['column_left'] = $this->load->controller('common/column_left');
-		$data['column_right'] = $this->load->controller('common/column_right');
-		$data['content_top'] = $this->load->controller('common/content_top');
-		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+        if (isset($this->session->data['comment'])) {
+            $json['comment'] = $this->session->data['comment'];
+        } else {
+            $json['comment'] = '';
+        }
 
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/checkout/checkout.tpl')) {
-			$this->response->setOutput($this->load->view($this->config->get('config_template') . '/template/checkout/checkout.tpl', $data));
-		} else {
-			$this->response->setOutput($this->load->view('default/template/checkout/checkout.tpl', $data));
-		}
-	}
+//        END SHIPPING METHOD
+//        PAYMENT METHOD
+
+        $data['text_payment_method'] = $this->language->get('text_payment_method');
+        $data['text_comments'] = $this->language->get('text_comments');
+        $data['text_loading'] = $this->language->get('text_loading');
+        $data['button_continue'] = $this->language->get('button_continue');
+
+
+        if (isset($this->session->data['payment_method']['code'])) {
+            $json['payment_method'] = $this->session->data['payment_method']['code'];
+        } else {
+            $json['payment_method'] = 'cod';
+        }
+
+        if (isset($this->session->data['payment_method']['title'])) {
+            $json['payment_title'] = $this->session->data['payment_method']['title'];
+        } else {
+            $json['payment_title'] = 'Оплата при получении';
+        }
+
+        if ($this->config->get('config_checkout_id')) {
+            $this->load->model('catalog/information');
+
+            $information_info = $this->model_catalog_information->getInformation($this->config->get('config_checkout_id'));
+
+            if ($information_info) {
+                $json['text_agree'] = sprintf($this->language->get('text_agree'), $this->url->link('information/information/agree', 'information_id=' . $this->config->get('config_checkout_id'), 'SSL'), $information_info['title'], $information_info['title']);
+            } else {
+                $json['text_agree'] = '';
+            }
+        } else {
+            $json['text_agree'] = '';
+        }
+
+        if (isset($this->session->data['agree'])) {
+            $json['agree'] = $this->session->data['agree'];
+        } else {
+            $json['agree'] = '';
+        }
+
+        $this->response->addHeader('Content-Type: application/json');
+        $this->response->setOutput(json_encode($json));
+    }
 
 	public function country() {
 		$json = array();
@@ -393,11 +448,6 @@ class ControllerCheckoutCheckout extends Controller {
 
 				$json['success'] = sprintf($this->language->get('text_success'), $this->url->link('product/product', 'product_id=' . $this->request->post['product_id']), $product_info['name'], $this->url->link('checkout/cart'));
 
-				unset($this->session->data['shipping_method']);
-				unset($this->session->data['shipping_methods']);
-				unset($this->session->data['payment_method']);
-				unset($this->session->data['payment_methods']);
-
 				// Totals
 				$this->load->model('extension/extension');
 
@@ -456,10 +506,6 @@ class ControllerCheckoutCheckout extends Controller {
 				$this->cart->update($key, $value);
 			}
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
 
 			$this->response->redirect($this->url->link('checkout/checkout'));
@@ -484,10 +530,6 @@ class ControllerCheckoutCheckout extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_remove');
 
-			unset($this->session->data['shipping_method']);
-			unset($this->session->data['shipping_methods']);
-			unset($this->session->data['payment_method']);
-			unset($this->session->data['payment_methods']);
 			unset($this->session->data['reward']);
 
 			// Totals

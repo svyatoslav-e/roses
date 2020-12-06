@@ -83,6 +83,14 @@
     overflow-y: auto;
     overflow-x: hidden;
     height: calc(100% - 250px);
+
+    @media (max-width: $beforeMedium) {
+      height: calc(100% - 270px);
+    }
+
+    @media (max-width: $small) {
+      height: calc(100% - 270px);
+    }
   }
 
   &__product-item {
@@ -210,7 +218,13 @@
     height: 100px;
     justify-content: center;
     align-items: center;
-    //background: $gray;
+    @media (max-width: $beforeMedium) {
+      margin-bottom: 70px;
+    }
+
+    @media (max-width: $small) {
+      margin-bottom: 70px;
+    }
   }
 
   /* width */
