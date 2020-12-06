@@ -24,3 +24,4 @@ $_['call']              = 'Зателефонувати';
 $_['about_us_text'] = 'Про нас';
 $_['delivery_inf_text'] = 'Доставка';
 $_['payment_inf_text'] = 'Акції';
+$_['terms_text'] = 'Умови користування';

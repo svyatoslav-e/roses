@@ -82,7 +82,7 @@
   &__product-list {
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100% - 200px);
+    height: calc(100% - 250px);
 
     @media (max-width: $beforeMedium) {
       height: calc(100% - 270px);
@@ -196,7 +196,7 @@
 
   &__footer {
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 20px;
     right: 20px;
   }

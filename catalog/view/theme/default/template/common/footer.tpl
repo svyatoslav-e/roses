@@ -17,18 +17,16 @@
       <?php if ($informations) { ?>
       <div class="col-sm-3">
         <h5><i class="fa fa-info-circle" aria-hidden="true"></i>  <?php echo $text_information; ?></h5>
-            <ul class="list-unstyled" id="blog">
+            <ul class="list-unstyled">
                 <li>
                     <script src="https://apis.google.com/js/platform.js"></script>
                     <div class="g-ytsubscribe" data-channelid="UCN6dadFJR5QR6fcOxNvYukA" data-layout="default" data-count="hidden">
                     </div></li>
                 <li><a href="<?=$payment_inf; ?>"><?=$payment_inf_text; ?></a></li>
+                <li><a href="<?=$terms; ?>"><?=$terms_text; ?></a></li>
             </ul>
       </div>
       <?php } ?>
-      <div class="col-sm-6 text-center footer__facebook">
-        <div class="fb-page" data-href="https://www.facebook.com/fruitsandrosescomua" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/fruitsandrosescomua" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/fruitsandrosescomua">Fruits&amp;Roses</a></blockquote></div>
-      </div>
     </div>
     <hr>
     <p><?php echo $powered; ?></p>

@@ -74,7 +74,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
             <!--LOGO-->
             <div class="col-xs-4 col-sm-6 col-lg-4">
                 <div id="logo" class="header-main__logo">
-                    <h1 class="header-main__logo_wrapper">
+                    <h5 class="header-main__logo_wrapper">
                         <a href="<?php echo $home; ?>" class="header-main__logo_link">
                             <?php if ($logo) { ?>
                                 <img src="<?php echo $logo; ?>" title="<?php echo $name; ?>" alt="<?php echo $name; ?>"
@@ -84,7 +84,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                             <span class="header-main__logo_link-at hidden-xs">&</span>
                             <span class="header-main__logo_link-rose hidden-xs">Roses</span>
                         </a>
-                    </h1>
+                    </h5>
                 </div>
             </div>
             <!--LANG BLOCK MOBILE-->
@@ -109,7 +109,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
 <div class="container">
     <div class="row">
         <!--Main menu-->
-        <div class="col-sm-12 col-md-10">
+        <div class="col-sm-12 col-md-11">
             <nav id="menu" class="header-main__menu">
                 <div class="navbar-header">
                     <span id="category" class="visible-xs header-main__menu_title"><?php echo $text_category; ?></span>
@@ -143,12 +143,12 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                         <li class="special-item">
                             <a href="<?= $videos; ?>"><?= $videos_title; ?></a>
                         </li>
-                        <li class="special-item"><a href="<?= $contact; ?>"><?= $text_contact; ?></a></li>
+                        <li class="special-item" id="blog"><a href="<?= $contact; ?>"><?= $text_contact; ?></a></li>
                     </ul>
                 </div>
             </nav>
         </div>
-        <div class="hidden-xs hidden-sm col-md-2">
+        <div class="hidden-xs hidden-sm col-md-1">
             <?php echo $language; ?>
         </div>
     </div>

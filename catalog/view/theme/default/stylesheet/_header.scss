@@ -97,7 +97,7 @@
             font-size: 17px;
             padding: 0 10px;
             @media (min-width: $small) and (max-width: $smallDesktop) {
-              font-size: 13px;
+              font-size: 12px;
               padding: 0 8px;
             }
             color: $black-1;
@@ -195,6 +195,7 @@
     font-size: 21px;
     @media (min-width: $small) {
       font-size: 15px;
+      margin: 0 -20px;
     }
     &_list {
       display: inline-block;
