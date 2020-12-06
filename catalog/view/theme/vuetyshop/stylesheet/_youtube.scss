@@ -1,0 +1,22 @@
+.youtube {
+  display: flex;
+  margin-bottom: 15px;
+
+  &__text {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-weight: bold;
+      font-size: 15px;
+    }
+  }
+  &__video {
+    iframe {
+      max-width: 100% !important;
+      min-width: 100% !important;
+    }
+  }
+}

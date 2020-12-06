@@ -1,0 +1,98 @@
+.insta {
+  &__item {
+    max-height: 350px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+    &_img {
+      width: 100%;
+    }
+
+    &_likes {
+      position: absolute;
+      color: $white;
+      top: 0;
+      left: 15px;
+      right: 15px;
+      height: 100%;
+      text-align: center;
+      font-size: 28px;
+      line-height: 360px;
+      opacity: 0;
+
+      &-bg {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 15px;
+        right: 15px;
+        height: 100%;
+        background: $black;
+        opacity: 0;
+        transition: all .5s ease;
+      }
+
+      .fa {
+        font-size: 40px;
+        margin-right: 15px;
+      }
+    }
+
+    &:hover {
+     .insta__item_likes {
+       opacity: 1;
+     }
+      .insta__item_likes-bg {
+        opacity: 0.4;
+      }
+    }
+
+
+  }
+
+  &__title {
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: $black;
+    
+    &_img {
+      max-width: 50px;
+      display: block;
+      float: left;
+
+      @media (min-width: $tablet) {
+        max-width: 80px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    span {
+      margin-left: 15px;
+      font-weight: bold;
+      line-height: 50px;
+
+      @media (min-width: $tablet) {
+        line-height: 80px;
+      }
+    }
+  }
+
+  &__common {
+    margin-bottom: 30px;
+    font-size: 18px;
+    text-align: center;
+    color: $blue;
+    font-weight: bold;
+    padding-right: 15px;
+
+    @media (min-width: $tablet) {
+      line-height: 80px;
+      text-align: right;
+    }
+  }
+}
