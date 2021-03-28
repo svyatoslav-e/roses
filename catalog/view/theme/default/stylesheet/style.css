@@ -750,17 +750,21 @@
   height: 88px;
 }
 
-.insta__item {
+.insta-app {
+  display: flex;
+  flex-wrap: wrap;
+}
+.insta-app__item {
   max-height: 350px;
   overflow: hidden;
   margin-bottom: 30px;
   position: relative;
   cursor: pointer;
 }
-.insta__item_img {
+.insta-app__item_img {
   width: 100%;
 }
-.insta__item_likes {
+.insta-app__item_likes {
   position: absolute;
   color: #fff;
   top: 0;
@@ -768,11 +772,12 @@
   right: 15px;
   height: 100%;
   text-align: center;
-  font-size: 28px;
-  line-height: 360px;
+  font-size: 14px;
+  line-height: 14px;
+  padding: 50px;
   opacity: 0;
 }
-.insta__item_likes-bg {
+.insta-app__item_likes-bg {
   content: "";
   display: block;
   position: absolute;
@@ -784,45 +789,45 @@
   opacity: 0;
   transition: all 0.5s ease;
 }
-.insta__item_likes .fa {
+.insta-app__item_likes .fa {
   font-size: 40px;
   margin-right: 15px;
 }
-.insta__item:hover .insta__item_likes {
+.insta-app__item:hover .insta-app__item_likes {
   opacity: 1;
 }
-.insta__item:hover .insta__item_likes-bg {
-  opacity: 0.4;
+.insta-app__item:hover .insta-app__item_likes-bg {
+  opacity: 0.6;
 }
-.insta__title {
+.insta-app__title {
   margin-bottom: 30px;
   font-size: 18px;
   color: #333;
 }
-.insta__title_img {
+.insta-app__title_img {
   max-width: 50px;
   display: block;
   float: left;
 }
 @media (min-width: 769px) {
-  .insta__title_img {
+  .insta-app__title_img {
     max-width: 80px;
   }
 }
-.insta__title_img img {
+.insta-app__title_img img {
   max-width: 100%;
 }
-.insta__title span {
+.insta-app__title span {
   margin-left: 15px;
   font-weight: bold;
   line-height: 50px;
 }
 @media (min-width: 769px) {
-  .insta__title span {
+  .insta-app__title span {
     line-height: 80px;
   }
 }
-.insta__common {
+.insta-app__common {
   margin-bottom: 30px;
   font-size: 18px;
   text-align: center;
@@ -831,9 +836,9 @@
   padding-right: 15px;
 }
 @media (min-width: 769px) {
-  .insta__common {
+  .insta-app__common {
     line-height: 80px;
-    text-align: right;
+    text-align: left;
   }
 }
 

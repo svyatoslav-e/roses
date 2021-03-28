@@ -1,4 +1,7 @@
-.insta {
+.insta-app {
+  display: flex;
+  flex-wrap: wrap;
+
   &__item {
     max-height: 350px;
     overflow: hidden;
@@ -17,8 +20,9 @@
       right: 15px;
       height: 100%;
       text-align: center;
-      font-size: 28px;
-      line-height: 360px;
+      font-size: 14px;
+      line-height: 14px;
+      padding: 50px;
       opacity: 0;
 
       &-bg {
@@ -41,11 +45,11 @@
     }
 
     &:hover {
-     .insta__item_likes {
+     .insta-app__item_likes {
        opacity: 1;
      }
-      .insta__item_likes-bg {
-        opacity: 0.4;
+      .insta-app__item_likes-bg {
+        opacity: 0.6;
       }
     }
 
@@ -92,7 +96,7 @@
 
     @media (min-width: $tablet) {
       line-height: 80px;
-      text-align: right;
+      text-align: left;
     }
   }
 }

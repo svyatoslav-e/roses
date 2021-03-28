@@ -23,11 +23,11 @@ function getURLVar(key) {
 }
 
 var insta = {
-	token: '6006421984.0a5f39f.e5f3bbfa597548359de3270451298f2d',
+	token: 'IGQVJWLXRiMDY0MEk2bDJLYlFaMUlsZAkVFUVU1eW4yeXVBaEJtRzUxX256WFRCRDJuVFZAsNnRDWi1ZAOVNqcHRFbGN0cGo2WlRBWi0tdFpQYllyWndjeW9PQWIwSWJhdzBGdFVLSTBxNEJvM2RScS1IYTF1dkd1V3NfYVdr',
 	init: function () {
 		$.ajax({
 			type: 'GET',
-			url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token='+insta.token,
+			url: 'https://graph.instagram.com/me/media?fields=id,caption,media_type,media_url,thumbnail_url,timestamp&access_token='+insta.token,
 			success: function (resp) {
 				insta.parseData(resp.data);
 			},
@@ -38,30 +38,22 @@ var insta = {
 	},
 	images: [],
 	parseData: function (data) {
-		insta.showIDuserInsta(data[0].user);
-		data.forEach(function (item) {
-			var istaitem = {
-				images: item.images,
-        likes: item.likes.count
-			};
-			insta.images.push(istaitem);
-		});
-		insta.createHTMLview(insta.images);
+		const smallArray = data.slice(0, 6).reverse();
+		insta.createHTMLview(smallArray);
 	},
 	createHTMLview: function (images) {
+		console.log(images);
 		images.forEach(function (item, index) {
-			if(index <= 5) {
-				var html = '<div class="col-sm-4 insta__item">' +
-					'<img src="'+ item.images.standard_resolution.url +'" data-src-standart="'+ item.images.low_resolution.url +'" class="insta__item_img"/>' +
-					'<span class="insta__item_likes-bg"></span><span class="insta__item_likes"><i class="fa fa-heart"></i>'+ item.likes +'</span>'+
+				var html = '<div class="col-sm-4 insta-app__item">' +
+					'<img src="'+ item.media_url +'" class="insta-app__item_img"/>' +
+					'<span class="insta-app__item_likes-bg"></span><span class="insta-app__item_likes">'+ item.caption +'</span>'+
 					'</div>';
 				$('#insta').prepend(html);
-			};
 		})
 	},
 	showIDuserInsta: function (user) {
-		var html = '<div class="col-sm-6 insta__title">' +
-			'<div class="insta__title_img">' +
+		var html = '<div class="col-sm-6 insta-app__title">' +
+			'<div class="insta-app__title_img">' +
 			'<img src="'+ user.profile_picture+'" alt="'+ user.full_name+'"></div>' +
 			'<span>'+ user.username +'</span></div>';
 
