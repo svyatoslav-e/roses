@@ -8,7 +8,6 @@
 <html dir="<?php echo $direction; ?>" lang="<?php echo $lang; ?>">
 <!--<![endif]-->
 <head>
-    <meta name="yandex-verification" content="94780570f85693ad"/>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
@@ -68,8 +67,12 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     </script>
 </head>
 <body class="<?php echo $class; ?>">
+<p><?php echo $isMobile; ?></p>
 <header class="header-main">
     <!--<div class="conteiner-fluid top-linear"> </div>-->
+  <?php if (!$isMobile) { ?>
+    <p>HELLO</p>
+  <?php } ?>
     <div class="container header-wrapper">
             <!--LOGO-->
             <div class="col-xs-4 col-sm-6 col-lg-4">

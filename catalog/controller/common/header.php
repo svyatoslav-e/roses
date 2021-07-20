@@ -1,6 +1,8 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
+    $detect = new Mobile_Detect();
+    $data['isMobile'] = $detect->isMobile();
 		$data['title'] = $this->document->getTitle();
 
 		if ($this->request->server['HTTPS']) {
