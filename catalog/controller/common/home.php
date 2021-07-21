@@ -1,8 +1,6 @@
 <?php
 class ControllerCommonHome extends Controller {
 	public function index() {
-    include $_SERVER['DOCUMENT_ROOT'].'/Mobile_Detect.php';
-    $detect = new Mobile_Detect();
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
 		$this->document->setKeywords($this->config->get('config_meta_keyword'));
@@ -17,7 +15,6 @@ class ControllerCommonHome extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
-		$data['isMobile'] = $detect->isMobile();
 
 		$data['decorative'] = $this->url->link('product/category', 'path=61');
 		$data['shrubbery'] = $this->url->link('product/category', 'path=62');

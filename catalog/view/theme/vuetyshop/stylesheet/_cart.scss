@@ -1,32 +1,47 @@
 .cart {
   &__button {
-    background: none;
     border: none;
-    padding: 0;
     position: relative;
-    width: 100%;
-    text-align: right;
-    outline: none;
-    i.fa {
-      color: $blue;
-      font-size: 30px;
-      width: 52px;
-    }
 
     &_total-items {
       position: absolute;
-      color: $black;
-      top: -9px;
-      right: -22px;
+      color: $white;
+      top: -8px;
+      right: -2px;
       display: block;
-      width: 35px;
-      height: 35px;
+      width: 25px;
+      height: 25px;
       border-radius: 20px;
-      background: $green;
+      background: $rose-default;
       text-align: center;
-      line-height: 35px;
-      font-size: 16px;
+      line-height: 25px;
+      font-size: 14px;
       font-weight: bold;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    svg {
+      height: 25px;
+    }
+
+    path {
+      fill: $white;
+    }
+
+    &-blue {
+      background: $blue-default;
+    }
+
+    &-green {
+      background: $green-default;
     }
   }
 

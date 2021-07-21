@@ -1,8 +1,9 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index() {
+    include(DIR_COMMON."Mobile_Detect.php");
     $detect = new Mobile_Detect();
-    $data['isMobile'] = $detect->isMobile();
+    $GLOBALS["isMobile"] = $detect->isMobile();
 		$data['title'] = $this->document->getTitle();
 
 		if ($this->request->server['HTTPS']) {
@@ -153,7 +154,7 @@ class ControllerCommonHeader extends Controller {
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
-		$data['cart'] = $this->load->view('default/template/common/cart.tpl');
+		$data['cart'] = $this->load->view('vuetyshop/template/common/cart.tpl');
 
 		// For page specific css
 		if (isset($this->request->get['route'])) {

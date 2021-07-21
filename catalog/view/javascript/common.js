@@ -25,6 +25,7 @@ function getURLVar(key) {
 var insta = {
 	token: '6006421984.0a5f39f.e5f3bbfa597548359de3270451298f2d',
 	init: function () {
+		console.log('INIT');
 		$.ajax({
 			type: 'GET',
 			url: 'https://api.instagram.com/v1/users/self/media/recent/?access_token='+insta.token,
@@ -71,7 +72,7 @@ var insta = {
 
 //instagramm
 $(document).ready(function() {
-	insta.init();
+	// insta.init();
 	// Adding the clear Fix
 	cols1 = $('#column-right, #column-left').length;
 	
@@ -186,7 +187,7 @@ $(document).ready(function() {
 	$(document).on('change', '.js-qty-checkout', function (e) {
 		$('#form-cart').submit();
     });
-
+	// TODO: STICKY HEADER REFACTORING
 	$(window).scroll(function () {
 		var window_top = $(window).scrollTop(),
 			headerHeight = $('.header-main').height();

@@ -6,47 +6,7 @@
   }
 
 // LOGO
-  &__logo {
-    display: flex;
-    align-items: center;
-    height: 100%;
 
-    &_wrapper {
-      margin: 0;
-      display: flex;
-      align-items: center;
-    }
-
-    &_link {
-      display: flex;
-      align-items: center;
-      font-size: 35px;
-      font-weight: bold;
-      color: $blue;
-      text-decoration: none;
-      &:hover, &:visited, &:active, &:focus {color: $blue;
-                                             text-decoration: none;
-                                             outline: none;}
-
-      &-green {
-        margin-left: 15px;
-        color: $green;
-        display: none;
-      }
-      &-at {
-        display: none;
-      }
-      &-rose {
-        color: $rose;
-        display: none;
-      }
-      img {
-        width: 70px;
-        height: 70px;
-        display: block;
-      }
-    }
-  }
 //  MENU
   &__menu {
     &_title {
@@ -171,25 +131,6 @@
     }
   }
   //PHONE
-  &__phone {
-    text-align: right;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    a {
-      text-decoration: none!important;
-      display: flex;
-      align-items: center;
-      color: $black-1;
-
-      .fa {
-        font-size: 25px;
-        margin-right: 5px;
-      }
-    }
-  }
   //  LANG
   &__lang {
     font-size: 21px;
@@ -247,21 +188,70 @@
     width: 100%;
     background: #fff;
     z-index: 200;
-
-    .header-main__logo_link {
-      font-size: 15px;
-      transition: all 0.3s ease;
-
-      img {
-        width: 30px;
-        height: 30px;
-        transition: all 0.3s ease;
-      }
-    }
-
-    .header-main__phone {
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
   }
   }
+
+.header-mobile {
+  border-top: 12px solid $green-default;
+
+  &__wrapper {
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+    height: 100px;
+  }
+
+  &__logo {
+    width: 15%;
+  }
+
+  &__phone {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+
+  &__icon {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+
+    svg {
+      height: 25px;
+    }
+
+    path {
+      fill: $white;
+    }
+
+    &-blue {
+      background: $blue-default;
+    }
+
+    &-green {
+      background: $green-default;
+    }
+  }
+
+  &__title-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 10px;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__search {
+
+  }
+}
