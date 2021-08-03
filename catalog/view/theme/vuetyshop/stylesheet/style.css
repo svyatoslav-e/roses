@@ -309,6 +309,7 @@
   display: flex;
   align-items: center;
   height: 100px;
+  border-bottom: 5px solid #eeedf5;
 }
 .header-mobile__logo {
   width: 15%;
@@ -350,6 +351,49 @@
   margin: 0;
   text-align: center;
 }
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.menu__button {
+  width: 100%;
+  color: #4fac25;
+  text-transform: uppercase;
+  text-align: center;
+  background: none;
+  border: none;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 15px;
+}
+.menu__item {
+  padding: 5px;
+  flex: 40%;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+.menu__item-rose {
+  background: #fd5c92;
+}
+.menu__item-blue {
+  background: #00a6eb;
+}
+.menu__item-green {
+  background: #4fac25;
+}
+.menu__item svg {
+  height: 100px;
+}
+.menu__item svg path {
+  fill: #fff;
+}
+
 .cart {
   /* width */
   /* Track */
@@ -845,6 +889,19 @@
   min-width: 100% !important;
 }
 
+.footer {
+  background: #4fac25;
+}
+.footer ul li a, .footer ul li, .footer h5 {
+  text-align: center;
+  color: #fff;
+}
+.footer__wrapper {
+  background: url("../image/svg/footer-mobile.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  padding-bottom: 250px;
+}
 .footer__facebook {
   padding-top: 15px;
 }

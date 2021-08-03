@@ -176,13 +176,13 @@ $(document).ready(function() {
 		$('#grid-view').trigger('click');
 	}
 
-	// tooltips on hover
-	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
-
-	// Makes tooltips work on ajax generated content
-	$(document).ajaxStop(function() {
-		$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
-	});
+	// // tooltips on hover
+	// $('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	//
+	// // Makes tooltips work on ajax generated content
+	// $(document).ajaxStop(function() {
+	// 	$('[data-toggle=\'tooltip\']').tooltip({container: 'body'});
+	// });
 
 	$(document).on('change', '.js-qty-checkout', function (e) {
 		$('#form-cart').submit();
@@ -198,6 +198,72 @@ $(document).ready(function() {
 			$('.header-main').removeClass('sticky-header');
 		}
 	});
+});
+
+//	CART APP
+var cartApp = new Vue({
+	el: '#cart',
+	data() {
+		return {
+			cartData: {},
+			refetch: false,
+			showCart: false,
+		}
+	},
+
+	created() {
+		this.getCartData();
+	},
+
+	watch: {
+		refetch(newV) {
+			if(newV) {
+				this.getCartData();
+			}
+		}
+	},
+
+	methods: {
+		getCartData() {
+			$.ajax({
+				url: 'index.php?route=common/cart',
+				success: function(json) {
+					cartApp.setData(json);
+				}
+			});
+		},
+
+		setData(data) {
+			data.products.map((product)=>{
+				const productItem = product;
+				productItem.removing = false;
+
+				return productItem;
+			});
+			cartApp.cartData = data;
+			cartApp.refetch = false;
+		},
+
+		goToCheckout() {
+			window.location = cartApp.cartData.checkout;
+		},
+
+		continueShopping() {
+			cartApp.showCart = false;
+		},
+
+		removeProduct(productIndex, confirmed) {
+			this.cartData.products[productIndex].removing = true;
+			if(confirmed) {
+				cart.remove(cartApp.cartData.products[productIndex].key);
+				this.cartData.products.splice(productIndex, 1);
+			}
+		},
+
+		toggleCart() {
+			console.log('TOGGLE CART');
+		}
+	}
 });
 
 // Cart add remove functions
@@ -510,6 +576,8 @@ function slyLink() {
   },0);
 }
 document.oncopy = slyLink;
+
+
 
 
 

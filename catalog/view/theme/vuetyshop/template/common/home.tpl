@@ -24,4 +24,5 @@
             <?php echo $column_right; ?>
         </div>
     </div>
+    </div>
 <?php echo $footer; ?>

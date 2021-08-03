@@ -199,6 +199,7 @@
     display: flex;
     align-items: center;
     height: 100px;
+    border-bottom: 5px solid $gray-default;
   }
 
   &__logo {
@@ -249,9 +250,5 @@
     font-size: 10px;
     margin: 0;
     text-align: center;
-  }
-
-  &__search {
-
   }
 }

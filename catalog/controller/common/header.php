@@ -91,12 +91,7 @@ class ControllerCommonHeader extends Controller {
 		$data['delivery_inf_text'] = $this->language->get('delivery_inf_text');
 		$data['payment_inf_text'] = $this->language->get('payment_inf_text');
 		$data['text_contact'] = $this->language->get('text_contact');
-        $data['videos_title'] = $this->language->get('videos_title');
-
-
-
-
-		
+    $data['videos_title'] = $this->language->get('videos_title');
 
 		$status = true;
 
@@ -174,6 +169,9 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
+      if ($detect->isMobile()) {
+        return $this->load->view($this->config->get('config_template') . '/template/common/header-mobile.tpl', $data);
+      }
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {
 			return $this->load->view('default/template/common/header.tpl', $data);

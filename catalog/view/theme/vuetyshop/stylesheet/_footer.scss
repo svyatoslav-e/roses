@@ -1,4 +1,17 @@
 .footer {
+  background: $green-default;
+
+  ul li a, ul li, h5 {
+    text-align: center;
+    color: $white;
+  }
+
+  &__wrapper {
+    background: url("../image/svg/footer-mobile.svg");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 250px;
+  }
   &__facebook {
     padding-top: 15px;
   }

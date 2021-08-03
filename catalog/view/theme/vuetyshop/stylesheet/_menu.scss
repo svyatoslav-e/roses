@@ -1,0 +1,48 @@
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &__button {
+    width: 100%;
+    color: $green-default;
+    text-transform: uppercase;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 15px;
+  }
+
+  &__item {
+    padding: 5px;
+    flex: 40%;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: $white;
+
+    &-rose {
+      background: $rose;
+    }
+
+    &-blue{
+      background: $blue-default;
+    }
+
+    &-green {
+      background: $green-default;
+    }
+
+    svg {
+      height: 100px;
+
+      path {
+        fill: $white;
+      }
+    }
+  }
+}
