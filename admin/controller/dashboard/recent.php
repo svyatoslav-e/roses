@@ -34,8 +34,6 @@ class ControllerDashboardRecent extends Controller {
 
             if ($result['total'] > 1000 ) {
                 $text = $result['total']*0.90;
-            } elseif($result['total'] > 700){
-                $text = $result['total']*0.95;
             } else {
                 $text = round($result['total']);
             }

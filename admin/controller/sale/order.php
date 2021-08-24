@@ -1147,8 +1147,6 @@ class ControllerSaleOrder extends Controller {
 
                 if($order_info['total'] > 1000) {
                     $total_value = $order_info['total']*0.90;
-                } elseif ($order_info['total'] > 700) {
-                    $total_value = $order_info['total']*0.95;
                 } else {
                     $total_value = $order_info['total'];
                 }

@@ -27,8 +27,6 @@ class ControllerDashboardSale extends Controller {
 
         if($sale_total > 1000) {
             $total_value = $sale_total*0.90;
-        } elseif ($sale_total > 700) {
-            $total_value = $sale_total*0.95;
         } else {
             $total_value = $sale_total;
         }
