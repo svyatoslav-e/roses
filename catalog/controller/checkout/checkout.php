@@ -78,6 +78,7 @@ class ControllerCheckoutCheckout extends Controller {
         $json['error_lastname'] = $this->language->get('error_lastname');
         $json['error_telephone'] = $this->language->get('error_telephone');
         $json['error_email'] = $this->language->get('error_email');
+        $json['error_zone'] = $this->language->get('error_zone');
         $json['text_confirm'] = $this->language->get('text_confirm');
         $json['continue'] = $this->url->link('checkout/success');
 

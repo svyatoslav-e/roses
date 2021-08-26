@@ -73,14 +73,14 @@
                                v-model="$v.customer.email.$model"
                                :placeholder="customer.entry_email"
                                class="checkout_customer__input">
-                        <span class="error" v-if="$v.customer.email.$error">{{checkoutData.error_telephone}}</span>
+                        <span class="error" v-if="$v.customer.email.$error">{{checkoutData.error_email}}</span>
                     </label>
                     <label for="" class="checkout_customer__label">
                         <select v-model="$v.customer.zone_id.$model" class="checkout_customer__input">
                             <option value="" disabled selected>{{customer.entry_zone}}</option>
                             <option :value="zone.zone_id" v-for="zone in zones" :selected="customer.zone_id === zone.zone_id">{{zone.name}}</option>
                         </select>
-                        <span class="error" v-if="$v.customer.zone_id.$error">{{checkoutData.error_telephone}}</span>
+                        <span class="error" v-if="$v.customer.zone_id.$error">{{checkoutData.error_zone}}</span>
                     </label>
                     <label for="customer-city" class="checkout_customer__label">
                         <input type="text"
@@ -88,7 +88,7 @@
                                v-model="$v.customer.city.$model"
                                :placeholder="customer.entry_city"
                                class="checkout_customer__input">
-                        <span class="error" v-if="$v.customer.city.$error">{{checkoutData.error_email}}</span>
+                        <span class="error" v-if="$v.customer.city.$error">{{checkoutData.error_city}}</span>
                     </label>
                     <label for="checkout-comment" class="checkout_customer__label">
                         <input type="text"

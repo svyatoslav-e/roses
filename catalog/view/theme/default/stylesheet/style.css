@@ -584,6 +584,7 @@
   font-size: 25px;
 }
 .cart__footer {
+  background: #fff;
   position: absolute;
   bottom: 50px;
   left: 20px;
