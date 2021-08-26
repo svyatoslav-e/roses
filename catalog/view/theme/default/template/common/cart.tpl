@@ -1,5 +1,5 @@
 <div id="cart">
-    <button class="cart__button" onclick="cartApp.showCart=true">
+    <button class="cart__button" @click="toggleVisible">
         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
         <span :class="['cart__button_total-items', {'pulse': cartData.text_items > 0}] ">{{ cartData.text_items }}</span>
     </button>
@@ -65,6 +65,7 @@
         el: '#cart',
         data() {
             return {
+                disabledCart: false,
                 cartData: {},
                 refetch: false,
                 showCart: false,
@@ -84,6 +85,11 @@
         },
 
         methods: {
+            toggleVisible() {
+                if(!this.disabledCart) {
+                  this.showCart=true
+                }
+            },
             getCartData() {
                 $.ajax({
                     url: 'index.php?route=common/cart',
@@ -109,7 +115,7 @@
             },
 
             continueShopping() {
-                cartApp.showCart = false;
+                this.showCart = false;
             },
 
             removeProduct(productIndex, confirmed) {

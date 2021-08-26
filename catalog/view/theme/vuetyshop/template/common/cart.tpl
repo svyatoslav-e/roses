@@ -82,11 +82,11 @@
 </div>
 
 <script>
-    var cartApp = new Vue({
+    var cartApp2 = new Vue({
         el: '#cart',
         data() {
             return {
-                cartData: {},
+                cartData: { },
                 refetch: false,
                 showCart: false,
             }

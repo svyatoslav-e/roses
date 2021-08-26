@@ -7,8 +7,8 @@ class ControllerCheckoutCheckout extends Controller {
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.js');
-        $this->document->addScript('catalog/view/javascript/vuelidate/dist/vuelidate.min.js');
-        $this->document->addScript('catalog/view/javascript/vuelidate/dist/validators.min.js');
+    $this->document->addScript('catalog/view/javascript/vuelidate/dist/vuelidate.min.js');
+    $this->document->addScript('catalog/view/javascript/vuelidate/dist/validators.min.js');
 		$this->document->addStyle('catalog/view/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css');
 
 		// Required by klarna
@@ -29,8 +29,6 @@ class ControllerCheckoutCheckout extends Controller {
 		);
 
 		$data['heading_title'] = $this->language->get('heading_title');
-
-
 
 		if (isset($this->session->data['error'])) {
 			$data['error_warning'] = $this->session->data['error'];
@@ -69,6 +67,18 @@ class ControllerCheckoutCheckout extends Controller {
         $json['text_loading'] = $this->language->get('text_loading');
         $json['button_continue'] = $this->language->get('button_continue');
         $json['text_info_conf'] = $this->language->get('text_info_conf');
+        $json['text_nowa_poshta'] = $this->language->get('text_nowa_poshta');
+        $json['text_checkout_cart_review'] = $this->language->get('text_checkout_cart_review');
+        $json['text_checkout_data_review'] = $this->language->get('text_checkout_data_review');
+        $json['error_agree'] = $this->language->get('error_agree');
+        $json['error_payment'] = $this->language->get('error_payment');
+        $json['error_city'] = $this->language->get('error_city');
+        $json['error_nowa_poshta'] = $this->language->get('error_nowa_poshta');
+        $json['error_firstname'] = $this->language->get('error_firstname');
+        $json['error_lastname'] = $this->language->get('error_lastname');
+        $json['error_telephone'] = $this->language->get('error_telephone');
+        $json['error_email'] = $this->language->get('error_email');
+        $json['text_confirm'] = $this->language->get('text_confirm');
         $json['continue'] = $this->url->link('checkout/success');
 
         // Validate cart has products and has stock.
@@ -126,7 +136,7 @@ class ControllerCheckoutCheckout extends Controller {
             }
 
             if ($product['minimum'] > $product_total) {
-                $data['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
+              $json['error_warning'] = sprintf($this->language->get('error_minimum'), $product['name'], $product['minimum']);
             }
 
             if ($product['image']) {
@@ -292,10 +302,12 @@ class ControllerCheckoutCheckout extends Controller {
 //        END SHIPPING METHOD
 //        PAYMENT METHOD
 
-        $data['text_payment_method'] = $this->language->get('text_payment_method');
-        $data['text_comments'] = $this->language->get('text_comments');
-        $data['text_loading'] = $this->language->get('text_loading');
-        $data['button_continue'] = $this->language->get('button_continue');
+      $json['text_payment_method'] = $this->language->get('text_payment_method');
+      $json['text_comments'] = $this->language->get('text_comments');
+      $json['text_loading'] = $this->language->get('text_loading');
+      $json['button_continue'] = $this->language->get('button_continue');
+      $json['text_agreed'] = $this->language->get('text_agreed');
+
 
 
         if (isset($this->session->data['payment_method']['code'])) {

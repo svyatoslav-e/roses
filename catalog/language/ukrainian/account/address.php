@@ -23,9 +23,9 @@ $_['entry_company']        = 'Компанія';
 $_['entry_address_1']      = 'Адреса 1';
 $_['entry_address_2']      = 'Адреса 2';
 $_['entry_postcode']       = 'Індекс';
-$_['entry_city']           = 'Місто';
+$_['entry_city']           = 'Населений пункт';
 $_['entry_country']        = 'Країна';
-$_['entry_zone']           = 'Область/Район';
+$_['entry_zone']           = 'Область';
 $_['entry_default']        = 'Адреса за замовчуванням';
 
 // Error

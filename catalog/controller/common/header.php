@@ -154,7 +154,7 @@ class ControllerCommonHeader extends Controller {
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
-		$data['cart'] = $this->load->view('vuetyshop/template/common/cart.tpl');
+		$data['cart'] = $this->load->view('default/template/common/cart.tpl');
 
 		// For page specific css
 		if (isset($this->request->get['route'])) {

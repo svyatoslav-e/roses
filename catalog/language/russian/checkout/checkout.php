@@ -8,7 +8,9 @@ $_['text_info_conf']                 = 'Перед доставкой заказ
 
 $_['text_checkout_option']           = 'Способ оформления заказа';
 $_['text_checkout_account']          = 'Профиль &amp; Платежная информация';
-$_['text_checkout_payment_address']  = 'Платежная информация';
+$_['text_checkout_payment_address']  = 'Заполните форму';
+$_['text_checkout_cart_review']      = 'Проверьте заказ';
+$_['text_checkout_data_review']      = 'Проверьте ваши данные';
 $_['text_checkout_shipping_address'] = 'Адрес доставки';
 $_['text_checkout_shipping_method']  = 'Способ доставки и адрес отделения';
 $_['text_checkout_payment_method']   = 'Способ оплаты';
@@ -26,11 +28,12 @@ $_['text_your_details']              = 'Личные данные';
 $_['text_your_address']              = 'Адрес';
 $_['text_your_password']             = 'Пароль';
 $_['text_agree']                     = 'Я прочитал <a href="%s" class="agree"><b>%s</b></a> и согласен с условиями';
+$_['text_agreed']                     = 'Даю согласие на обработку данных';
 $_['text_address_new']               = 'Я хочу использовать новый адрес';
 $_['text_address_existing']          = 'Я хочу использовать существующий адрес';
 $_['text_shipping_method']           = 'Выберите удобный способ доставки для данного заказа';
 $_['text_payment_method']            = 'Выберите способ оплаты для данного заказа';
-$_['text_comments']                  = 'Укажите номер отделения транспортной компании и комментарии к заказу';
+$_['text_comments']                  = 'Номер отделения Новой Почты';
 $_['text_recurring']                 = 'Периодические платежи';
 $_['text_payment_recurring']           = 'Платежный профиль';
 $_['text_trial_description']         = 'Стоимость: %s; Периодичность: %d %s; Кол-во платежей: %d;  Далее,  ';
@@ -41,6 +44,8 @@ $_['text_week']                      = 'неделю';
 $_['text_semi_month']                = 'полмесяца';
 $_['text_month']                     = 'месяц';
 $_['text_year']                      = 'год';
+$_['text_nowa_poshta']               = '№ отделения Нова Пошта';
+  $_['text_confirm']               = 'Оформить';
 
 $_['text_sale']  = 'Со скидкой';
 
@@ -66,9 +71,9 @@ $_['entry_customer_group']           = 'Тип бизнеса';
 $_['entry_address_1']                = 'Адрес';
 $_['entry_address_2']                = 'Адрес 2';
 $_['entry_postcode']                 = 'Индекс';
-$_['entry_city']                     = 'Город';
+$_['entry_city']                     = 'Населенный пункт';
 $_['entry_country']                  = 'Страна';
-$_['entry_zone']                     = 'Регион / Область';
+$_['entry_zone']                     = 'Область';
 $_['entry_newsletter']               = 'Я хочу подписаться на Новости %s .';
 $_['entry_shipping'] 	             = 'Мой адрес доставки совпадает с платежным.';
 
@@ -88,8 +93,9 @@ $_['error_address_1']                = 'Адрес должен быть от 3 
 $_['error_city']                     = 'Название города должно быть от 2 до 128 символов!';
 $_['error_postcode']                 = 'Индекс должен быть от 2 до 10 символов!';
 $_['error_country']                  = 'Пожалуйста, выберите страну!';
+$_['error_nowa_poshta']              = 'Укажите номер отделения!';
 $_['error_zone']                     = 'Пожалуйста, выберите регион / область';
-$_['error_agree']                    = 'Вы должны прочитать и согласится с %s!';
+$_['error_agree']                    = 'Вы должны согласиться!';
 $_['error_address']                  = 'Необходимо указать адрес!';
 $_['error_shipping']                 = 'Необходимо указать способ доставки!';
 $_['error_no_shipping']              = 'Нет доступных способов доставки. Пожалуйста <a href="%s">свяжитесь с администрацией</a>!';
