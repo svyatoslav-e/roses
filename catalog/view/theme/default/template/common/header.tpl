@@ -87,12 +87,12 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                     </h5>
                 </div>
             </div>
-            <!--LANG BLOCK MOBILE-->
+            <!--LANG BLOCK MOBILE
             <div class="col-xs-5 visible-xs text-center">
                 <div class="row">
                     <?php echo $language; ?>
                 </div>
-            </div>
+            </div>-->
 
             <div class="hidden-xs col-sm-4 col-lg-6 header-main__phone">
                 <a href="tel:<?php echo $telephone_arr[0]; ?>"><i class="fa fa-phone-square"
@@ -100,8 +100,12 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
                 </a>
             </div>
 
+        <div class="col-xs-2 col-sm-1 col-lg-1  header-main__search">
+            <?php echo $search; ?>
+        </div>
+
             <!--CART-->
-            <div class="col-xs-3 col-sm-2 col-lg-2 header-main__cart">
+            <div class="col-xs-2 col-sm-1 col-lg-1 header-main__cart">
                 <?php echo $cart; ?>
             </div>
     </div>

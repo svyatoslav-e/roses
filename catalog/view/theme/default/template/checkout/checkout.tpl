@@ -244,6 +244,7 @@
 
         created() {
             cartApp.disabledCart = true;
+            searchApp.disabledSearch = true;
             this.localeValue = document.all[0].lang;
             this.getCheckoutData();
         },
