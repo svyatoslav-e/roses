@@ -58,7 +58,7 @@ $_['column_total']                   = 'Итого';
 
 // Entry
 $_['entry_email_address']            = 'E-Mail Адрес';
-$_['entry_email']                    = 'E-Mail';
+$_['entry_email']                    = 'E-Mail (не обязательно)';
 $_['entry_password']                 = 'Пароль';
 $_['entry_confirm']                  = 'Подтверждение пароля';
 $_['entry_firstname']                = 'Имя';

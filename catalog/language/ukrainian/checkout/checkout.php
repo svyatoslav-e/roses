@@ -62,7 +62,7 @@ $_['column_total']                   = 'Загалом';
 
 // Entry
 $_['entry_email_address']            = 'E-Mail';
-$_['entry_email']                    = 'E-Mail';
+$_['entry_email']                    = 'E-Mail (не обов\'язково)';
 $_['entry_password']                 = 'Пароль';
 $_['entry_confirm']                  = 'Підтвердження паролю';
 $_['entry_firstname']                = 'Ім`я';
