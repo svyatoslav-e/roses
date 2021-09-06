@@ -70,10 +70,9 @@
                     <label for="customer-email" class="checkout_customer__label">
                         <input type="email"
                                id="customer-email"
-                               v-model="$v.customer.email.$model"
+                               v-model="customer.email"
                                :placeholder="customer.entry_email"
                                class="checkout_customer__input">
-                        <span class="error" v-if="$v.customer.email.$error">{{checkoutData.error_email}}</span>
                     </label>
                     <label for="" class="checkout_customer__label">
                         <select v-model="$v.customer.zone_id.$model" class="checkout_customer__input">
@@ -199,10 +198,10 @@
                     required,
                     numeric,
                 },
-                email: {
-                    required,
-                    email,
-                },
+                // email: {
+                //     required,
+                //     email,
+                // },
                 zone_id: {
                     required,
                 },
