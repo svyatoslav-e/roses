@@ -136,10 +136,10 @@ class ControllerCheckoutGuest extends Controller {
 			if ((utf8_strlen(trim($this->request->post['lastname'])) < 1) || (utf8_strlen(trim($this->request->post['lastname'])) > 32)) {
 				$json['error']['lastname'] = $this->language->get('error_lastname');
 			}
-
-			if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['email'])) {
-				$json['error']['email'] = $this->language->get('error_email');
-			}
+// Email validation
+//			if ((utf8_strlen($this->request->post['email']) > 96) || !preg_match('/^[^\@]+@.*.[a-z]{2,15}$/i', $this->request->post['email'])) {
+//				$json['error']['email'] = $this->language->get('error_email');
+//			}
 
 			if ((utf8_strlen($this->request->post['telephone']) < 3) || (utf8_strlen($this->request->post['telephone']) > 32)) {
 				$json['error']['telephone'] = $this->language->get('error_telephone');

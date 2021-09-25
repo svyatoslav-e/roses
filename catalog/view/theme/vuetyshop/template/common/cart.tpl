@@ -80,3 +80,67 @@
         </transition>
     </div>
 </div>
+
+<script>
+    var cartApp2 = new Vue({
+        el: '#cart',
+        data() {
+            return {
+                cartData: { },
+                refetch: false,
+                showCart: false,
+            }
+        },
+
+        created() {
+            this.getCartData();
+        },
+
+        watch: {
+            refetch(newV) {
+                if(newV) {
+                    this.getCartData();
+                }
+            }
+        },
+
+        methods: {
+            getCartData() {
+                $.ajax({
+                    url: 'index.php?route=common/cart',
+                    success: function(json) {
+                        cartApp.setData(json);
+                    }
+                });
+            },
+
+            setData(data) {
+                data.products.map((product)=>{
+                   const productItem = product;
+                    productItem.removing = false;
+
+                    return productItem;
+                });
+                cartApp.cartData = data;
+                cartApp.refetch = false;
+            },
+
+            goToCheckout() {
+                window.location = cartApp.cartData.checkout;
+            },
+
+            continueShopping() {
+                cartApp.showCart = false;
+            },
+
+            removeProduct(productIndex, confirmed) {
+                this.cartData.products[productIndex].removing = true;
+                if(confirmed) {
+                    cart.remove(cartApp.cartData.products[productIndex].key);
+                    this.cartData.products.splice(productIndex, 1);
+                }
+            },
+        }
+    });
+
+</script>

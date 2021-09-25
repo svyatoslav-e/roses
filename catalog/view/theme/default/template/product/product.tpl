@@ -302,10 +302,6 @@
            </thead>
            <tbody>
              <tr>
-               <td>700 грн</td>
-               <td class="discount"> -5% </td>
-             </tr>
-             <tr>
                <td>1000 грн</td>
                <td class="discount"> -10% </td>
              </tr>
