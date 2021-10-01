@@ -37,8 +37,4 @@
 <div class="visible-xs site__call-action">
   <a href="tel:<?php echo $telephone_arr[0]; ?>" class="dtn-roses btn-orange"><?php echo $call; ?></a>
 </div>
-<!-- development version, includes helpful console warnings -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-<script src="catalog/view/javascript/mobile.js" type="text/javascript"></script>
 </body></html>

@@ -97,7 +97,7 @@
       <div class="button-group">
         <?if ($product['quantity'] <= 3){ ?>
         <button type="button" id="button_next_<?php echo $product['product_id']; ?>" class="filter_stock"><span class="">Продано</span></button>        
-        <?}else{?>
+        <?} else {?>
         <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');" id="button_<?php echo $product['product_id']; ?>"><span class=""><?php echo $button_cart; ?></span></button>
         <?}?>
       </div>

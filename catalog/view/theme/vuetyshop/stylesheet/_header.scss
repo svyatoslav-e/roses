@@ -203,7 +203,10 @@
   }
 
   &__logo {
-    width: 15%;
+    width: 80px;
+    @media (max-width: $small) {
+      width: 15%;
+    }
   }
 
   &__phone {
@@ -247,7 +250,7 @@
   }
 
   &__title {
-    font-size: 10px;
+    font-size: 11px;
     margin: 0;
     text-align: center;
   }

@@ -1,5 +1,5 @@
 <div id="cart">
-    <button class="cart__button cart__icon cart__icon-green" onclick="cartApp.showCart=true">
+    <button class="cart__button cart__icon cart__icon-green" @click="toggleVisible">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 363.24 322.79">
             <defs>
                 <clipPath id="clip-path" transform="translate(-0.38 -0.59)">
@@ -81,66 +81,3 @@
     </div>
 </div>
 
-<script>
-    var cartApp2 = new Vue({
-        el: '#cart',
-        data() {
-            return {
-                cartData: { },
-                refetch: false,
-                showCart: false,
-            }
-        },
-
-        created() {
-            this.getCartData();
-        },
-
-        watch: {
-            refetch(newV) {
-                if(newV) {
-                    this.getCartData();
-                }
-            }
-        },
-
-        methods: {
-            getCartData() {
-                $.ajax({
-                    url: 'index.php?route=common/cart',
-                    success: function(json) {
-                        cartApp.setData(json);
-                    }
-                });
-            },
-
-            setData(data) {
-                data.products.map((product)=>{
-                   const productItem = product;
-                    productItem.removing = false;
-
-                    return productItem;
-                });
-                cartApp.cartData = data;
-                cartApp.refetch = false;
-            },
-
-            goToCheckout() {
-                window.location = cartApp.cartData.checkout;
-            },
-
-            continueShopping() {
-                cartApp.showCart = false;
-            },
-
-            removeProduct(productIndex, confirmed) {
-                this.cartData.products[productIndex].removing = true;
-                if(confirmed) {
-                    cart.remove(cartApp.cartData.products[productIndex].key);
-                    this.cartData.products.splice(productIndex, 1);
-                }
-            },
-        }
-    });
-
-</script>

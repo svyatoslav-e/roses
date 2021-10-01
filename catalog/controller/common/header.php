@@ -149,7 +149,7 @@ class ControllerCommonHeader extends Controller {
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
 		$data['search'] = $this->load->controller('common/search');
-		$data['cart'] = $this->load->view('default/template/common/cart.tpl');
+		$data['cart'] = $this->load->view($this->config->get('config_template') . '/template/common/cart.tpl');
 
 		// For page specific css
 		if (isset($this->request->get['route'])) {
@@ -169,9 +169,6 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/common/header.tpl')) {
-      if ($detect->isMobile()) {
-        return $this->load->view($this->config->get('config_template') . '/template/common/header-mobile.tpl', $data);
-      }
 			return $this->load->view($this->config->get('config_template') . '/template/common/header.tpl', $data);
 		} else {
 			return $this->load->view('default/template/common/header.tpl', $data);

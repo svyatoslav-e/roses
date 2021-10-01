@@ -186,6 +186,7 @@ var cartApp = new Vue({
 	el: '#cart',
 	data() {
 		return {
+			disabledCart: false,
 			cartData: {},
 			refetch: false,
 			showCart: false,
@@ -193,6 +194,7 @@ var cartApp = new Vue({
 	},
 
 	created() {
+		console.log('CREATED', this);
 		this.getCartData();
 	},
 
@@ -205,7 +207,14 @@ var cartApp = new Vue({
 	},
 
 	methods: {
+		toggleVisible() {
+			console.log('toggle');
+			if(!this.disabledCart) {
+				this.showCart=true
+			}
+		},
 		getCartData() {
+			console.log('GET DATA');
 			$.ajax({
 				url: 'index.php?route=common/cart',
 				success: function(json) {
@@ -215,6 +224,7 @@ var cartApp = new Vue({
 		},
 
 		setData(data) {
+			console.log('Set data',data);
 			data.products.map((product)=>{
 				const productItem = product;
 				productItem.removing = false;
@@ -230,7 +240,7 @@ var cartApp = new Vue({
 		},
 
 		continueShopping() {
-			cartApp.showCart = false;
+			this.showCart = false;
 		},
 
 		removeProduct(productIndex, confirmed) {
@@ -240,10 +250,6 @@ var cartApp = new Vue({
 				this.cartData.products.splice(productIndex, 1);
 			}
 		},
-
-		toggleCart() {
-			console.log('TOGGLE CART');
-		}
 	}
 });
 

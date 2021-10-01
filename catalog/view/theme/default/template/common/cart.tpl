@@ -61,7 +61,7 @@
 </div>
 
 <script>
-    var cartApp = new Vue({
+    var cartAppDefault = new Vue({
         el: '#cart',
         data() {
             return {
@@ -86,6 +86,7 @@
 
         methods: {
             toggleVisible() {
+                console.log('TOGGLE');
                 if(!this.disabledCart) {
                   this.showCart=true
                 }
