@@ -1,0 +1,14 @@
+.menu__content {
+  &.slide-enter-active {
+    left: -400px;
+    transition: all .3s ease;
+  }
+  //&.slide-fade-leave-active {
+  //  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  //}
+  &.slide-enter, &.slide-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+    left: 0;
+    opacity: 0;
+  }
+}

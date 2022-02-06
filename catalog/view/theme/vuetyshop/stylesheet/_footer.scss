@@ -7,7 +7,11 @@
   }
 
   &__wrapper {
-    background: url("../image/svg/footer-mobile.svg");
+    background: url("../image/svg/footer-desktop.svg");
+    @media (max-width: $small) {
+      background: url("../image/svg/footer-mobile.svg");
+    }
+
     background-position: bottom;
     background-repeat: no-repeat;
     padding-bottom: 250px;

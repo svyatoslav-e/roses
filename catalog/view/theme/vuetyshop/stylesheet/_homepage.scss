@@ -1,3 +1,24 @@
 .homepage {
   padding-top: 50px;
 }
+
+.banner {
+  background: url("../image/banners/banner-home.jpg");
+  display: block;
+  height: 369px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.banner__text {
+  position: absolute;
+  color: $white;
+  width: 50%;
+  left: 10%;
+  top: 10%;
+  font-size: 18px;
+
+  h2 {
+    font-size: 40px;
+  }
+}
