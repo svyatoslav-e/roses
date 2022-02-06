@@ -22,14 +22,9 @@
     <?php if ($icon) { ?>
     <link href="<?php echo $icon; ?>" rel="icon"/>
     <?php } ?>
-    <!-- development version, includes helpful console warnings -->
-    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
     <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     <link href="catalog/view/theme/vuetyshop/stylesheet/style.min.css" rel="stylesheet">
-    <!--    VUE -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script async src="catalog/view/javascript/common.js" type="text/javascript"></script>
-    <script async src="catalog/view/javascript/menu.js" type="text/javascript"></script>
+    <script async src="catalog/view/main.js" type="text/javascript"></script>
 </head>
 <body class="<?php echo $class; ?>">
 <header class="header-mobile">

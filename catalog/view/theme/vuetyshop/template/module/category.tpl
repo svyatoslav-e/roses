@@ -26,10 +26,3 @@
   <?php } ?>
   <?php } ?>
 </div>
-<script>
-(function (){
-  $('.main-category').click(function(){
-    $(this).next(".slider-category").slideToggle();
-  });
-})();
-</script>
